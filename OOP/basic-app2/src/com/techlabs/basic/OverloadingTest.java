@@ -1,6 +1,6 @@
 package com.techlabs.basic;
 
-public class WelcomeTest {
+public class OverloadingTest {
 	public static void main(String args[]) {
 	/*	System.out.println("Welcome to basic Java Project");
 		System.out.println("hello");
@@ -10,6 +10,7 @@ public class WelcomeTest {
 		System.out.println(2.0005);
 		System.out.println('a');
 		*/
+		
 		printInfo("Hello");
 		printInfo(5000012);
 		printInfo(5.24f);
@@ -20,7 +21,7 @@ public class WelcomeTest {
 		private static void printInfo(String str) {
 			System.out.println(str);
 		}
-		public static void printInfo(double d) {
+		private static void printInfo(double d) {
 			System.out.println(d);
 		}
 		public static void printInfo(float f) {
