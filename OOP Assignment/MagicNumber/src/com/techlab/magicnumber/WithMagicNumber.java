@@ -1,4 +1,4 @@
-package magicNumber;
+package com.techlab.magicnumber;
 
 public class WithMagicNumber {
 	

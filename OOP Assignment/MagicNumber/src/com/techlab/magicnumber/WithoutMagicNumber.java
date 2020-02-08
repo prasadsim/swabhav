@@ -1,4 +1,4 @@
-package magicNumber;
+package com.techlab.magicnumber;
 
 public class WithoutMagicNumber {
 	final static public String IP = "192.0.0.1";

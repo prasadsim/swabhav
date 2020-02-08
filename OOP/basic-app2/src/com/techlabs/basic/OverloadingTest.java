@@ -24,7 +24,7 @@ public class OverloadingTest {
 		private static void printInfo(double d) {
 			System.out.println(d);
 		}
-		public static void printInfo(float f) {
+		private static void printInfo(float f) {
 			System.out.println(f);
 		}
 		public static void printInfo(boolean b) {
