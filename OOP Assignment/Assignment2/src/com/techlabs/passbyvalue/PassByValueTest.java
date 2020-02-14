@@ -1,6 +1,6 @@
-package passByValue;
+package com.techlabs.passbyvalue;
 
-public class PassParameter {
+public class PassByValueTest {
 	public static void main(String[] args) {
 		int RollNo = 1001, Age = 21, Code = 10;
 		String Name="Ash";

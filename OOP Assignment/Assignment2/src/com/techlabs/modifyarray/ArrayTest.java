@@ -1,4 +1,4 @@
-package modifyArray;
+package com.techlabs.modifyarray;
 
 public class ArrayTest {
 	public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package differentForLoops;
+package com.techlabs.differentforloops;
 
-public class UsingDifferentForLoops {
+public class DifferentForLoopsTest {
 	public static void main(String[] args) {
 
 		String[] names = { "Ash", "Adah", "Rajat", "Skazi", "Vabz" };

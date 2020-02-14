@@ -1,6 +1,6 @@
-package stringImmutable;
+package com.techlabs.stringimmutable;
 
-public class IsStringImmutable {
+public class StringImmutableTest {
 	public static void main(String[] args) {
 		String s="Prasad";
 		s.concat(" Sim"); // As String is Immutable it neither Concat

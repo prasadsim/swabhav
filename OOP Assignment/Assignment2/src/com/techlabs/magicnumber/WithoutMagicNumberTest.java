@@ -1,6 +1,6 @@
-package com.techlab.magicnumber;
+package com.techlabs.magicnumber;
 
-public class WithoutMagicNumber {
+public class WithoutMagicNumberTest {
 	final static public String IP = "192.0.0.1";
 	final static public int PORT = 8080;
 	final static public String USERNAME = "ash";
@@ -16,6 +16,6 @@ public class WithoutMagicNumber {
 
 	public static void main(String[] args) {
 
-		new WithoutMagicNumber().serve(IP, PORT, USERNAME, TIMEOUT);
+		new WithoutMagicNumberTest().serve(IP, PORT, USERNAME, TIMEOUT);
 	}
 }

@@ -1,6 +1,6 @@
-package DryPrinciple;
+package com.techlabs.dryprinciple;
 
-public class WithoutUsingDryPrinciple {
+public class WithoutUsingDryPrincipleTest {
 	public static void main(String[] args) {
 		PetDetail pd = new PetDetail();
 		pd.catDetails();

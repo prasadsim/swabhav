@@ -1,4 +1,4 @@
-package reflectionTest;
+package com.techlabs.reflection;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Constructor;
@@ -24,7 +24,7 @@ class Test {
 
 }
 
-public class Reflection {
+public class ReflectionTest {
 	public static void main(String args[]) throws Exception {
 		// Creating object whose property is to be checked
 		Test obj = new Test();

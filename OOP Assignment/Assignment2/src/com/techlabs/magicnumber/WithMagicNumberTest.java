@@ -1,6 +1,6 @@
-package com.techlab.magicnumber;
+package com.techlabs.magicnumber;
 
-public class WithMagicNumber {
+public class WithMagicNumberTest {
 	
 		final static public String IP = "192.0.0.1";
 		final static public String USERNAME = "ash";
@@ -16,7 +16,7 @@ public class WithMagicNumber {
 		public static void main(String[] args) {
 			int internal_port = 8080; // Magic number
 
-			new WithMagicNumber().serve(IP, internal_port, USERNAME, TIMEOUT);
+			new WithMagicNumberTest().serve(IP, internal_port, USERNAME, TIMEOUT);
 		}
 
 	}
