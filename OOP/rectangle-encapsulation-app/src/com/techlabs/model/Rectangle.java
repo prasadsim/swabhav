@@ -1,29 +1,29 @@
 package com.techlabs.model;
 
 public class Rectangle {
+	public final int MAX = 100;
+	public final int MIN = 1;
 	private int height;
 	private int width;
 
-	public void changeWidth(int pwidth) {
-		width = pwidth;
-		if (width < 1) {
-			width = 1;
-		} else if (width > 100) {
-			width = 100;
+	public int checkDimension(int length) {
+		if (length < MIN) {
+			length = MIN;
+			return length;
+		} else if (length > MAX) {
+			length = MAX;
+			return length;
 		} else {
-			width = pwidth;
+			return length;
 		}
 	}
 
+	public void changeWidth(int pwidth) {
+		width = checkDimension(pwidth);
+	}
+
 	public void changeHeight(int pheight) {
-		height = pheight;
-		if (height > 100) {
-			height = 100;
-		} else if (height < 1) {
-			height = 1;
-		} else {
-			height = pheight;
-		}
+		height = checkDimension(pheight);
 	}
 
 	public int readWidth() {
@@ -32,5 +32,9 @@ public class Rectangle {
 
 	public int readHeight() {
 		return height;
+	}
+	
+	public int calculateArea() {
+		return height*width;
 	}
 }
