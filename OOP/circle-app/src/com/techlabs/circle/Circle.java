@@ -15,6 +15,8 @@ public class Circle {
 	public float calculateArea() {
 		return PI * radius * radius;
 	}
+	
+	public float calculateArea
 
 	public float calculateCircumference() {
 		return 2 * PI * radius;
