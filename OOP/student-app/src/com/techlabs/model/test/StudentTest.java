@@ -10,10 +10,9 @@ public class StudentTest {
 		Student s2 = new Student(102, "xyz");
 		System.out.println("Count:" + s2.getStudentCount() + "\n");
 
-		Student s3 = new Student(103, "lmno", 8.0);
+		Student s3 = new Student(103, "lmno", 8.0f);
 		System.out.println("Count:" + s3.getStudentCount() + "\n");
-
-//		printInfo(s1);
+//		printInfo(s1);4
 //
 //		printInfo(s2);
 //

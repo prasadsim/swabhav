@@ -2,12 +2,16 @@ package com.techlabs.model;
 public class Student {
 	private String name;
 	private int id;
-	private double cgpa;
-	public static int count = 0;
+	private float cgpa;
+	public static int count;
 
-	
+	static {
+		count=0;
+		System.out.println("inside static block\n");//it execute only once;
+	}
 
-	public Student(int id, String name, double cgpa) {
+	public Student(int id, String name, float cgpa) {
+		System.out.println("inside constructor block");//it execute for every object
 		count = count  + 1;
 		this.id = id;
 		this.name = name;
@@ -15,7 +19,7 @@ public class Student {
 	}
 
 	public Student(int id, String name) {
-		this(id, name, 7.0);
+		this(id, name, 7.0f);
 	}
 
 	public int getId() {
@@ -26,7 +30,7 @@ public class Student {
 		return name;
 	}
 
-	public double getCgpa() {
+	public float getCgpa() {
 		return cgpa;
 	}
 
