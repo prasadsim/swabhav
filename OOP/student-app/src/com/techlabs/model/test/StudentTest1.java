@@ -7,12 +7,15 @@ public class StudentTest1 {
 	public static void main(String[] args) {
 		Student s1 = new Student(101, "abc");
 		System.out.println("Count:" + s1.getStudentCount() + "\n");
+		System.out.println(Student.headCount());
 
 		Student s2 = new Student(102, "xyz");
 		System.out.println("Count:" + s1.getStudentCount() + "\n");
+		System.out.println(Student.headCount());
 
 		Student s3 = new Student(103, "lmno", 8.0f);
 		System.out.println("Count:" + s1.getStudentCount() + "\n");
+		System.out.println(Student.headCount());
 	}
 }
 
