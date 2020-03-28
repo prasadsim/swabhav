@@ -1,22 +1,23 @@
 package com.techlabs.model;
 
 public class Customer {
-	private static String id;
+	private String id;
 	private String name;
 	private int orders;
 	private static int count;
-	
+
 	static {
-		count=1000;
+		count = 1000;
 	}
 
 	public Customer(String name, int orders) {
-		this.id='C'+String.valueOf(++count);
+		count++;
+		this.id = "C" + count;
 		this.name = name;
 		this.orders = orders;
 	}
-	
-	public static String getId() {
+
+	public String getId() {
 		return id;
 	}
 
