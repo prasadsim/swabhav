@@ -24,11 +24,13 @@ public class Student {
 	}
 
 	public static int headCount() {
+		
 		// return id; as "id" is instance variable it cannot be access by static method
 		return count;
 	}
 
 	public int getId() {
+//		return count;
 		return id;
 	}
 
