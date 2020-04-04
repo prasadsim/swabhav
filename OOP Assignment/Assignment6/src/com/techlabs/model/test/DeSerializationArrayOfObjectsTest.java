@@ -12,7 +12,7 @@ public class DeSerializationArrayOfObjectsTest {
 	}
 
 	public static void doDeSerialiazation() throws IOException, ClassNotFoundException {
-		FileInputStream file = new FileInputStream("ser.data");
+		FileInputStream file = new FileInputStream("serialize_file_array.data");
 		ObjectInputStream in = new ObjectInputStream(file);
 
 		Account[] acc = (Account[]) in.readObject();

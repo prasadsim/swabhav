@@ -13,7 +13,7 @@ public class DeserializationTest {
 	}
 
 	public static void doDeSerialiazation() throws IOException, ClassNotFoundException {
-		FileInputStream file = new FileInputStream("ser.data");
+		FileInputStream file = new FileInputStream("serialize_file.data");
 		ObjectInputStream oin = new ObjectInputStream(file);
 
 		Account acc1 = (Account) oin.readObject();

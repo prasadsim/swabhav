@@ -16,7 +16,7 @@ public class SerializationArrayOfObjectsTest {
 		accounts[1] = new Account(112, "pqr", 20000);
 		accounts[2] = new Account(113, "abc", 30000);
 
-		File file = new File("ser.data");
+		File file = new File("serialize_file_array.data");
 
 		doSerialization(accounts, file);
 	}

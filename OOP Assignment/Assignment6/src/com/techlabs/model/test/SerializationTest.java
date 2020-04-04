@@ -12,7 +12,7 @@ public class SerializationTest {
 		Account acc = new Account(101, "xyz", 10000);
 		acc.deposit(2000);
 
-		File file = new File("ser.data");
+		File file = new File("serialize_file.data");
 		doSerialization(acc, file);
 
 	}
