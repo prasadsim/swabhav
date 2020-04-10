@@ -1,33 +1,33 @@
 package com.techlabs.model.test;
 
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Iterator;
+import java.util.Properties;
 
 public class PropertyFileTest {
-	public static void main(String[] args) throws Exception {
-		FileReader reader = new FileReader("data.properties");
+
+	public static void main(String args[]) throws IOException {
 
 		Properties p = new Properties();
-		p.load(reader);
-		Set<String> at = p.stringPropertyNames();
+		InputStream is = new FileInputStream("data.properties");
 
-		usingForEach(at, p);
-		usingIterator(p);
-	}
+		p.load(is);
 
-	public static void usingForEach(Set<String> at, Properties p) {
-		for (String attributes : at) {
-			System.out.println(p.getProperty(attributes));
+		Iterator<?> data = p.keySet().iterator();
+		System.out.println("Using enhance for loop:-");
+		for (Object value : p.keySet()) {
+			System.out.println(p.getProperty(value.toString()));
 		}
 		System.out.println();
-	}
-
-	public static void usingIterator(Properties p) {
-		Iterator i = p.keySet().iterator();
-		while (i.hasNext()) {
-			String attributes = (String) i.next();
-			String value = p.getProperty(attributes);
-			System.out.println(value);
+		System.out.println("Using Iterator:-");
+		while (data.hasNext()) {
+			System.out.println(p.getProperty(data.next().toString()));
 		}
 	}
 }
