@@ -1,0 +1,8 @@
+id,name,price,discount
+101,book,100,0.5
+102,tv,500000,0.1
+103,mobile,100,0.3
+,,,
+105,laptop,25000,0.75
+106,book,,
+107,pen,50,0.5
