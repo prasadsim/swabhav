@@ -1,0 +1,6 @@
+type,accno,name,balanmce,created_on,age
+SavingAccount,1001,prasad,5000.0,Sun Jan 12 00:04:00 IST 2020,22
+SavingAccount,1002,sarthak,4000.0,Sat Jan 11 00:04:00 IST 2020,42
+SavingAccount,1003,hemant,5500.0,Sat Jan 18 00:04:00 IST 2020,31
+CurrentAccount,1022,Ash,6000.0,Tue Jan 07 00:04:00 IST 2020,21
+CurrentAccount,1012,Sim,5900.0,Mon Jan 20 00:04:00 IST 2020,20
