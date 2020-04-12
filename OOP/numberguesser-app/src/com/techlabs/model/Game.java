@@ -3,50 +3,53 @@ package com.techlabs.model;
 import java.util.Random;
 
 public class Game {
-	public int randomNo;
-	public int guessNo;
-	public int guessMade = 0;
+	private int generatedRandomNo;
+	private int guessedNumber;
+	private int guessCount = 0;
+	private int gameScore = 0;
 
-	public void generateRandom() {
-		Random rn = new Random();
-		randomNo = rn.nextInt(100);
+	public Game() {
+		System.out.println("Game has Started");
+		this.generatedRandomNo = (int) (100 * Math.random());
 	}
 
-	public void guessNo(Integer guessNo) {
-		this.guessNo = guessNo;
-	}
-
-	public int checkGuessMade() {
-		incrementGuessMade();
-		if (guessNo == randomNo) {
-			return 1;
+	public String checkGuess(int guessedNumber) {
+		System.out.println("Game is in Progress");
+		gameScore = getGameScore();
+		incrementGuessCount();
+		if (guessedNumber == generatedRandomNo) {
+			resetGuessNumber();
+			return "Correct";
 		}
 
-		if (guessNo < randomNo) {
-			return 2;
+		if (guessedNumber < generatedRandomNo) {
+			return "Too Low";
+
 		}
 
-		if (guessNo > randomNo) {
-			return 3;
+		if (guessedNumber > generatedRandomNo) {
+			return "Too High";
 		}
-		return 0;
+		return "";
 	}
 
-	public void incrementGuessMade() {
-		guessMade++;
+	public int getGameScore() {
+		int score = 100 - (10 * guessCount);
+		if (score < 5)
+			return 5;
+		return score;
 	}
 
-	public void resetGuessMade() {
-		guessMade = 0;
+	private void incrementGuessCount() {
+		guessCount++;
 	}
+
+	private void resetGuessNumber() {
+		guessedNumber = 0;
+	}
+
 	public int getGuessCount() {
-		return guessMade;
-	}
-
-	public int getGuessMade() {
-		return guessNo;
-	}
-	public int getRandomNo() {
-		return randomNo;
+		System.out.println("Game has Ended");
+		return guessCount;
 	}
 }
