@@ -34,7 +34,7 @@ public class AccountTest {
 	}
 
 	private static Account[] findYoungestAccountHolder(Account[] acc, int ageLimit) {
-		System.out.println("The Youngest Account");
+		System.out.println("The Youngest Account below " + ageLimit);
 		int temp = 0;
 		Account[] young = new Account[acc.length];
 		for (int i = 0; i < acc.length; i++) {
@@ -48,12 +48,10 @@ public class AccountTest {
 
 	private static void writeAccountToFile(Account[] acc) throws IOException {
 		FileWriter fw = new FileWriter("Account.csv");
-		fw.write("type,accno,name,balanmce,created_on,age");
-		fw.write('\n');
+		fw.write("type,accno,name,balanmce,created_on,age\n");
 		for (Account a : acc) {
 			fw.write(a.getAccountType() + "," + a.getAccno() + "," + a.getName() + "," + a.getBalance() + ","
-					+ a.getCreationDate() + "," + a.getAge());
-			fw.write('\n');
+					+ a.getCreationDate() + "," + a.getAge() + "\n");
 		}
 		fw.close();
 		System.out.println("File created");

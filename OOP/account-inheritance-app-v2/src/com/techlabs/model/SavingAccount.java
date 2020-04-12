@@ -16,6 +16,7 @@ public class SavingAccount extends Account {
 		if ((this.balance - amt) > MINBAL) {
 			this.balance = this.balance - amt;
 		}
+		System.out.println("Account Balance is Low");
 		return;
 	}
 

@@ -13,8 +13,6 @@ public abstract class Account {
 	private int accno;
 	private String name;
 	protected double balance;
-	private int age;
-
 	SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
 
 	public Account(int accno, String name, double balance, String creationDate, String dateOfBirth)
@@ -24,21 +22,6 @@ public abstract class Account {
 		this.balance = balance;
 		this.creationDate = sdf.parse(creationDate);
 		this.dateOfBirth = sdf.parse(dateOfBirth);
-		this.age = findAge();
-	}
-
-	private int findAge() {
-		int age = 0;
-		Calendar c = Calendar.getInstance();
-		c.setTime(dateOfBirth);
-		int year = c.get(Calendar.YEAR);
-		int month = c.get(Calendar.MONTH) + 1;
-		int date = c.get(Calendar.DATE);
-		LocalDate dob = LocalDate.of(year, month, date);
-		LocalDate today = LocalDate.now();
-		Period diff1 = Period.between(dob, today);
-		age = diff1.getYears();
-		return age;
 	}
 
 	public void deposit(int amt) {
@@ -70,7 +53,16 @@ public abstract class Account {
 	}
 
 	public int getAge() {
+		int age = 0;
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateOfBirth);
+		int year = c.get(Calendar.YEAR);
+		int month = c.get(Calendar.MONTH) + 1;
+		int date = c.get(Calendar.DATE);
+		LocalDate dob = LocalDate.of(year, month, date);
+		LocalDate today = LocalDate.now();
+		Period diff1 = Period.between(dob, today);
+		age = diff1.getYears();
 		return age;
 	}
-
 }
