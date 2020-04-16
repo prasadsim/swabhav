@@ -35,9 +35,10 @@ public class Game {
 
 	public int getGameScore() {
 		int score = 100 - (10 * guessCount);
-		if (score < 5)
-			return 5;
-		return score;
+		if (score > 5) {
+			return score;
+		}
+		return 5;
 	}
 
 	private void incrementGuessCount() {

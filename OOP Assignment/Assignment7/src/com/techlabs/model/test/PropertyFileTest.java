@@ -19,12 +19,12 @@ public class PropertyFileTest {
 
 		p.load(is);
 
-		Iterator<?> data = p.keySet().iterator();
 		System.out.println("Using enhance for loop:-");
 		for (Object value : p.keySet()) {
 			System.out.println(p.getProperty(value.toString()));
 		}
 		System.out.println();
+		Iterator<?> data = p.keySet().iterator();
 		System.out.println("Using Iterator:-");
 		while (data.hasNext()) {
 			System.out.println(p.getProperty(data.next().toString()));

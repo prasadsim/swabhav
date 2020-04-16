@@ -1,38 +1,36 @@
 package com.techlabs.model.test;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 
 import com.techlabs.model.Foo;
 import com.techlabs.model.UnitTestCase;
 
 public class FooTest {
 	public static void main(String[] args)
-			throws IllegalAccessException, InvocationTargetException, IllegalArgumentException {
-		Foo obj = new Foo();
-		getAnnotation(obj.getClass(), obj);
-	}
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		int testCaseCount = 0;
+		int passTestCaseCount = 0;
+		int failTestCaseCount = 0;
+		Foo foo = new Foo();
 
-	public static void getAnnotation(Class classname, Object obj)
-			throws IllegalAccessException, InvocationTargetException, IllegalArgumentException {
-		int totalcount = 0;
-		Method[] methods = classname.getDeclaredMethods();
+		Method[] methods = Foo.class.getDeclaredMethods();
 
-		for (Method method : methods) {
-			if (method.isAnnotationPresent(UnitTestCase.class)) {
-				totalcount++;
-				if ((boolean) method.invoke(obj)) {
-					System.out.println(method.getName() + " is passing testcase");
-
+		for (Method m : methods) {
+			if (m.isAnnotationPresent(UnitTestCase.class)) {
+				testCaseCount++;
+				if ((boolean) m.invoke(foo)) {
+					System.out.println(m.getName() + " is PassingTestCase");
+					passTestCaseCount++;
 				} else {
-					System.out.println(method.getName() + " is failing testcase");
+					System.out.println(m.getName() + " is FailingTestCase");
+					failTestCaseCount++;
 				}
 			} else {
-				System.out.println(method.getName() + " is not a testcase");
+				System.out.println(m.getName() + " is not TestCase");
 			}
 		}
-		System.out.println("Totatl Test Cases:" + totalcount);
-
+		System.out.println("\nTotal Test Case:" + testCaseCount);
+		System.out.println("Passing Test Case:" + passTestCaseCount);
+		System.out.println("Failing Test Case:" + failTestCaseCount);
 	}
-
 }

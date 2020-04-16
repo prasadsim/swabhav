@@ -24,6 +24,7 @@ public class GameTerminal {
 		System.out.println("The Guess Is Correct:" + result);
 		System.out.println("Total Guess Made:" + game.getGuessCount());
 		System.out.println("Game Score:"+game.getGameScore());
+		System.out.println();
 		System.out.println("Play Again?");
 		menu();
 	}
@@ -41,6 +42,7 @@ public class GameTerminal {
 			break;
 		default:
 			System.out.println("Enter proper decision!");
+			menu();
 			break;
 		}
 	}
