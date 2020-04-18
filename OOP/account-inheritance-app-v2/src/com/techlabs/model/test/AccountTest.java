@@ -18,12 +18,12 @@ public class AccountTest {
 		Account[] acc = { sa1, sa2, sa3, ca1, ca2 };
 
 		printInfo(acc);
-		findRichestAccountHolder(acc);
-		findYoungestAccountHolder(acc, 30);
+		printInfo(findRichestAccountHolder(acc));
+		printInfo(findYoungestAccountHolder(acc, 30));
 		writeAccountToFile(acc);
 	}
 
-	private static void findRichestAccountHolder(Account[] acc) {
+	protected static Account findRichestAccountHolder(Account[] acc) {
 		System.out.println("The Richest Account");
 		int rich = 0;
 		for (int i = 1; i < acc.length; i++) {
@@ -31,19 +31,20 @@ public class AccountTest {
 				rich = i;
 			}
 		}
-		printInfo(acc[rich]);
+		return acc[rich];
 	}
 
-	private static void findYoungestAccountHolder(Account[] acc, int ageLimit) {
+	protected static Account[] findYoungestAccountHolder(Account[] acc, int ageLimit) {
 		System.out.println("The Youngest Account below " + ageLimit);
-		int temp = 0;
-		List young = new LinkedList();
+		Account[] young = new Account[5];
+		int index = 0;
 		for (int i = 0; i < acc.length; i++) {
 			if (ageLimit >= acc[i].getAge()) {
-				young.add(acc[i]);
+				young[index] = acc[i];
+				index++;
 			}
 		}
-		printInfo(young);
+		return young;
 	}
 
 	private static void writeAccountToFile(Account[] acc) throws IOException {
@@ -57,15 +58,6 @@ public class AccountTest {
 		System.out.println("File created");
 	}
 
-	private static void printInfo(List young) throws NoSuchElementException {
-		for (Iterator i = young.iterator(); i.hasNext();) {
-			if (i.next() != null) {
-				Account acc = (Account) i.next();
-				printInfo(acc);
-			}
-		}
-	}
-
 	private static void printInfo(Account[] acc) {
 		for (int i = 0; i < acc.length; i++) {
 			printInfo(acc[i]);
@@ -73,6 +65,7 @@ public class AccountTest {
 	}
 
 	private static void printInfo(Account acc) {
+		System.out.println("Account of " + acc.getClass().getSimpleName());
 		System.out.println("Account Number:" + acc.getAccno());
 		System.out.println("Account Name:" + acc.getName());
 		System.out.println("Account Balance:" + acc.getBalance());
