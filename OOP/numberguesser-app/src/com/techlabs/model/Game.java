@@ -23,12 +23,12 @@ public class Game {
 		}
 
 		if (guessedNumber < generatedRandomNo) {
-			return "Too Low";
+			return "Low";
 
 		}
 
 		if (guessedNumber > generatedRandomNo) {
-			return "Too High";
+			return "High";
 		}
 		return "";
 	}
@@ -52,5 +52,8 @@ public class Game {
 	public int getGuessCount() {
 		System.out.println("Game has Ended");
 		return guessCount;
+	}
+	public int getGeneratedRandomNumber() {
+		return generatedRandomNo;
 	}
 }

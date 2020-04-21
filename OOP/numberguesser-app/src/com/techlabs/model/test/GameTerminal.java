@@ -15,9 +15,9 @@ public class GameTerminal {
 			System.out.println("Enter the Guess:");
 			guessNumber = s.nextInt();
 			result = game.checkGuess(guessNumber);
-			if (result == "Too Low") {
+			if (result == "Low") {
 				System.out.println("GuessNumber is Too low!");
-			} else if (result == "Too High") {
+			} else if (result == "High") {
 				System.out.println("GuessNumber is Too High!");
 			}
 		}

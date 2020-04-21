@@ -104,4 +104,23 @@ class AccountTestUsingJUnit {
 		assertEquals(expectedAccNoOfCurrentAccount, actualAccNoOfCurrentAccount);
 	}
 
+	public void test_ifAccountHolderIsCurrentOrSaving() throws ParseException {
+		// Arrange
+		SavingAccount sa1 = new SavingAccount(1001, "prasad", 5000, "04/12/2020", "02/26/1998");
+		SavingAccount sa2 = new SavingAccount(1022, "Ash", 6000, "04/07/2020", "04/20/1999");
+		CurrentAccount ca1 = new CurrentAccount(1022, "Ash", 6000, "04/07/2020", "04/20/1999");
+		CurrentAccount ca2 = new CurrentAccount(1022, "Ash", 6000, "04/07/2020", "04/20/1999");
+
+		// Act
+		SavingAccount exceptedAccountClassOfSaving = sa2;
+		SavingAccount actualAccountClasssOfSaving = sa1;
+		CurrentAccount exceptedAccountClassOfCurrent = ca1;
+		CurrentAccount actualAccountClasssOfCurrent = ca2;
+
+		// Assert
+		assertEquals(exceptedAccountClassOfSaving.getClass(), actualAccountClasssOfSaving.getClass());
+		assertEquals(exceptedAccountClassOfCurrent.getClass(), actualAccountClasssOfCurrent.getClass());
+
+	}
+
 }
