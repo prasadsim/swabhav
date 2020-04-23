@@ -3,7 +3,7 @@ package com.techlabs.fileOperation;
 import java.util.*;
 import java.io.*;
 
-public class WriteFromFile {
+public class WriteIntoFile {
 	public static void main(String[] args) {
 		try {
 			File objFile = new File("C:\\Users\\prasa\\OneDrive\\Desktop\\swabhav\\swabhav_repo\\Ash.txt");
