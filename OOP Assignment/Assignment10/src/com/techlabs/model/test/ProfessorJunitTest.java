@@ -12,26 +12,26 @@ import org.junit.jupiter.api.Test;
 class ProfessorJunitTest {
 
 	public Professor setup() throws ParseException {
-		Professor pro = new Professor(new Person(15001, "Anderi", "04/05/1988"), 4500);
+		Professor pro = new Professor(15001, "Anderi", "04/05/1988", 4500);
 		return pro;
 	}
 
 	@Test
 	void testProfessorId() throws ParseException {
-		int actualId = setup().getPerson().getId();
+		int actualId = setup().getId();
 		int expectedId = 15001;
 		assertEquals(expectedId, actualId);
 	}
 
 	void testProfessorAddress() throws ParseException {
-		String actualAddress = setup().getPerson().getAddress();
+		String actualAddress = setup().getAddress();
 		String expectedAddress = "Anderi";
 		assertEquals(expectedAddress, actualAddress);
 	}
 
 	void testProfessorDOB() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-		Date actualDate = setup().getPerson().getDob();
+		Date actualDate = setup().getDob();
 		Date expectedDate = (Date) sdf.parse("04/05/1988");
 		assertEquals(expectedDate, actualDate);
 	}

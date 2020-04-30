@@ -12,20 +12,20 @@ import org.junit.jupiter.api.Test;
 class StudentJunitTest {
 
 	public Student setup() throws ParseException {
-		Student stu = new Student(new Person(1001, "Lower Parel", "26/02/1998"), Branch.CMPN);
+		Student stu = new Student(1001, "Lower Parel", "26/02/1998", Branch.CMPN);
 		return stu;
 	}
 
 	@Test
 	void testStudentId() throws ParseException {
-		int actualId = setup().getPerson().getId();
+		int actualId = setup().getId();
 		int expectedId = 1001;
 		assertEquals(expectedId, actualId);
 
 	}
 
 	void testStudentAddress() throws ParseException {
-		String actualAddress = setup().getPerson().getAddress();
+		String actualAddress = setup().getAddress();
 		String expectedAddress = "Lower Parel";
 		assertEquals(expectedAddress, actualAddress);
 
@@ -33,7 +33,7 @@ class StudentJunitTest {
 
 	void testStudentDOB() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-		Date actualDate = setup().getPerson().getDob();
+		Date actualDate = setup().getDob();
 		Date expectedDate = (Date) sdf.parse("26/02/1998");
 		assertEquals(expectedDate, actualDate);
 

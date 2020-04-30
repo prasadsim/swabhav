@@ -3,18 +3,15 @@ package com.techlabs.model;
 import java.util.Date;
 import java.text.ParseException;
 
-public class Professor {
+public class Professor extends Person {
 	Person person;
 	private double basicSalary;
 
-	public Professor(Person person, double basicSalary) throws ParseException {
-		this.person=person;
+	public Professor(int id, String address, String dob, double basicSalary) throws ParseException {
+		super(id, address, dob);
 		this.basicSalary = basicSalary;
 	}
 
-	public Person getPerson() {
-		return person;
-	}
 	public double getBasicSalary() {
 		return basicSalary;
 	}
