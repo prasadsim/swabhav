@@ -22,13 +22,12 @@ public class CrudUsingHashSet {
 		System.out.println();
 	}
 
-//	public void update(int element) {
-//		if (!hash.add(element)) {
-//			hash.remove(element);
-//			hash.add(element);
-//		}
-//		read();
-//	}
+	public void update(int element1, int element2) {
+		if (hash.contains(element1)) {
+			hash.remove(element1);
+			create(element2);
+		}
+	}
 
 	public void delete(int element) {
 		hash.remove(element);

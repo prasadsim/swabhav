@@ -26,6 +26,13 @@ public class CrudUsingLinkedHashSet {
 		read();
 	}
 
+	public void update(int element1, int element2) {
+		if (link.contains(element1)) {
+			link.remove(element1);
+			create(element2);
+		}
+	}
+
 	public void search(int element) {
 		if (link.contains(element)) {
 			System.out.println("Element:" + element + " is found");

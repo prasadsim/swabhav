@@ -11,6 +11,7 @@ public class CrudUsingHashSetTest {
 		obj.create(elements);
 		obj.delete(5);
 		obj.search(2);
+		obj.update(1, 54);
 		
 	}
 

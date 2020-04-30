@@ -10,6 +10,7 @@ public class CrudUsingTreeSetTest {
 		int[] elements = { 5, 8, 4, 3, 8, 6, 5, 4 };
 		obj.create(elements);
 		obj.delete(4);
+		obj.update(3, 84);
 		obj.search(5);
 	}
 

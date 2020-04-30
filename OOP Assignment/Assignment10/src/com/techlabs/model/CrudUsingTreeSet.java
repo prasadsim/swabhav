@@ -26,6 +26,13 @@ public class CrudUsingTreeSet {
 		read();
 	}
 
+	public void update(int element1, int element2) {
+		if (tree.contains(element1)) {
+			tree.remove(element1);
+			create(element2);
+		}
+	}
+
 	public void search(int element) {
 		if (tree.contains(element)) {
 			System.out.println("Element:" + element + " is found");
