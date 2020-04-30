@@ -48,4 +48,12 @@ public class Account {
 		return MIN_BAL;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public int getAccno() {
+		return accno;
+	}
+
 }
