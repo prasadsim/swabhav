@@ -6,7 +6,7 @@ public class Account {
 	private double balance;
 	private static int totaltxns;
 	private static int MIN_BAL;
-	private double amt;
+	private double transactionAmt;
 
 	static {
 		totaltxns = 0;
@@ -20,9 +20,9 @@ public class Account {
 
 	public void withdraw(double amt) throws InsufficientFundsException {
 		totaltxns++;
-		this.amt = amt;
+		this.transactionAmt = amt;
 		String exceptionMsg = "The Account Holder:" + this.getName() + "\nAccount Number:" + this.getAccNo()
-				+ "\nBalance:" + this.getBalance() + "\nTries to withdraw with amount:" + this.getAmt()
+				+ "\nBalance:" + this.getBalance() + "\nTries to withdraw with amount:" + this.getTransactionAmt()
 				+ "\nBut, The Minimum Balance of the AccountHolder Should be:" + this.getMinBal()
 				+ "\nSo the Transaction is Not Possible!!!";
 		if (this.balance - amt > this.MIN_BAL) {
@@ -35,7 +35,7 @@ public class Account {
 
 	public void deposit(double amt) {
 		totaltxns++;
-		this.amt = amt;
+		this.transactionAmt = amt;
 		this.balance += amt;
 		System.out.println("After Deposit Balance:" + this.balance);
 	}
@@ -64,8 +64,8 @@ public class Account {
 		return MIN_BAL;
 	}
 
-	public double getAmt() {
-		return amt;
+	public double getTransactionAmt() {
+		return transactionAmt;
 	}
 
 }

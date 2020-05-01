@@ -35,7 +35,7 @@ class AccountJunitTest {
 	void testAccoutBalanceAfterWithdrawWithCheckingException() throws Exception {
 		acc.setMinBal(500);
 		String expectedException = "The Account Holder:" + acc.getName() + "\nAccount Number:" + acc.getAccNo()
-				+ "\nBalance:" + acc.getBalance() + "\nTries to withdraw with amount:" + acc.getAmt()
+				+ "\nBalance:" + acc.getBalance() + "\nTries to withdraw with amount:" + acc.getTransactionAmt()
 				+ "\nBut, The Minimum Balance of the AccountHolder Should be:" + acc.getMinBal()
 				+ "\nSo the Transaction is Not Possible!!!";
 		try {

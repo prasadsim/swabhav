@@ -11,7 +11,7 @@ public class Test {
 		try {
 			acc1.withdraw(600);
 		} catch (InsufficientFundsException ex) {
-			System.out.println(ex.getMessage());
+//		System.out.println(ex.getMessage());
 		}
 		System.out.println("End of Main");
 	}
