@@ -3,7 +3,7 @@ package com.techlabs.model;
 import java.util.Date;
 import java.text.ParseException;
 
-public class Professor extends Person {
+public class Professor extends Person implements SalariedEmployee {
 	Person person;
 	private double basicSalary;
 
@@ -16,7 +16,8 @@ public class Professor extends Person {
 		return basicSalary;
 	}
 
-	public double getCalculatedSalary(int hours) {
+	@Override
+	public double getNetSalary(int hours) {
 		double grossSalary = this.basicSalary * hours;
 		return grossSalary;
 	}

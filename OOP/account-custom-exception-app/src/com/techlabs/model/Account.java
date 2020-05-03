@@ -21,13 +21,14 @@ public class Account {
 	public void withdraw(double amt) throws InsufficientFundsException {
 		totaltxns++;
 		this.transactionAmt = amt;
-		String exceptionMsg = "The Account Holder:" + this.getName() + "\nAccount Number:" + this.getAccNo()
-				+ "\nBalance:" + this.getBalance() + "\nTries to withdraw with amount:" + this.getTransactionAmt()
-				+ "\nBut, The Minimum Balance of the AccountHolder Should be:" + this.getMinBal()
-				+ "\nSo the Transaction is Not Possible!!!";
+
 		if (this.balance - amt > this.MIN_BAL) {
 			this.balance -= amt;
 		} else {
+			String exceptionMsg = "The Account Holder:" + this.getName() + "\nAccount Number:" + this.getAccNo()
+					+ "\nBalance:" + this.getBalance() + "\nTries to withdraw with amount:" + this.getTransactionAmt()
+					+ "\nBut, The Minimum Balance of the AccountHolder Should be:" + this.getMinBal()
+					+ "\nSo the Transaction is Not Possible!!!";
 //			throw new InsufficientFundsException(this);
 			throw new InsufficientFundsException(exceptionMsg);
 		}

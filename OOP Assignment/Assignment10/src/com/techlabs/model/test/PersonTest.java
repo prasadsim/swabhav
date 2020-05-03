@@ -23,12 +23,13 @@ public class PersonTest {
 	}
 
 	private static void printInfo(Professor pro) {
+		int hours = 5;
 		System.out.println(pro.getClass().getSimpleName());
 		System.out.println("Id:" + pro.getId());
 		System.out.println("Address:" + pro.getAddress());
 		System.out.println("Date Of Birth:" + pro.getDob());
 		System.out.println("Basic Salary of One Hour:" + pro.getBasicSalary());
-		System.out.println("Calculated Salary:" + pro.getCalculatedSalary(5));
+		System.out.println("Calculated Salary of hours:" + hours + " is:" + pro.getNetSalary(5));
 		System.out.println();
 	}
 
