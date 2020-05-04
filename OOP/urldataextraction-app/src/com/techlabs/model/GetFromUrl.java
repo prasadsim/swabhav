@@ -2,6 +2,7 @@ package com.techlabs.model;
 
 import java.net.*;
 import java.text.ParseException;
+import java.util.Collection;
 import java.util.TreeSet;
 import java.io.*;
 
@@ -39,7 +40,7 @@ public class GetFromUrl {
 		}
 	}
 
-	public TreeSet<Employee> getEmployees() {
+	public Collection<Employee> getEmployees() {
 		return employees;
 	}
 }
