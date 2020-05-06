@@ -54,7 +54,6 @@ public class Test {
 		obj.update("rajat", "pablo");
 		obj.search("ash");
 		obj.sortHashSet();
-
 	}
 
 	private static void treemap() {
@@ -67,14 +66,11 @@ public class Test {
 			obj.create(4, "Prasad");
 		} catch (KeyAlreadyPresentException e) {
 			System.out.println(e.getMessage());
-			System.out.println();
 		}
+		obj.read();
 		obj.delete(3);
 		obj.update(4, "Rajat");
 		obj.search(12);
-		System.out.println("After Using Collection.sort");
-//		Collections.sort(obj);
-
 	}
 
 	private static void hashmap() throws KeyAlreadyPresentException {
@@ -87,8 +83,8 @@ public class Test {
 			obj.create(4, "Pr");
 		} catch (KeyAlreadyPresentException e) {
 			System.out.println(e.getMessage());
-			System.out.println();
 		}
+		obj.read();
 		obj.delete(3);
 		obj.update(4, "Rajat");
 		obj.search(1);

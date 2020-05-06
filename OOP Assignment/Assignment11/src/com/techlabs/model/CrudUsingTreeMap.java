@@ -8,11 +8,10 @@ public class CrudUsingTreeMap {
 
 	public void create(int key, String value) throws KeyAlreadyPresentException {
 		if (tmap.containsKey(key)) {
-			throw new KeyAlreadyPresentException("Key Already Present in HashMap!");
+			throw new KeyAlreadyPresentException("Key Already Present in TreeMap!");
 		} else {
 			tmap.put(key, value);
 		}
-		read();
 	}
 
 	public void read() {

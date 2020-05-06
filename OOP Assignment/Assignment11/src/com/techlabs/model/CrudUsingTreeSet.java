@@ -9,7 +9,6 @@ public class CrudUsingTreeSet {
 
 	public void create(String element) {
 		tree.add(element);
-//		sort(element);
 	}
 
 	public void create(String[] elements) {
@@ -41,11 +40,4 @@ public class CrudUsingTreeSet {
 			System.out.println("Element does not found");
 		}
 	}
-//
-//	public void sort(String element) {
-//		ArrayList<String> a = new ArrayList();
-//		a.add(element);
-//		Collections.sort(a);
-//	}
-
 }

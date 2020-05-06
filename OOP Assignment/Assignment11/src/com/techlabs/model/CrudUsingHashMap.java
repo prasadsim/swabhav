@@ -11,7 +11,6 @@ public class CrudUsingHashMap {
 			throw new KeyAlreadyPresentException("Key Already Present in HashMap!");
 		} else {
 			hmap.put(key, value);
-			read();
 		}
 	}
 
