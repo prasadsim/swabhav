@@ -32,11 +32,11 @@ public class CrudUsingHashSet {
 		read();
 	}
 
-//	public void sortHashSet(String element) {
-//		ArrayList<String> a = new ArrayList();
-//		a.add(element);
-//		Collections.sort(a);
-//	}
+	public void sortHashSet() {
+		ArrayList<String> a = new ArrayList(hash);
+		Collections.sort(a);
+		System.out.println("Collections.sort()\n" + a);
+	}
 
 	public void search(String element) {
 

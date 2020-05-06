@@ -53,7 +53,7 @@ public class Test {
 		obj.delete("sim");
 		obj.update("rajat", "pablo");
 		obj.search("ash");
-//		obj.sortHashSet(elements);
+		obj.sortHashSet();
 
 	}
 
@@ -92,7 +92,6 @@ public class Test {
 		obj.delete(3);
 		obj.update(4, "Rajat");
 		obj.search(1);
-//		Collections.sort(obj);
 	}
 
 }
