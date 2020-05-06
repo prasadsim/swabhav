@@ -43,7 +43,7 @@ class ProfessorJunitTest {
 	}
 
 	void testProfessorGrossSalary() throws ParseException {
-		double actualGrossSalary = setup().getCalculatedSalary(5);
+		double actualGrossSalary = setup().getNetSalary(5);
 		double expectedGrossSalary = 4500 * 5;
 		assertEquals(expectedGrossSalary, actualGrossSalary);
 	}

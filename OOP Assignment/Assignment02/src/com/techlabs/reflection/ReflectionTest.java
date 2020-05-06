@@ -40,9 +40,9 @@ public class ReflectionTest {
 		for (Method method : methods) {
 			System.out.println(method.getName());
 			if (method.getName().startsWith("get")) {
-				System.out.println(method+" method type is getter");
+				System.out.println(method + " method type is getter");
 			} else if (method.getName().startsWith("set")) {
-				System.out.println(method.+" Method is setter");
+				System.out.println(method + " Method is setter");
 			}
 		}
 	}
