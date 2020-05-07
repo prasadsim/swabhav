@@ -41,7 +41,7 @@ public class CrudUsingTreeSet {
 		}
 	}
 
-	public void sortHashSet() {
+	public void sortTreeSet() {
 		ArrayList<String> a = new ArrayList(tree);
 		Collections.sort(a);
 		System.out.println("Collections.sort()\n" + a);
