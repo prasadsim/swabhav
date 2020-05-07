@@ -43,6 +43,7 @@ public class Test {
 		obj.delete("sim");
 		obj.update("rajat", "pablo");
 		obj.search("ash");
+		obj.sortHashSet();
 	}
 
 	private static void hashset() {

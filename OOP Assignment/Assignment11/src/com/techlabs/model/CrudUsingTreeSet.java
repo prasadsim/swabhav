@@ -40,4 +40,10 @@ public class CrudUsingTreeSet {
 			System.out.println("Element does not found");
 		}
 	}
+
+	public void sortHashSet() {
+		ArrayList<String> a = new ArrayList(tree);
+		Collections.sort(a);
+		System.out.println("Collections.sort()\n" + a);
+	}
 }
