@@ -61,10 +61,10 @@ public class Test {
 		CrudUsingTreeMap obj = new CrudUsingTreeMap();
 		try {
 			obj.create(12, "Ash");
-			obj.create(2, "Sim");
-			obj.create(3, "Vaibhav");
-			obj.create(4, "Chirag");
-			obj.create(4, "Prasad");
+			obj.create(22, "Sim");
+			obj.create(13, "Vaibhav");
+			obj.create(6, "Chirag");
+			obj.create(4, "Pr");
 		} catch (KeyAlreadyPresentException e) {
 			System.out.println(e.getMessage());
 		}
@@ -72,15 +72,16 @@ public class Test {
 		obj.delete(3);
 		obj.update(4, "Rajat");
 		obj.search(12);
+		obj.treeMapSort();
 	}
 
 	private static void hashmap() throws KeyAlreadyPresentException {
 		CrudUsingHashMap obj = new CrudUsingHashMap();
 		try {
-			obj.create(1, "Ash");
-			obj.create(2, "Sim");
-			obj.create(3, "Vaibhav");
-			obj.create(4, "Chirag");
+			obj.create(12, "Ash");
+			obj.create(22, "Sim");
+			obj.create(13, "Vaibhav");
+			obj.create(6, "Chirag");
 			obj.create(4, "Pr");
 		} catch (KeyAlreadyPresentException e) {
 			System.out.println(e.getMessage());
@@ -89,6 +90,7 @@ public class Test {
 		obj.delete(3);
 		obj.update(4, "Rajat");
 		obj.search(1);
+		obj.hashMapSort();
 	}
 
 }
