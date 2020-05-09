@@ -19,6 +19,10 @@ public class Test {
 		swabhav.addPartner(google);
 		swabhav.addPartner(facebook);
 
+		Talent rajat = new Talent(UUID.randomUUID(), "rajat", 8.5, "Google", "linux");
+		Talent sneha = new Talent(UUID.randomUUID(), "sneha", 8.5, "AurionPro", "linux");
+		Talent vaibhav = new Talent(UUID.randomUUID(), "vaibhav", 8.5, "facebook", "linux");
+		Talent pablo = new Talent(UUID.randomUUID(), "pablo", 8.5, "AurionPro", "linux");
 		Talent ash = new Talent(UUID.randomUUID(), "Ash", 8.5, "AurionPro", "linux");
 		Talent prasad = new Talent(UUID.randomUUID(), "Prasad", 7.5, "Google", "Java");
 		Talent sim = new Talent(UUID.randomUUID(), "Sim", 8.78, null, "DataBase");
@@ -26,6 +30,10 @@ public class Test {
 		Talent pawan = new Talent(UUID.randomUUID(), "pawan", 8.78, null, "Data Science");
 		Talent jay = new Talent(UUID.randomUUID(), "jay", 8.78, "facebook", "Python");
 
+		swabhav.addTalent(rajat);
+		swabhav.addTalent(sneha);
+		swabhav.addTalent(vaibhav);
+		swabhav.addTalent(pablo);
 		swabhav.addTalent(ash);
 		swabhav.addTalent(prasad);
 		swabhav.addTalent(sim);
@@ -43,6 +51,8 @@ public class Test {
 
 		printInfo(swabhav);
 		printInfo(google);
+		printInfo(facebook);
+		printInfo(aurionpro);
 	}
 
 	private static void printInfo(Partner p) {
