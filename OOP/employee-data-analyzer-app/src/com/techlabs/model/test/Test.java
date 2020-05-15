@@ -3,6 +3,7 @@ package com.techlabs.model.test;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeSet;
 import com.techlabs.model.*;
@@ -17,48 +18,52 @@ public class Test {
 
 		for (Employee employee : tree) {
 			richEmp = employee;
-			System.out.println(employee);
 		}
 		for (Employee e : tree) {
 			if (richEmp.getSalary() < e.getSalary()) {
 				richEmp = e;
 			}
 		}
-		System.out.println("\nTotal No. of Employee in Organization:" + tree.size());
+		System.out.println("Total No. of Employee in Organization:" + tree.size());
 		System.out.println("\nMaximum Salaried Employee Details!");
 		System.out.println(richEmp);
-		String m = "manager", c = "Clerk", p = "president", s = "salesman", a = "Analyst";
-		int mc = 0, cc = 0, pc = 0, sc = 0, ac = 0, dept10 = 10, dept20 = 20, dept30 = 30, dept10Count = 0, dept20Count = 0, dept30Count = 0;
-		for (Employee e : tree) {
-			if (m.equalsIgnoreCase(e.getRole())) {
-				mc++;
-			}
-			if (c.equalsIgnoreCase(e.getRole())) {
-				cc++;
-			}
-			if (p.equalsIgnoreCase(e.getRole())) {
-				pc++;
-			}
-			if (s.equalsIgnoreCase(e.getRole())) {
-				sc++;
-			}
-			if (a.equalsIgnoreCase(e.getRole())) {
-				ac++;
-			}
-			if (dept10 == e.getDeptno()) {
-				dept10Count++;
-			}
-			if (dept20 == e.getDeptno()) {
-				dept20Count++;
-			}
-			if (dept30 == e.getDeptno()) {
-				dept30Count++;
-			}
-		}
-		System.out.println("\nTotalCount\nManager:" + mc + "\nClerk:" + cc + "\nPresident:" + pc + "\nSalesman:" + sc
-				+ "\nAnalyst:" + ac);
-		System.out.println("\nTotalCountOnDeptNo\nDeptNo:10 has " + dept10Count + "\nDeptNo:20 has " + dept20Count + "\nDeptNo:30 has " + dept30Count);
 //		writeIntoCsv(tree);
+		countEmpAccordingDesignation(tree);
+		countEmpAccordingDeptNo(tree);
+	}
+
+	private static void countEmpAccordingDeptNo(Collection<Employee> tree) {
+		System.out.println("\nTotal Count According to DeptNo!");
+		TreeSet<Employee> uniqueDeptNo = new TreeSet(new DeptComparator());
+		for (Employee e : tree) {
+			uniqueDeptNo.add(e);
+		}
+		for (Employee e : uniqueDeptNo) {
+			int count = 0;
+			for (Employee e1 : tree) {
+				if (e.getDeptno() == e1.getDeptno()) {
+					count++;
+				}
+			}
+			System.out.println("DeptNo "+e.getDeptno() + " has " + count);
+		}
+	}
+
+	private static void countEmpAccordingDesignation(Collection<Employee> tree) {
+		TreeSet<Employee> uniqueDesignation = new TreeSet(new DesignationComparator());
+		System.out.println("\nTotal Count According to Designation!");
+		for (Employee e : tree) {
+			uniqueDesignation.add(e);
+		}
+		for (Employee e : uniqueDesignation) {
+			int count = 0;
+			for (Employee e1 : tree) {
+				if (e.getRole().equals(e1.getRole())) {
+					count++;
+				}
+			}
+			System.out.println(e.getRole() + " has " + count);
+		}
 	}
 
 	private static void writeIntoCsv(Collection<Employee> tree) throws IOException {
