@@ -14,18 +14,16 @@ public class DataExtract {
 	public void getDataFromSource(String theUrl, String fileName) throws ParseException, IOException {
 
 		BufferedReader b = new BufferedReader(new FileReader(fileName));
-		String l;
-		while ((l = b.readLine()) != null) {
-			list.add(l);
-		}
-		b.close();
-		URL url = new URL(theUrl);
-		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 		String line;
-		while ((line = br.readLine()) != null) {
+		while ((line = b.readLine()) != null) {
 			list.add(line);
 		}
-		br.close();
+		URL url = new URL(theUrl);
+		b = new BufferedReader(new InputStreamReader(url.openStream()));
+		while ((line = b.readLine()) != null) {
+			list.add(line);
+		}
+		b.close();
 		for (String str : list) {
 			String[] elements = str.split(",");
 			int empId = Integer.parseInt(elements[0]);

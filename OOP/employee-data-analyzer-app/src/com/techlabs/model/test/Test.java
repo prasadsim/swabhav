@@ -28,7 +28,7 @@ public class Test {
 		System.out.println("\nMaximum Salaried Employee Details!");
 		System.out.println(richEmp);
 		String m = "manager", c = "Clerk", p = "president", s = "salesman", a = "Analyst";
-		int mc = 0, cc = 0, pc = 0, sc = 0, ac = 0, i1 = 10, i2 = 20, i3 = 30, i1c = 0, i2c = 0, i3c = 0;
+		int mc = 0, cc = 0, pc = 0, sc = 0, ac = 0, dept10 = 10, dept20 = 20, dept30 = 30, dept10Count = 0, dept20Count = 0, dept30Count = 0;
 		for (Employee e : tree) {
 			if (m.equalsIgnoreCase(e.getRole())) {
 				mc++;
@@ -45,20 +45,20 @@ public class Test {
 			if (a.equalsIgnoreCase(e.getRole())) {
 				ac++;
 			}
-			if (i1 == e.getDeptno()) {
-				i1c++;
+			if (dept10 == e.getDeptno()) {
+				dept10Count++;
 			}
-			if (i2 == e.getDeptno()) {
-				i2c++;
+			if (dept20 == e.getDeptno()) {
+				dept20Count++;
 			}
-			if (i3 == e.getDeptno()) {
-				i3c++;
+			if (dept30 == e.getDeptno()) {
+				dept30Count++;
 			}
 		}
 		System.out.println("\nTotalCount\nManager:" + mc + "\nClerk:" + cc + "\nPresident:" + pc + "\nSalesman:" + sc
 				+ "\nAnalyst:" + ac);
-		System.out.println("\nTotalCountOnDeptNo\nDeptNo:10 has " + i1c + "\nDeptNo:20 has " + i2c + "\nDeptNo:30 has " + i3c);
-		writeIntoCsv(tree);
+		System.out.println("\nTotalCountOnDeptNo\nDeptNo:10 has " + dept10Count + "\nDeptNo:20 has " + dept20Count + "\nDeptNo:30 has " + dept30Count);
+//		writeIntoCsv(tree);
 	}
 
 	private static void writeIntoCsv(Collection<Employee> tree) throws IOException {
