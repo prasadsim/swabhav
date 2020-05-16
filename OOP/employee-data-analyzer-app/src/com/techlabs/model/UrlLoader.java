@@ -10,9 +10,9 @@ public class UrlLoader implements ILoader {
 
 	private TreeSet<String> list = new TreeSet<String>();
 
-	public UrlLoader() throws IOException {
+	public UrlLoader(String link) throws IOException {
 		String line;
-		URL url = new URL("https://swabhav-tech.firebaseapp.com/emp.txt");
+		URL url = new URL(link);
 		BufferedReader b = new BufferedReader(new InputStreamReader(url.openStream()));
 		while ((line = b.readLine()) != null) {
 			list.add(line);

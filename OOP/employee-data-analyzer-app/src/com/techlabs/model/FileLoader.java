@@ -13,8 +13,7 @@ public class FileLoader implements ILoader {
 
 	private TreeSet<String> list = new TreeSet<String>();
 
-	public FileLoader() throws IOException {
-		String fileName = "dataFile_emp.txt";
+	public FileLoader(String fileName) throws IOException {
 		BufferedReader b = new BufferedReader(new FileReader(fileName));
 		String line;
 		while ((line = b.readLine()) != null) {

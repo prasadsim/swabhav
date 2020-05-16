@@ -11,6 +11,7 @@ public class Order {
 
 	private UUID id;
 	private Date date;
+	private int count = 0;
 	private List<LineItem> items = new ArrayList<LineItem>();
 	SimpleDateFormat sdf = new SimpleDateFormat("DD/MM/YYYY");
 
@@ -25,7 +26,13 @@ public class Order {
 	}
 
 	public void addItem(LineItem item) {
-		items.add(item);
+		if (this.getItems().contains(item)) {
+			int index = this.getItems().indexOf(item);
+			this.getItems().get(index).incrementQuantity(item.getQuantity());
+
+		} else {
+			items.add(item);
+		}
 	}
 
 	public double checkoutCost() {

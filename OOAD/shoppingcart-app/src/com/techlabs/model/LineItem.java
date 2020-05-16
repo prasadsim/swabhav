@@ -3,7 +3,7 @@ package com.techlabs.model;
 import java.util.Comparator;
 import java.util.UUID;
 
-public class LineItem implements Comparator<LineItem> {
+public class LineItem {
 
 	private UUID id;
 	private int quantity;
@@ -24,12 +24,13 @@ public class LineItem implements Comparator<LineItem> {
 	}
 
 	@Override
-	public int compare(LineItem l1, LineItem l2) {
-		if(l1.quantity==l2.quantity && l1.product==l2.product) {
-			return 1;
-		}
-		return 0;
+	public boolean equals(Object o) {
+		LineItem item = (LineItem) o;
+		if (this.hashCode() == item.hashCode())
+			return true;
+		return false;
 	}
+
 	public double calculateItemCost() {
 		return quantity * product.totalCost();
 	}
@@ -46,6 +47,7 @@ public class LineItem implements Comparator<LineItem> {
 		return quantity;
 	}
 
-	
-
+	public void incrementQuantity(int quantity) {
+		this.quantity = this.quantity + quantity;
+	}
 }

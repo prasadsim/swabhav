@@ -11,7 +11,9 @@ import com.techlabs.model.*;
 public class Test {
 
 	public static void main(String[] args) throws ParseException, IOException {
-		EmployeeDataAnalyzer analyzer = new EmployeeDataAnalyzer(new FileLoader());
+		String file = "dataFile_emp.txt";
+		String url = "https://swabhav-tech.firebaseapp.com/emp.txt";
+		EmployeeDataAnalyzer analyzer = new EmployeeDataAnalyzer(new FileLoader(file));
 		Collection<Employee> tree = analyzer.getEmployees();
 		System.out.println("Total No. of Employee in Organization:" + tree.size());
 		System.out.println("\nMaximum Salaried Employee Details!");
