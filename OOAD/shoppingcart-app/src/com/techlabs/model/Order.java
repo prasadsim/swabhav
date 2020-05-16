@@ -27,9 +27,7 @@ public class Order {
 
 	public void addItem(LineItem item) {
 		if (this.getItems().contains(item)) {
-			int index = this.getItems().indexOf(item);
-			this.getItems().get(index).incrementQuantity(item.getQuantity());
-
+			this.getItems().get(this.getItems().indexOf(item)).incrementQuantity(item.getQuantity());
 		} else {
 			items.add(item);
 		}
