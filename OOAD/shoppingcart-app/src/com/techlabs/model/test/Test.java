@@ -43,14 +43,14 @@ public class Test {
 	private static void writeIntoCsv(Customer c) throws IOException {
 		FileWriter f = new FileWriter("Shopping.csv");
 
-		f.write("CustID,CustName,CustAddress,OrderId,OrderDate,OrderCheckoutCost,ItemId,ItemQuantity,ItemTotalCost,ProductId,ProductName,ProductPrice,ProductDiscount,PayAmount\n");
+		f.write("CustID,CustName,CustAddress,PayAmount,OrderId,OrderDate,OrderCheckoutCost,ItemId,ItemQuantity,ItemTotalCost,ProductId,ProductName,ProductPrice,ProductDiscount\n");
 		for (Order order : c.getOrders()) {
-			String l1 = c.getId() + "," + c.getName() + "," + c.getAddress() + ",";
+			String l1 = c.getId() + "," + c.getName() + "," + c.getAddress() + "," + totalCheckOutPrice + ",";
 			for (LineItem item : order.getItems()) {
 				String l2 = order.getId() + "," + order.getDate() + "," + order.checkoutCost() + "," + item.getId()
 						+ "," + item.getQuantity() + "," + item.calculateItemCost() + "," + item.getProduct().getId()
 						+ "," + item.getProduct().getName() + "," + item.getProduct().getPrice() + ","
-						+ item.getProduct().getDiscountPercentage() + "," + totalCheckOutPrice + '\n';
+						+ item.getProduct().getDiscountPercentage() + '\n';
 				String l3 = l1 + l2;
 				f.write(l3);
 			}
