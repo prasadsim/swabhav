@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.techlabs.model.LineItem;
 import com.techlabs.model.Product;
 
-class JUnitLineItemAndProduct {
+class JUnitLineItemAndProductTest {
 	LineItem book = new LineItem(UUID.randomUUID(), 20, new Product(UUID.randomUUID(), "Book", 30, 0.25f));
 
 	@Test

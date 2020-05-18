@@ -12,7 +12,7 @@ import com.techlabs.model.LineItem;
 import com.techlabs.model.Order;
 import com.techlabs.model.Product;
 
-class JUnitCustomer {
+class JUnitCustomerTest {
 
 	LineItem book = new LineItem(UUID.randomUUID(), 20, new Product(UUID.randomUUID(), "Book", 30, 0.25f));
 
