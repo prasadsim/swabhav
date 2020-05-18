@@ -9,6 +9,7 @@ import java.util.UUID;
 import com.techlabs.model.*;
 
 public class Test {
+	private static double totalCheckOutPrice = 0;
 
 	public static void main(String[] args) throws ParseException, IOException {
 
@@ -42,14 +43,14 @@ public class Test {
 	private static void writeIntoCsv(Customer c) throws IOException {
 		FileWriter f = new FileWriter("Shopping.csv");
 
-		f.write("CustID,CustName,CustAddress,OrderId,OrderDate,OrderCheckoutCost,ItemId,ItemQuantity,ItemTotalCost,ProductId,ProductName,ProductPrice,ProductDiscount\n");
+		f.write("CustID,CustName,CustAddress,OrderId,OrderDate,OrderCheckoutCost,ItemId,ItemQuantity,ItemTotalCost,ProductId,ProductName,ProductPrice,ProductDiscount,PayAmount\n");
 		for (Order order : c.getOrders()) {
 			String l1 = c.getId() + "," + c.getName() + "," + c.getAddress() + ",";
 			for (LineItem item : order.getItems()) {
 				String l2 = order.getId() + "," + order.getDate() + "," + order.checkoutCost() + "," + item.getId()
 						+ "," + item.getQuantity() + "," + item.calculateItemCost() + "," + item.getProduct().getId()
 						+ "," + item.getProduct().getName() + "," + item.getProduct().getPrice() + ","
-						+ item.getProduct().getDiscountPercentage() + '\n';
+						+ item.getProduct().getDiscountPercentage() + "," + totalCheckOutPrice + '\n';
 				String l3 = l1 + l2;
 				f.write(l3);
 			}
@@ -80,7 +81,7 @@ public class Test {
 //	}
 
 	private static void printInfo(Customer customer) {
-		double totalCheckOutPrice = 0;
+
 		System.out.println(customer);
 		for (Order o : customer.getOrders()) {
 			System.out.println("\nOrderDetails");
