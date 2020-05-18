@@ -1,48 +1,6 @@
-CustomerId:6d232c65-fedc-4339-adf1-bad301ad8e5b
-CustomerName:Kishore
-CustomerAddress:lower Parel
-
-OrderDetails:
-OrderId:fd65b5cc-bd01-41d5-b5ae-e951bde6e95a
-TotalCost:3659.9999994039536
-
-LineItemDetails:
-Id:0780be59-d00c-4ba5-b48e-c56f417cddcb
-ProductName:Book
-ProductQuantity:40
-ProductCost:30.0
-LineCost:900.0
-
-LineItemDetails:
-Id:8f0df899-bbdb-44f4-8d13-8574f7756b18
-ProductName:Pen
-ProductQuantity:200
-ProductCost:10.0
-LineCost:2000.0
-
-LineItemDetails:
-Id:669673c5-2c06-474e-a54c-32816dbf02de
-ProductName:Ruler
-ProductQuantity:20
-ProductCost:40.0
-LineCost:759.9999994039536
-
-OrderDetails:
-OrderId:a954ed1a-c56e-4a82-9d1b-d05899dfd12f
-TotalCost:73749.99985098839
-
-LineItemDetails:
-Id:d0cf9369-f4e9-4f00-8d2f-833ddc52ef97
-ProductName:Bag
-ProductQuantity:50
-ProductCost:500.0
-LineCost:21249.999850988388
-
-LineItemDetails:
-Id:fe716e45-b0d0-4a82-93b0-839571adc09a
-ProductName:Mobile
-ProductQuantity:2
-ProductCost:35000.0
-LineCost:52500.0
-
-TotalCheckOutCost:77409.99985039234
+CustID,CustName,CustAddress,OrderId,OrderDate,OrderCheckoutCost,ItemId,ItemQuantity,ItemTotalCost,ProductId,ProductName,ProductPrice,ProductDiscount
+69eb2ec5-48f4-44ab-93a3-f830b05346d7,Kishore,lower Parel,095c6bf6-1f0a-425c-94cd-d6ac21dee02c,Sun Dec 29 00:00:00 IST 2019,3659.9999994039536,cff396dc-912e-4f9e-82d0-3676f3b4dbda,40,900.0,42d901a2-8353-43f1-9372-3cca5e093ee2,Book,30.0,0.25
+69eb2ec5-48f4-44ab-93a3-f830b05346d7,Kishore,lower Parel,095c6bf6-1f0a-425c-94cd-d6ac21dee02c,Sun Dec 29 00:00:00 IST 2019,3659.9999994039536,3daca024-c0bd-4140-8e09-154ad970b155,200,2000.0,d963383f-add2-4a70-a3d2-24a7fc7260c7,Pen,10.0,0.0
+69eb2ec5-48f4-44ab-93a3-f830b05346d7,Kishore,lower Parel,095c6bf6-1f0a-425c-94cd-d6ac21dee02c,Sun Dec 29 00:00:00 IST 2019,3659.9999994039536,0e2a0fea-a524-4339-a2b3-74ac612884f0,20,759.9999994039536,2b01bcdd-af95-43d8-87a7-f6a1dd9f33c3,Ruler,40.0,0.05
+69eb2ec5-48f4-44ab-93a3-f830b05346d7,Kishore,lower Parel,5073f840-44c7-434e-a65a-20bcb2cc1f57,Sun Dec 29 00:00:00 IST 2019,54624.99998509884,bd48c72e-ebea-4f90-b745-1321ca1c5a8e,5,2124.999985098839,92b989a3-e4b6-47d0-ada4-0b2eefacdc67,Bag,500.0,0.15
+69eb2ec5-48f4-44ab-93a3-f830b05346d7,Kishore,lower Parel,5073f840-44c7-434e-a65a-20bcb2cc1f57,Sun Dec 29 00:00:00 IST 2019,54624.99998509884,d4978567-9b81-4613-bf29-09eeba7ac50c,2,52500.0,571ba167-b1ea-4c64-82e6-c6a7c66622cd,Mobile,35000.0,0.25
