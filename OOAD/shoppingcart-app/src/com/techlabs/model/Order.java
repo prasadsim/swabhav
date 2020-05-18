@@ -11,18 +11,12 @@ public class Order {
 
 	private UUID id;
 	private Date date;
-	private int count = 0;
 	private List<LineItem> items = new ArrayList<LineItem>();
 	SimpleDateFormat sdf = new SimpleDateFormat("DD/MM/YYYY");
 
 	public Order(UUID id, String date) throws ParseException {
 		this.id = id;
 		this.date = sdf.parse(date);
-	}
-
-	@Override
-	public String toString() {
-		return "OrderDetails!\nId:" + this.id + "\nDate:" + this.date + "\nCheckOutCost:" + this.checkoutCost();
 	}
 
 	public void addItem(LineItem item) {

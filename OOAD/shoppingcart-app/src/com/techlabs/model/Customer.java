@@ -21,11 +21,6 @@ public class Customer {
 		orders.add(order);
 	}
 
-	@Override
-	public String toString() {
-		return "CustomerDetails!\nName:" + this.name + "\tId:" + this.id + "\tAddress:" + this.address;
-	}
-
 	public UUID getId() {
 		return id;
 	}

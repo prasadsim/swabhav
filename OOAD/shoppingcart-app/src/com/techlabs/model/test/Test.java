@@ -59,27 +59,6 @@ public class Test {
 		System.out.println("FileCreated");
 	}
 
-//	private static void writeIntoCsv(Customer c) throws IOException {
-//		FileWriter f = new FileWriter("Shopping.csv");
-//		double t = 0;
-//		f.write("CustomerId:" + c.getId() + "\nCustomerName:" + c.getName() + "\nCustomerAddress:" + c.getAddress());
-//		for (Order o : c.getOrders()) {
-//			f.write("\n\nOrderDetails:");
-//			f.write("\nOrderId:" + o.getId() + "\nTotalCost:" + o.checkoutCost());
-//
-//			for (LineItem l : o.getItems()) {
-//				f.write("\n\nLineItemDetails:");
-//				f.write("\nId:" + l.getId() + "\nProductName:" + l.getProduct().getName() + "\nProductQuantity:"
-//						+ l.getQuantity() + "\nProductCost:" + l.getProduct().getPrice() + "\nLineCost:"
-//						+ l.calculateItemCost());
-//			}
-//			t = t + o.checkoutCost();
-//		}
-//		f.write("\n\nTotalCheckOutCost:" + t);
-//		f.close();
-//		System.out.println("FileCreated");
-//	}
-
 	private static void printInfo(Customer customer) {
 
 		System.out.println(customer);
