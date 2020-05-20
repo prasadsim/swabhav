@@ -1,12 +1,7 @@
 package com.techlabs.model;
 
 public class Circle implements IShape {
-	private final static double pie = 3.142;
 	private double radius;
-
-	public static double getPie() {
-		return pie;
-	}
 
 	public double getRadius() {
 		return radius;
@@ -18,7 +13,12 @@ public class Circle implements IShape {
 
 	@Override
 	public double getArea() {
-		return pie * radius * radius;
+		return Math.PI * radius * radius;
+	}
+
+	@Override
+	public String toString() {
+		return "Circle [radius=" + radius + "]";
 	}
 
 }

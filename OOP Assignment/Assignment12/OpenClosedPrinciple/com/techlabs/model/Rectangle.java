@@ -21,4 +21,9 @@ public class Rectangle implements IShape {
 		return this.height * this.width;
 	}
 
+	@Override
+	public String toString() {
+		return "Rectangle [height=" + height + ", width=" + width + "]";
+	}
+
 }

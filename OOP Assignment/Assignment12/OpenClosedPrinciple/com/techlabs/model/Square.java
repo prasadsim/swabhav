@@ -16,4 +16,9 @@ public class Square implements IShape {
 	public double getArea() {
 		return side * side;
 	}
+
+	@Override
+	public String toString() {
+		return "Square [side=" + side + "]";
+	}
 }
