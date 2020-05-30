@@ -1,13 +1,9 @@
 package lsp.solution;
 
-public class Square extends Shape {
+public class Square implements IPolygon {
 	private int side;
 
 	public Square(int side) {
-		this.side = side;
-	}
-
-	public void setSide(int side) {
 		this.side = side;
 	}
 
@@ -15,9 +11,13 @@ public class Square extends Shape {
 		return side;
 	}
 
+	public void setSide(int side) {
+		this.side = side;
+	}
+
 	@Override
 	public double calculateArea() {
-		return side * side;
+		return this.side * this.side;
 	}
 
 }

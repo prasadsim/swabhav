@@ -1,6 +1,6 @@
 package lsp.solution;
 
-public class Rectangle extends Shape{
+public class Rectangle implements IPolygon {
 	protected int height;
 	protected int width;
 
