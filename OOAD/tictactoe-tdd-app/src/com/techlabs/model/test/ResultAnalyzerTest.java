@@ -16,7 +16,7 @@ class ResultAnalyzerTest {
 		analyzer.getBoard().markCell(1, Mark.O);
 		analyzer.getBoard().markCell(2, Mark.O);
 
-		assertEquals("Winnerinrow", analyzer.analyzeResult());
+		assertEquals("win", analyzer.analyzeResult());
 	}
 
 	void checkIfWinnerIsOccuredInDai() {
@@ -24,7 +24,7 @@ class ResultAnalyzerTest {
 		analyzer.getBoard().markCell(4, Mark.O);
 		analyzer.getBoard().markCell(8, Mark.O);
 
-		assertEquals("Winnerindai", analyzer.analyzeResult());
+		assertEquals("win", analyzer.analyzeResult());
 	}
 
 	void checkIfWinnerIsOccuredInCol() {
@@ -32,7 +32,7 @@ class ResultAnalyzerTest {
 		analyzer.getBoard().markCell(3, Mark.O);
 		analyzer.getBoard().markCell(6, Mark.O);
 
-		assertEquals("Winnerincol", analyzer.analyzeResult());
+		assertEquals("win", analyzer.analyzeResult());
 	}
 
 	void checkIfProgressIsOccured() {
@@ -40,7 +40,7 @@ class ResultAnalyzerTest {
 		analyzer.getBoard().markCell(8, Mark.O);
 		analyzer.getBoard().markCell(6, Mark.O);
 
-		assertEquals("Progress", analyzer.analyzeResult());
+		assertEquals("progress", analyzer.analyzeResult());
 	}
 
 }

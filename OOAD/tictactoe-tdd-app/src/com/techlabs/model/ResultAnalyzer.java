@@ -14,15 +14,15 @@ public class ResultAnalyzer {
 
 	public String analyzeResult() {
 		if (checkRow()) {
-			return "Winnerinrow";
+			return "win";
 		} else if (checkCol()) {
-			return "Winnerincol";
+			return "win";
 		} else if (checkDaigonal()) {
-			return "Winnerindai";
+			return "win";
 		} else if (board.isBoardFull()) {
-			return "Draw";
+			return "draw";
 		}
-		return "Progress";
+		return "progress";
 
 	}
 
