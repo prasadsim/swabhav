@@ -1,0 +1,16 @@
+<script>
+    var xpos = 300;
+    var ypos = 150;
+
+    function sendWaring(x, y) {
+        if ((x < xpos) && (y < ypos)) {
+            document.writeln("Adjust the position\n");
+        } else {
+            document.writeln("Things are fine\n");
+        }
+    }
+
+    sendWaring(500, 160);
+    sendWaring(100, 100);
+    sendWaring(201, 149);
+</script>
