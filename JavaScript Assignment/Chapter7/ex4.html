@@ -1,0 +1,10 @@
+<script>
+    //Example of hoisting
+    var foo = "Hello";
+    function doSomething() {
+        document.writeln(foo); //hoisting
+        var foo = "GoodBye";
+        document.writeln(foo);
+    }
+    doSomething();
+</script>
