@@ -5,27 +5,22 @@ import com.techlabs.model.*;
 public class Test {
 
 	public static void main(String[] args) {
-		ResultAnalyzer r = new ResultAnalyzer(new Board());
-		r.getBoard().markCell(0, Mark.X);
-		r.getBoard().markCell(4, Mark.X);
-		r.getBoard().markCell(8, Mark.X);
-//		r.getBoard().markCell(8, Mark.X);
-
-//		for (int i = 0; i < 2; i++) {
-////			System.out.println(i + 1 + "-" + r.getBoard().getCell(i).getMark());
-//			r.getBoard().markCell(i, Mark.O);
-//		}
-		for (int i = 0; i < 9; i++) {
-//			r.getBoard().markCell(i, Mark.O);
-
-			System.out.println(i + 1 + "-" + r.getBoard().getCell(i).getMark());
-//		r.getBoard().markCell(i, Mark.O);
-		}
-
-		System.out.println(r.getBoard().isBoardFull());
-
-		System.out.println(r.analyzeResult());
-
+		Board board = new Board();
+		ResultAnalyzer status = new ResultAnalyzer(board);
+		Player p1 = new Player("Ash",Mark.O);
+		Player p2 = new Player("Sim",Mark.X);
+		
+		Player[] p= {p1,p2};
+		
+		Game game = new Game(status,board,p);
+		
+		game.play(1);
+		game.play(7);
+		game.play(2);
+		game.play(8);
+		game.play(3);
+		
+		
 	}
 
 }
