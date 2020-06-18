@@ -1,0 +1,55 @@
+<script>
+    var initial = "hello";
+    document.writeln(initial + " world!" + "<br>");
+    document.writeln("I can also " + "do this!" + "<br>");
+
+
+    var vowels = "aeiou";
+    document.writeln(vowels[2] + "<br>");
+
+    var vowels = "aeiou";
+    for (var i = 0; i < vowels.length; i++) {
+        document.writeln(vowels[i] + "<br>");
+    }
+
+    var stringA = "I am a simple string.";
+    var stringB = "I am a simple string, too!";
+    document.writeln(stringA + " " + stringB + "<br>");
+
+
+    var textA = "Please";
+    var textB = new String("stop!");
+    var combined = textA + " make it " + textB;
+    document.writeln(combined + "<br>");
+
+    var foo = "I really";
+    var blah = "why anybody would";
+    var blarg = "do this";
+    var result = foo.concat(" don't know", " ", blah, " ", blarg);
+    document.writeln(result + "<br>");
+
+    var theBigString = "Pulp Fiction is an awesome movie!";
+    document.writeln(theBigString.slice(5, 12) + "<br>");
+
+    var theBigString = "Pulp Fiction is an awesome movie!";
+    document.writeln(theBigString.slice(0, -6) + "<br>");
+
+
+    var theBigString = "Pulp Fiction is an awesome movie!";
+    document.writeln(theBigString.slice(-14, -7) + "<br>");
+
+    var theBigString = "Pulp Fiction is an awesome movie!";
+    document.writeln(theBigString.substr(0, 4) + "<br>");
+
+    var inspirationalQuote = "That which you can concatenate, you can also split apart";
+    var splitWords = inspirationalQuote.split(" ");
+    document.writeln(splitWords.length + "<br>");
+
+    var days = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday, Sunday";
+    var splitWords = days.split(",");
+    document.writeln(splitWords[6] + "<br>");
+
+    var phrase = "My name is Bond. James Bond.";
+    document.writeln(phrase.toUpperCase() + "<br>");
+    document.writeln(phrase.toLowerCase() + "<br>");
+</script>

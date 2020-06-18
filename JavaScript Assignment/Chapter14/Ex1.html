@@ -1,0 +1,31 @@
+<script>
+    var grociries = [];
+    var groceries = ["Milk", "Eggs", "Frosted Flakes", "Salami", "Juice"];
+    groceries.push("bananas");
+    groceries.unshift("Wheat");
+
+    for (var i = 0; i < groceries.length; i++) {
+        document.writeln(groceries[i] + "<br>");
+    }
+
+
+    var last = groceries.pop();
+    var first = groceries.shift();
+
+    for (var i = 0; i < groceries.length; i++) {
+        document.writeln(groceries[i] + "<br>");
+    }
+
+    document.writeln(groceries.length + "<br>");
+
+    document.writeln(last + "<br>" + first);
+
+
+
+    var newArray = groceries.slice(1, 4);
+    document.writeln(newArray);
+    var groceries = ["milk", "eggs", "frosted flakes", "salami",
+        "juice"];
+    var resultIndex = groceries.indexOf("eggs", 0);
+    document.writeln("<br>"+resultIndex + "<br>");
+</script>
