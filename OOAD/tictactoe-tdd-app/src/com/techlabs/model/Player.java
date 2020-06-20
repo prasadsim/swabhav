@@ -1,7 +1,5 @@
 package com.techlabs.model;
 
-import java.util.Scanner;
-
 public class Player {
 
 	private Mark mark;

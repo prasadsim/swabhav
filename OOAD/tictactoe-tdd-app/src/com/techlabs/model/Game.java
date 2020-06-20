@@ -16,15 +16,6 @@ public class Game {
 
 	public void play(int cellNo) {
 		this.board.markCell(cellNo - 1, this.currentPlayer.getMark());
-		if (this.status.analyzeResult() == "win") {
-			System.out.println("" + this.currentPlayer.getName() + " with Mark:" + this.currentPlayer.getMark()
-					+ " won this Game!!!");
-			return;
-		} else if (this.status.analyzeResult() == "draw") {
-			System.out.println("Game is Drawn!!!");
-			return;
-		}
-
 		Player temp = this.currentPlayer;
 		this.currentPlayer = this.nextPlayer;
 		this.nextPlayer = temp;
