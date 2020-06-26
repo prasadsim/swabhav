@@ -1,0 +1,18 @@
+<script>
+    var person = {
+        getName: function () {
+            return "Name is " + this.firstName + " " + this.lastName;
+        }
+    };
+
+    var funnyGuy = Object.create(person);
+    funnyGuy.firstName = "Prasad";
+    funnyGuy.lastName = "Sim";
+
+    var funnyGuy2 = Object.create(person);
+    funnyGuy2.firstName = "Ash";
+    funnyGuy2.lastName = "Sim";
+
+    alert(funnyGuy.getName());
+    alert(funnyGuy2.getName());
+</script>

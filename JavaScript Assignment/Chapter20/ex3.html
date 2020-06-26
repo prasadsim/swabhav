@@ -1,0 +1,38 @@
+<script>
+    function quotatious1(names) {
+        var quotes = [];
+
+        for (var i = 0; i < names.length; i++) {
+            var theFunction = function () {
+                return "My name is " + names[i] + "!";
+            }
+            quotes.push(theFunction);
+        }
+        return quotes;
+    }
+
+    var people = ["Tony Stark", "James Bond", "Rick James"];
+    var peopleFunction = quotatious1(people);
+    var person = peopleFunction[0];
+    alert(person());
+
+
+    function quotatious2(names) {
+        var quotes = [];
+        for (var i = 0; i < names.length; i++) {
+            (function (index) {
+                var theFunction = function () {
+                    return "My name is " + names[index] + "!";
+                }
+                quotes.push(theFunction);
+            })(i);
+        }
+        return quotes;
+    }
+    var people = ["Tony Stark", "James Bond", "Rick James"];
+    var peopleFunction = quotatious2(people);
+    var person = peopleFunction[0];
+    alert(person());
+
+
+</script>

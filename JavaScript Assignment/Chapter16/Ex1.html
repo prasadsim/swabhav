@@ -1,0 +1,21 @@
+<script>
+    var funnyGuy = {};
+    funnyGuy.firstName = "Conan";
+    funnyGuy.lastName = "O'Brien";
+
+    var funnyGuy = {};
+    funnyGuy["firstName"] = "Conan";
+    funnyGuy["lastName"] = "O'Brien";
+
+    var funnyGuy = {
+        firstName: "Conan",
+        lastName: "O'Brien",
+
+        getName: function () {
+            return "Name is: " + this.firstName + " " + this.lastName;
+        }
+    };
+
+    alert(funnyGuy.getName());
+
+</script>

@@ -1,0 +1,37 @@
+<script>
+    var weakCode = {
+        secretCode: "Zorb!",
+
+        checkCode: function (code) {
+            if (this.secretCode == code) {
+                alert("correct!")
+            } else {
+                alert("wrong");
+            }
+        }
+    };
+
+    var bar = Object.create(weakCode);
+    alert(bar.secretCode);
+
+    //iffy function()
+
+    var strongCode = (function(){
+        var secretCode = "Zorb!";
+
+        function privateCheckCode(code){
+            if(secretCode==code){
+                alert("correct");
+            } else {
+                alert("wrong");
+            }
+        }
+
+        return {
+            checkCode:privateCheckCode
+        };
+    })();
+
+    var foo = Object.create(strongCode);
+    alert(foo.secretCode);
+</script>
