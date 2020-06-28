@@ -16,9 +16,11 @@ public class Game {
 
 	public void play(int cellNo) {
 		this.board.markCell(cellNo - 1, this.currentPlayer.getMark());
-		Player temp = this.currentPlayer;
-		this.currentPlayer = this.nextPlayer;
-		this.nextPlayer = temp;
+		if (status.analyzeResult() == "progress") {
+			Player temp = this.currentPlayer;
+			this.currentPlayer = this.nextPlayer;
+			this.nextPlayer = temp;
+		}
 	}
 
 	public ResultAnalyzer getStatus() {
