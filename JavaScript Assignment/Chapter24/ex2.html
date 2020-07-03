@@ -1,0 +1,33 @@
+<html>
+<title>ASH</title>
+
+<body>
+    <div id="myDiv" class="bar foo zorb">!!!</div>
+
+    <script>
+        var d = document.querySelector("#myDiv");
+        document.writeln("<br>" + d.classList + "<br>")
+
+        d.classList.add("baz");
+        document.writeln("ADD:\t" + d.classList + "<br>");
+
+        d.classList.remove("zorb");
+        document.writeln("REMOVE:\t" + d.classList + "<br>");
+
+        d.classList.toggle("foo");
+        document.writeln("TOGGLE:\t" + d.classList + "<br>");
+
+        d.classList.toggle("foo");        
+        document.writeln("TOGGLE:\t" + d.classList + "<br>");
+
+        d.classList.toggle("foo");
+        document.writeln("TOGGLE:\t" + d.classList + "<br>");
+
+        if(d.classList.contains("foo"))
+            alert(true);
+        else
+            alert(false);
+    </script>
+</body>
+
+</html>

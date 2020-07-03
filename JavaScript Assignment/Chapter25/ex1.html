@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>ASH</title>
+
+<body>
+    <div class="main">
+        <img src="imgage.jpeg">
+        <div>
+
+        </div>
+        <h1>
+            Hello
+        </h1>
+    </div>
+
+    <script>
+        var bodyElement = document.body;
+
+        if (bodyElement.firstChild) {
+            // alert("firstChild")
+        }
+
+        // for (var i = 0; i < bodyElement.length; i++) {
+        //     var childName = bodyElement.children[i];
+
+        //     document.writeln(childName.tagName);
+        // }
+
+        function hello(node) {
+            if (node.nodeType == 1) {
+                document.writeln(node.tagName);
+
+                node = node.firstChild;
+
+                while (node) {
+                    hello(node);
+                    node = node.nextSibling;
+                }
+            }
+        }
+
+        var h = document.querySelector("body");
+        hello(h);
+    </script>
+</body>
+
+</html>

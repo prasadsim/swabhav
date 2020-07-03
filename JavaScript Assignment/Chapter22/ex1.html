@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        ASH
+    </title>
+</head>
+
+<body>
+    <div id="main">
+        <div class="pictureContainer">
+            <img class="theImage" src="smiley.png" height="300" width="150">
+        </div>
+        <div class="pictureContainer">
+            <img class="theImage" src="tongue.png" height="300" width="150">
+        </div>
+        <div class="pictureContainer">
+            <img class="theImage" src="meh.png" height="300" width="150">
+        </div>
+        <div class="pictureContainer">
+            <img class="theImage" src="sad.png" height="300" width="150">
+        </div>
+    </div>
+
+    <script>
+        var images = document.querySelectorAll(".theImage");
+        for (var i = 0; i < images.length; i++) {
+            var image = images[i];
+            alert(image.getAttribute("src"));
+        }
+    </script>
+</body>
+
+</html>
