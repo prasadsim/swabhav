@@ -8,27 +8,26 @@ public class ConstructHierarchy {
 	}
 
 	public void design() {
+		Employee presidentEmp = null;
 		for (Employee employee : this.analyzer.getEmployees()) {
 			for (Employee employee1 : analyzer.getEmployees()) {
 				if (employee.getEid() == employee1.getManagerId()) {
 					employee.addReporters(employee1);
 				}
 			}
-		}
-
-		for (Employee employee : this.analyzer.getEmployees()) {
 			if (employee.getManagerId() == 0) {
-				System.out.print(employee.getEname() + " (" + employee.getRole() + ")\n");
-				displayReporters(employee, 0);
+				presidentEmp = employee;
 			}
 		}
+
+		System.out.print(presidentEmp.getEname() + " (" + presidentEmp.getRole() + ")\n");
+		displayReporters(presidentEmp, presidentEmp.getManagerId());
 	}
 
 	private void displayReporters(Employee emp, int level) {
-		String branch = "";
 		level++;
 		for (Employee employee : emp.getReporters()) {
-			System.out.print(branch + separator(level) + "|->" + employee.getEname() + " (" + employee.getRole() + ")\n");
+			System.out.print(separator(level) + "|->" + employee.getEname() + " (" + employee.getRole() + ")\n");
 			displayReporters(employee, level);
 		}
 	}
@@ -36,7 +35,7 @@ public class ConstructHierarchy {
 	private String separator(int level) {
 		String space = "";
 		for (int i = 0; i < level; i++) {
-			space = space + "    ";
+			space = space + "     ";
 		}
 		return space;
 	}

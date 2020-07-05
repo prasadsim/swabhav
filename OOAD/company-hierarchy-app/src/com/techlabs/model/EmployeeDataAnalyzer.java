@@ -7,6 +7,10 @@ import java.io.*;
 public class EmployeeDataAnalyzer {
 	private TreeSet<Employee> employees = new TreeSet<Employee>();
 
+	public void addEmployee(Employee employee) {
+		employees.add(employee);
+	}
+
 	public EmployeeDataAnalyzer(ILoader load) throws ParseException {
 		Set<String> list = load.getData();
 		for (String str : list) {

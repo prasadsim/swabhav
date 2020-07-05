@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Employee implements Comparable {
 
-	public boolean visited = false;
 	private int eid, comm, deptno, managerId;
 	private String ename, role;
 	private double salary;
@@ -44,7 +43,7 @@ public class Employee implements Comparable {
 
 	@Override
 	public String toString() {
-		return "Id:" + this.eid + "\t\tName" + this.ename + "\tDes:" + this.role + "\tManagerId:" + this.managerId;
+		return "Id:" + this.eid + "\t\tName:" + this.ename + "\tDes:" + this.role + "\tManagerId:" + this.managerId;
 	}
 
 	@Override
