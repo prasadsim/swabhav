@@ -1,0 +1,16 @@
+<html>
+    <head><title>ASH</title></head>
+    <body>
+        <script>
+            var btnE=document.createElement("button");
+            btnE.textContent="HELLO"
+            btnE.style.backgroundColor="red";
+
+            btnE.addEventListener("dblclick",doSomething,false);
+            function doSomething(){
+                console.log("double clicked happened!!")
+            }
+            document.body.appendChild(btnE);
+        </script>
+    </body>
+</html>

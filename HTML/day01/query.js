@@ -5,8 +5,9 @@ function addElement() {
     var temp = document.createTextNode(inputValue);
     li.append(temp);
 
-    if (inputValue == "") {
+    if (inputValue.trim() == "") {
         alert("Enter Something!!!");
+        document.getElementById("input").value = "";
     } else {
         document.getElementById("myUl").appendChild(li);
         document.getElementById("input").value = "";
@@ -16,12 +17,13 @@ function addElement() {
         btn.innerHTML = "x";
 
         btn.onclick = function () {
-            var li = this.parentElement;
-            li.remove();
+            var choice = confirm("Sure to remove the task?");
+            if (choice) {
+                var li = this.parentElement;
+                li.remove();
+            }
         };
 
         li.appendChild(btn);
-        }
+    }
 }
-
-newElement();

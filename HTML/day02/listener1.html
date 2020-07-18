@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>
+        BUTTON
+    </title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var btn1 = document.createElement("button");
+        btn1.textContent = "red";
+        var btn2 = document.createElement("button");
+        btn2.textContent = "blue";
+
+        btn1.addEventListener("click", fB1);
+        btn2.addEventListener("click", fB2);
+
+        function fB1() {
+            document.body.style.backgroundColor = "#EC7063";
+        }
+
+        function fB2() {
+            document.body.style.backgroundColor = "#5DADE2";
+        }
+        document.body.appendChild(btn1);
+        document.body.appendChild(btn2);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Slider</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Range Slider</h2>
+    <div class="sliderDiv">
+        <span>1</span><input type="range" min="1" max="100" value="50" id="slider"><span>100</span>
+        <p>Current Value : <span id="value"></span></p>
+    </div>
+
+    <script>
+        var slider = document.querySelector("#slider");
+        var value = document.querySelector("#value");
+        value.innerHTML = slider.nodeValue;
+
+        slider.oninput = function () {
+            value.innerHTML = this.value;
+        }
+    </script>
+
+</body>
+
+</html>

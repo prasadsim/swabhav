@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>ASH</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var text = document.createElement("label");
+        text.textContent = "TEXT:";
+        text.style.fontSize="40px"
+        var textarea = document.createElement("textArea");
+        textarea.addEventListener("keyup", printValue);
+        var label = document.createElement("h2");
+
+        function printValue() {
+            label.textContent = textarea.value.toUpperCase();
+        }
+        document.body.appendChild(text);
+        document.body.appendChild(textarea);
+        document.body.appendChild(label);
+
+
+    </script>
+</body>
+
+
+</html>

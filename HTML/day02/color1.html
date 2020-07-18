@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>ASH</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <select onchange="colorChange()" id="choice">
+        <option style="background-color: white;">--select--</option>
+        <option id="r" value="#FE2E2E">red</option>
+        <option id="b" value="#5DADE2">blue</option>
+        <option id="g" value="#58D68D">green</option>
+        <option id="o" value="#F5B041">orange</option>
+    </select>
+
+    <script>
+        function colorChange() {
+            document.bgColor = document.querySelector("#choice").value;
+        }
+    </script>
+</body>
+
+</html>

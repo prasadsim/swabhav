@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>ASH</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <select onchange="colorChange()" id="choice">
+        <option style="background-color: white;">--select--</option>
+        <option>red</option>
+        <option>blue</option>
+        <option>green</option>
+        <option>orange</option>
+    </select>
+
+    <script>
+        var colors = [];
+        colors.push({ text: "red", value: "#E74C3C" });
+        colors.push({ text: "blue", value: "#5DADE2" });
+        colors.push({ text: "green", value: "#58D68D" });
+        colors.push({ text: "orange", value: "#F5B041" });
+
+        function colorChange() {
+            var choice = document.querySelector("#choice");
+            var color = choice.options[choice.selectedIndex].text;
+            var ele = colors.find(ele => ele.text === color);
+            document.body.style.backgroundColor = ele.value;
+        }
+    </script>
+</body>
+
+</html>

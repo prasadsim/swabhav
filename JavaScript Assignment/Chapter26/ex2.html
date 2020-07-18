@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>ASH</title>
+</head>
+
+<body>
+    <h1 id="myId" class="myClass">Whats happening!!!</h1>
+
+    <script>
+        // append inBetween
+
+        var pElement = document.createElement("p");
+        pElement.textContent = "I am in the P tag!";
+        pElement.style.fontSize = "20px";
+
+        var scriptElement = document.querySelector("script");
+        document.body.insertBefore(pElement, scriptElement);
+
+        var divElement = document.createElement("div");
+        divElement.textContent = "I am in DIV tag!";
+        document.body.insertBefore(divElement, scriptElement)
+
+        var bodyElement = document.body;
+        if (bodyElement.firstChild) {
+            document.writeln("<br>Child Exist<br>");
+        }
+        for (var i = 0; i < bodyElement.children.length; i++) {
+            var childElement = bodyElement.children[i];
+            document.writeln(childElement.tagName);
+        }
+    </script>
+</body>
+
+</html>

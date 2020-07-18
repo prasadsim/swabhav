@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>ASH</title>
+</head>
+
+<body>
+    <script>
+        var btnE = document.createElement("button");
+        btnE.textContent = "HELLO"
+        btnE.style.backgroundColor = "red";
+
+        btnE.addEventListener("mousedown", mouseDown, false);
+        function mouseDown() {
+            console.log("mousedown happened!!");
+        }
+        btnE.addEventListener("mouseup", mouseUp, false);
+        function mouseUp() {
+            console.log("mouseUp happened!!");
+        } 
+        btnE.addEventListener("click", mouseClick, false);
+        function mouseClick() {
+            console.log("mouseClick happened!!");
+        }
+        
+        document.body.appendChild(btnE);
+    </script>
+</body>
+
+</html>

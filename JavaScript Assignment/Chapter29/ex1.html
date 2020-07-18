@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>ASH Events</title>
+</head>
+
+<body id="theBody" class="item">
+    <div id="one-a" class="item">
+        <div id="two" class="item">
+            <div id="three-a" class="item">
+                <button id="btnOne" class="item">one</button>
+            </div>
+            <div id="three-b" class="item">
+                <button id="btnTwo" class="item">two</button>
+                <button id="btnThree" class="item">three</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="one-b" class="item"></div>
+
+    <script>
+        var b1 = document.querySelector("#btnOne");
+        b1.addEventListener("click", fb1, true);
+
+        function fb1(e) {
+            document.body.style.backgroundColor = "red";
+        }
+
+
+        var b2 = document.querySelector("#btnTwo");
+        b2.addEventListener("click", fb2, true);
+
+        function fb2(e) {
+            document.body.style.backgroundColor = "green";
+        }
+
+
+        var b3 = document.querySelector("#btnThree");
+        b3.addEventListener("click", fb3, true);
+
+        function fb3(e) {
+            document.body.style.backgroundColor = "blue";
+        }
+    </script>
+</body>
+
+</html>

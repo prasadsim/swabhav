@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>ASH</title>
+</head>
+
+<body>
+    <script>
+        var btnE = document.createElement("button");
+        btnE.textContent = "HELLO"
+        btnE.style.backgroundColor = "red";
+
+        btnE.addEventListener("mouseover", hovered, false);
+        function hovered() {
+            console.log("mouseover happened!!");
+        }
+        btnE.addEventListener("mouseout", hoveredOut, false);
+        function hoveredOut(){
+            console.log("mouseout happeden!!");
+        }
+        document.body.appendChild(btnE);
+    </script>
+</body>
+
+</html>

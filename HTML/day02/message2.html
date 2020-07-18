@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>ASH</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var textLabel = document.createElement("label");
+        textLabel.textContent = "TEXT:";
+        textLabel.style.fontSize = "40px"
+        var textarea = document.createElement("textArea");
+        textarea.addEventListener("keyup", printValue);
+        var label = document.createElement("h2");
+
+        function printValue() {
+            var tempValue = textarea.value;
+            var tempLabel = "";
+            for (var i = 0; i < tempValue.length; i++) {
+                var ascii = tempValue.charCodeAt(i);
+                if (ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122) {
+                    tempLabel += tempValue[i];
+                }
+            }
+            label.textContent = tempLabel.toUpperCase();
+        }
+
+        document.body.appendChild(textLabel);
+        document.body.appendChild(textarea);
+        document.body.appendChild(label);
+    </script>
+</body>
+
+
+</html>

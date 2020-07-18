@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>ASH</title>
+</head>
+
+<body>
+    <h1 id="myId" class="myClass">Whats happening!!!</h1>
+
+    <script>
+        // remove
+
+        var pElement = document.createElement("p");
+        pElement.textContent = "I am in the P tag!";
+        pElement.style.fontSize = "20px";
+
+        var h1Element = document.querySelector("h1");
+        document.body.insertBefore(pElement, h1Element.nextSibling);
+
+        // document.body.removeChild(pElement);
+
+
+        function getTagName(node) {
+            if (node.nodeType == 1) {
+                document.writeln(node.tagName);
+
+                node = node.firstChild;
+
+                while (node) {
+                    getTagName(node);
+                    node = node.nextSibling;
+                }
+            }
+        }
+
+        var bodyTag = document.querySelector("body");
+        getTagName(bodyTag);
+        
+    </script>
+</body>
+
+</html>

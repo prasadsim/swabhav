@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>ASH Events</title>
+</head>
+
+<body id="theBody" class="item">
+    <div id="one-a" class="item">
+        <div id="two" class="item">
+            <div id="three-a" class="item">
+                <button id="btnOne" class="item">one</button>
+            </div>
+            <div id="three-b" class="item">
+                <button id="btnTwo" class="item">two</button>
+                <button id="btnThree" class="item">three</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="one-b" class="item"></div>
+
+    <script>
+        var items = document.querySelectorAll(".item");
+        for (var i = 0; i < items.length; i++) {
+            var e1 = items[i];
+            e1.addEventListener("click", doSomething, true);
+            e1.addEventListener("click", doSomething, false);
+        }
+
+        function doSomething(e) {
+            console.log(e.currentTarget.id);
+        }
+    </script>
+</body>
+
+</html>

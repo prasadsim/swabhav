@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>
+        BUTTON
+    </title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var btn1 = document.createElement("button");
+        btn1.textContent = "red";
+        btn1.value = "#EC7063";
+        var btn2 = document.createElement("button");
+        btn2.textContent = "blue";
+        btn2.value = "#5DADE2";
+
+        btn1.addEventListener("mousedown", changeColor);
+        btn2.addEventListener("mousedown", changeColor);
+
+        function changeColor() {
+            document.body.style.backgroundColor = this.value;
+        }
+
+        document.body.appendChild(btn1);
+        document.body.appendChild(btn2);
+
+    </script>
+</body>
+
+</html>
