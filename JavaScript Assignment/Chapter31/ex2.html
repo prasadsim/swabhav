@@ -1,0 +1,24 @@
+<script>
+    window.addEventListener("keydown", keyPressed, false);
+    window.addEventListener("keyup", keyReleased, false);
+
+    var keys = [];
+
+    function keyPressed(e) {
+        keys[e.keyCode] = true;
+
+        if (keys[17] && keys[16] && keys[53]) {
+            alert("ctrl + shift + 5");
+        }
+
+        if (keys[17] && keys[70]) {
+            alert("ctrl + f");
+        }
+
+        e.preventDefault();
+    }
+
+    function keyReleased() {
+        keys[e.keyCode] = false;
+    }
+</script>

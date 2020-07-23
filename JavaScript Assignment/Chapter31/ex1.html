@@ -1,0 +1,20 @@
+<script>
+    window.addEventListener("keydown", checkKeyDown, false);
+
+    function checkKeyDown(e) {
+        if (e.keyCode == "65") {
+            document.writeln("The 'a' key is pressed!")
+        }
+    }
+
+
+    window.addEventListener("keypress", checkKeyPressed, false);
+
+    function checkKeyPressed(e) {
+        if (e.charCode == "97") {
+            document.writeln("The 'A' key is pressed!")
+        }
+    }
+
+
+</script>

@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <button id="one">one</button><br>
+    <button id="two">two</button><br>
+    <button id="three">three</button><br>
+    <button id="four">four</button><br>
+    <button id="five">five</button><br>
+
+    <script>
+        var oneE = document.getElementById("one");
+        var twoE = document.getElementById("two");
+        var threeE = document.getElementById("three");
+        var fourE = document.getElementById("four");
+        var fiveE = document.getElementById("five");
+
+        oneE.addEventListener("click", doSomething, false);
+        twoE.addEventListener("click", doSomething, false);
+        threeE.addEventListener("click", doSomething, false);
+        fourE.addEventListener("click", doSomething, false);
+        fiveE.addEventListener("click", doSomething, false);
+
+        function doSomething(e) {
+            var clicked = e.target.id;
+            alert("hello : " + clicked);
+        }
+    </script>
+</body>
+
+</html>
