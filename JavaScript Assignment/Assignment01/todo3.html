@@ -1,0 +1,190 @@
+<html>
+
+<head>
+    <title>TODO LIST</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: rgb(217, 235, 218);
+        }
+
+        h1 {
+            margin: inherit;
+            font-family: 'Courier New', Courier, monospace;
+            border: solid 2px black;
+        }
+
+        .heading {
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #textbox {
+            border-color: transparent;
+            border-radius: 5px;
+            height: 30px;
+            width: 200px;
+        }
+
+        .btn {
+            font-size: 20px;
+            border-color: transparent;
+            border-radius: 50px;
+            height: 30px;
+            width: 30px;
+            margin-left: 10px;
+        }
+
+        #addbtn {
+            background-color: rgb(85, 224, 85);
+        }
+
+        #closebtn {
+            background-color: rgb(230, 100, 100);
+        }
+
+        ul li {
+            text-align: left;
+            list-style: none;
+            margin-left: 35%;
+        }
+
+        #c-ul li {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>TODO LIST</h1><br><br>
+
+    <div id="textarea">
+        <input placeholder="Enter your TODO ..." type="text" id="textbox">
+        <button onclick="addTodo()" id="addbtn" class="btn"><span> + </span></button>
+    </div>
+    <br>
+    <div id="notcompleted" class="heading">
+        <p>Not Completed Task<span id="nc-count"></span></p>
+        <ul id="n-c-ul"></ul>
+    </div>
+    <br>
+    <div id="completed" class="heading">
+        <p>Completed Task <span id="c-count"></span></p>
+        <ul id="c-ul"></ul>
+    </div>
+
+    <script>
+        var nc_count = 0;
+        var c_count = 0;
+        display();
+
+        function addTodo() {
+            var text = document.getElementById("textbox").value;
+            if (text.trim() == "") {
+                alert("Enter Something!!!");
+                document.getElementById("textbox").value = "";
+                return;
+            }
+            document.getElementById("textbox").value = "";
+            localStorage.setItem(text, 'nc');
+            display();
+        }
+
+        function clearTask() {
+            document.getElementById('n-c-ul').innerHTML = "";
+            document.getElementById('c-ul').innerHTML = "";
+            nc_count = 0;
+            c_count = 0;
+        }
+
+        function display() {
+            clearTask();
+            for (var i = 0; i < localStorage.length; i++) {
+                var listKey = localStorage.key(i);
+                if (localStorage.getItem(listKey) == 'nc') {
+                    var checkBox = document.createElement("input");
+                    checkBox.type = "checkbox";
+                    checkBox.style.marginRight = '5%';
+                    var li = document.createElement("li");
+                    li.className = "Li";
+                    li.append(checkBox);
+                    li.append(localStorage.key(i));
+                    var deletebtn = document.createElement("button");
+                    deletebtn.id = "closebtn";
+                    deletebtn.className = "btn";
+                    deletebtn.textContent = "x";
+                    deletebtn.style.marginLeft = '15%'
+                    deletebtn.style.alignContent = 'right';
+                    deletebtn.addEventListener("click", deleteList, false);
+                    li.append(deletebtn);
+                    document.getElementById("n-c-ul").appendChild(li);
+                    nc_count++;
+                    updateCount();
+                    checkBox.addEventListener("click", changeTask, false);
+                }
+                else if (localStorage.getItem(listKey) == 'c') {
+                    var checkBox = document.createElement("input");
+                    checkBox.type = "checkbox";
+                    checkBox.style.marginRight = '5%';
+                    checkBox.checked = true;
+                    var li = document.createElement("li");
+                    li.className = "Li";
+                    li.append(checkBox);
+                    li.append(localStorage.key(i));
+                    var deletebtn = document.createElement("button");
+                    deletebtn.id = "closebtn";
+                    deletebtn.className = "btn";
+                    deletebtn.textContent = "x";
+                    deletebtn.style.marginLeft = '15%'
+                    deletebtn.style.alignContent = 'right';
+                    deletebtn.addEventListener("click", deleteList, false);
+                    li.append(deletebtn);
+                    document.getElementById("c-ul").appendChild(li);
+                    c_count++;
+                    updateCount();
+                    checkBox.addEventListener("click", changeTask, false);
+                }
+            }
+        }
+
+        function changeTask() {
+            var removed = this.parentElement;
+            if (this.checked == false) {
+                nc_count++;
+                c_count--;
+                updateCount();
+                localStorage.setItem(removed.firstChild.nextSibling.textContent, 'nc');
+            } else {
+                nc_count--;
+                c_count++;
+                updateCount();
+                localStorage.setItem(removed.firstChild.nextSibling.textContent, 'c');
+            }
+            display();
+        }
+
+        function deleteList() {
+            var choice = confirm("Delete this list : " + this.parentElement.firstChild.nextSibling.textContent);
+            if (choice == 0) {
+                return;
+            }
+            if (this.parentElement.parentElement.id == "n-c-ul") {
+                nc_count--;
+            } else if (this.parentElement.parentElement.id == "c-ul") {
+                c_count--;
+            }
+            localStorage.removeItem(this.parentElement.firstChild.nextSibling.textContent);
+            updateCount();
+            this.parentElement.remove();
+        }
+
+        function updateCount() {
+            document.getElementById("c-count").textContent = " : " + c_count;
+            document.getElementById("nc-count").textContent = " : " + nc_count;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>AJAX</title>
+    <style>
+        body {
+            margin-top: 50px;
+            background-color: #ecf7f7;
+        }
+
+        #btn {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ajax and XMLHttpRequest</h1>
+    <button id="btn">Click to get Data</button>
+    <div id="content"></div>
+
+    <script>
+        var count = 0;
+        var xhr = new XMLHttpRequest();
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    count++;
+                    document.getElementById('content').textContent = xhr.responseText + " (" + count + ')';
+                }
+                if (xhr.status == 404) {
+                    document.getElementById('content').textContent = "File or resource not found";
+                }
+            }
+        };
+
+        xhr.open('get', 'demo.txt', true);
+        xhr.send();
+    </script>
+</body>
+
+</html>

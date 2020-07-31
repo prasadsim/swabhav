@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>Session Storage</title>
+    <style>
+        body {
+            margin-top: 50px;
+            background-color: rgb(229, 247, 247);
+        }
+
+        input {
+            margin-right: 15px;
+            padding: 10px;
+            height: 40px;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Session Storage</h2>
+    <fieldset>
+        <legend>Insert Data</legend>
+        <input type="text" id="inkey" placeholder="Enter key...">
+        <input type="text" id="invalue" placeholder="Enter value...">
+        <button id="btninsert" style="height: 30px;">Insert Data</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Remove Data</legend>
+        <input type="text" id="inkey1" placeholder="Enter key...">
+        <button id="btnremove" style="height: 30px;">Remove Data</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>Session Storage</legend>
+        <div id="output"></div>
+    </fieldset>
+
+
+</body>
+
+<script>
+    var inkey = document.getElementById('inkey');
+    var invalue = document.getElementById('invalue');
+    var btninsert = document.getElementById('btninsert');
+    var output = document.getElementById('output');
+
+    btninsert.onclick = function () {
+        var key = inkey.value;
+        var value = invalue.value;
+        if (key && value) {
+            sessionStorage.setItem(key, value);
+            location.reload();
+        } else {
+            alert('Enter key and value input');
+        }
+    };
+
+    for (var i = 0; i < sessionStorage.length; i++) {
+        var key = sessionStorage.key(i);
+        var value = sessionStorage.getItem(key);
+
+        output.innerHTML += key + " : " + value + "<br>";
+    }
+
+    var btnremove = document.getElementById('btnremove');
+    btnremove.onclick = function () {
+        var key = document.getElementById('inkey1').value;
+
+        if (key) {
+            if (sessionStorage.getItem(key)) {
+                sessionStorage.removeItem(key);
+                location.reload();
+            } else {
+                alert('Such key is not present');
+                document.getElementById('inkey1').value = "";
+            }
+
+        } else {
+            alert('Enter Key to remove');
+        }
+    }
+</script>
+
+</html>
