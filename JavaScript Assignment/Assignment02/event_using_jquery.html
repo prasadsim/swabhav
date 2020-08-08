@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("p").click(function () {
+                $(this).hide();
+            });
+            $('p').mouseenter(function () {
+                $(this).css('font-size', '50px');
+            })
+            $('p').mouseleave(function () {
+                $(this).css('font-size', '20px');
+            })
+        });
+    </script>
+</head>
+
+<body>
+
+    <p>If you click on me, I will disappear.</p>
+    <p>Click me away!</p>
+    <p>Click me too!</p>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Employee Data</title>
+</head>
+
+<body>
+    <div id="btnarea">
+        <h1>Employee Data</h1>
+        <button id="btn">Click Me</button>
+    </div>
+    <div id="area">
+        <!-- <h1>Employee Data</h1> -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                $(this).remove();
+                $.ajax({
+                    url: 'https://swabhav-tech.firebaseapp.com/emp.txt',
+                    dataType: 'text',
+                    success: function (data) {
+                        var table = '<table>';
+                        var emp = data.split('\n');
+                        for (var i = 0; i < emp.length; i++) {
+                            var cellvalue = emp[i].split(',');
+                            table += '<tr>';
+                            for (var j = 0; j < cellvalue.length; j++) {
+                                table += '<td>' + cellvalue[j] + '</td>';
+                            }
+                            table += '</tr>';
+                        }
+                        table += '</table>';
+                        $('#area').html(table);
+                    }
+                })
+            })
+        })
+
+    </script>
+</body>
+
+</html>

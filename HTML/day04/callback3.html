@@ -1,0 +1,17 @@
+<script>
+    function square(no, callback) {
+        console.log("squaring value");
+        callback(no * no);
+    }
+
+    square(2, display1);
+    square(3, display2);
+
+    function display1(r) {
+        console.log("inside display 1 ", +r);
+    }
+
+    var display2 = function (r) {
+        console.log("inside display2 ", +r);
+    }();
+</script>

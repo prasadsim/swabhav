@@ -1,0 +1,16 @@
+<script>
+    setTimeout(() => {
+        console.log("after 2sec, in console")
+    }, 2000);
+
+    setTimeout(displayAlert, 4000);
+    setTimeout(displayInHtml, 8000);
+
+    function displayAlert() {
+        alert('after 4sec ,in alert');
+    }
+
+    function displayInHtml() {
+        document.writeln("after 8sec in html page")
+    }
+</script>

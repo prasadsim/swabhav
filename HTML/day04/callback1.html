@@ -1,0 +1,24 @@
+<script>
+    function squareEvenNo(no, display) {
+        if (no % 2 == 0) {
+            setTimeout(() => {
+                return display(no * no);
+            }, 2000);
+        } else {
+            setTimeout(() => {
+                return display("error : " + no + " is not even");
+            }, 2000);
+        }
+    }
+
+    squareEvenNo(10, function (result) {
+        console.log(result);
+    });
+
+    function display(result) {
+        setTimeout(() => {
+            console.log(result);
+        }, 2000);
+    }
+    squareEvenNo(4, display);
+</script>

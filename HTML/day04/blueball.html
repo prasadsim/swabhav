@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <title>Blueball Game</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: rgb(229, 229, 143);
+        }
+
+        h1 {
+            font-size: 50px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h2 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        p {
+            margin-top: 30px;
+            margin-left: 25%;
+            text-align: left;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .startbtn {
+            margin-top: 20px;
+            width: 170px;
+            height: 80px;
+            font-size: 40px;
+            border-radius: 50px;
+            border: solid 3px green;
+            font-family: fantasy;
+        }
+
+        .balls {
+            background-color: #99a09a;
+            border: none;
+            width: 50px;
+            height: 50px;
+            color: white;
+            margin: 4px 2px;
+            border-radius: 50%;
+        }
+
+        .bluebtn {
+            background-color: rgb(58, 58, 221)
+        }
+
+        .redbtn {
+            background-color: rgb(233, 69, 69)
+        }
+
+        .greenbtn {
+            background-color: rgb(63, 211, 63)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="startpage">
+        <h1>Blueball Game</h1>
+        <h2>Game Rules</h2>
+        <p>1. There will be Total 50 Grey Balls.
+            <br>2. You have to select any random ball. <br>3. If the ball color turns to blue you win with first
+            selection. <br>4. If the ball color turn to RED then the BLUE ball will be at the right or bottom. <br>5. If
+            the ball color turn to GREEN then the BLUE ball will be at the left or above. <br>6. Gamer would get 5
+            attempts to solve the game.
+        </p>
+        <button class="startbtn" id="start">Start</button>
+    </div>
+
+    <div id="gamepage">
+
+    </div>
+
+    <script>
+        var totalattempt = 10;
+        var limit = 50;
+
+        document.getElementById('start').addEventListener("click", startbtnclicked, false);
+
+        function startbtnclicked() {
+            var randomNo = Math.floor((Math.random() * limit) + 1);
+            // console.log(randomNo);
+            document.getElementById('startpage').style.display = 'none';
+            document.getElementById('gamepage').style.display = 'block';
+
+            var game = document.getElementById('gamepage');
+
+            var title = document.createElement("h2");
+            title.textContent = "Game Started";
+            game.appendChild(title);
+
+
+            var attemptslabel = document.createElement("h3");
+            attemptslabel.id = "attemptarea";
+            attemptslabel.textContent = "Remaining Attempts : " + totalattempt;
+            game.appendChild(attemptslabel);
+
+            for (var i = 0; i < limit; i++) {
+                var ball = document.createElement("button");
+                ball.id = i + 1;
+                ball.value = i + 1;
+                ball.textContent = i + 1;
+                ball.className = "balls";
+                if (i % 10 == 0) {
+                    game.appendChild(document.createElement("br"));
+                }
+                ball.onclick = function () {
+                    checkattempt();
+                    if (this.value == randomNo) {
+                        this.setAttribute("class", "bluebtn balls");
+                        setTimeout(function () { alert("You Win"); }, 300);
+                        restart();
+                    } else if (this.value < randomNo) {
+                        this.setAttribute("class", "redbtn balls");
+                    } else if (this.value > randomNo) {
+                        this.setAttribute("class", "greenbtn balls");
+                    }
+                }
+                game.appendChild(ball);
+            }
+        }
+
+        function checkattempt() {
+            if (totalattempt == 0) {
+                alert("Your attempt are over!!!");
+                document.getElementById("restartbtn").remove();
+                restart();
+                return;
+            }
+            totalattempt--;
+            document.getElementById("attemptarea").textContent = "Remaining Attempts : " + totalattempt;
+        }
+
+        function restart() {
+            var restartbtn = document.createElement("button");
+            restartbtn.id = "restartbtn";
+            restartbtn.className = "startbtn";
+            restartbtn.textContent = "Restart";
+            restartbtn.addEventListener('click', restartbtnclicked, false);
+            document.getElementById("gamepage").appendChild(document.createElement("br"));
+            document.getElementById('gamepage').appendChild(restartbtn);
+            document.getElementsByClassName("balls").removeEventListener();
+        }
+
+        function restartbtnclicked() {
+            totalattempt = 10;
+            document.getElementById('gamepage').innerHTML = "";
+            document.getElementById('startpage').style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
