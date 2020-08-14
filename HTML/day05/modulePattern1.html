@@ -1,0 +1,21 @@
+<script>
+    function makeEmployee() {
+        var obj = {};
+        var _id, _firstname, _lastname;
+        obj.setFirstName = function (firstname) {
+            _firstname = firstname;
+        }
+        obj.setLastName = function (lastname) {
+            _lastname = lastname;
+        }
+        obj.getFullName = function () {
+            return ("" + _firstname + " " + _lastname).toUpperCase();
+        }
+        return obj;
+    }   
+
+    var emp1 = makeEmployee();
+    emp1.setFirstName('rahul');
+    emp1.setLastName('dravid');
+    console.log(emp1.getFullName());
+</script>

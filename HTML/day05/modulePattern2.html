@@ -1,0 +1,42 @@
+<script>
+    var i = 0;
+    var service = function () {
+        var serveObj = {};
+        serveObj.doTask1 = function () {
+            console.log("doing task1");
+        }
+        serveObj.doTask2 = function () {
+            console.log("doing task2");
+        }
+        serveObj.count = i++;
+        return serveObj;
+    }
+    var s1 = service();
+    s1.doTask1();
+    console.log(s1.count);
+    var s2 = service();
+    s2.doTask1();
+    console.log(s2.count);
+
+
+    // var i = 0;
+    // var service = function () {
+    //     var serveObj = {};
+    //     serveObj.doTask1 = function () {
+    //         console.log("doing task1");
+    //     }
+    //     serveObj.doTask2 = function () {
+    //         console.log("doing task2");
+    //     }
+    //     serveObj.count = i++;
+    //     return serveObj;
+    // }()
+
+    // service.doTask1();
+    // console.log(service.count);
+    // service.doTask2();
+    // console.log(service.count);
+
+    // service.doTask1();
+    // console.log(service.count);
+</script>

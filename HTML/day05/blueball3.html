@@ -77,13 +77,12 @@
     </div>
 
     <script>
-        (function () {
+        var game = function () {
             var totalattempt = 10;
             var limit = 50;
+            var obj = {};
 
-            document.getElementById('start').addEventListener("click", startbtnclicked, false);
-
-            function startbtnclicked() {
+            obj.startbtnclicked = function () {
                 var randomNo = Math.floor((Math.random() * limit) + 1);
                 document.getElementById('startpage').style.display = 'none';
                 document.getElementById('gamepage').style.display = 'block';
@@ -109,50 +108,52 @@
                     if (i % 10 == 0) {
                         game.appendChild(document.createElement("br"));
                     }
-                    ball.onclick = function () {
-                        checkattempt();
+                    ball.addEventListener("click", function () {
+                        obj.checkattempt();
                         if (this.value == randomNo) {
                             this.setAttribute("class", "bluebtn balls");
-                            setTimeout(function () { alert("You Win"); }, 300);
-                            restart();
+                            setTimeout(function () { alert("You Win"); }, 1000);
+                            obj.restart();
                         } else if (this.value < randomNo) {
                             this.setAttribute("class", "redbtn balls");
                         } else if (this.value > randomNo) {
                             this.setAttribute("class", "greenbtn balls");
                         }
-                    }
+                    });
                     game.appendChild(ball);
                 }
             }
 
-            function checkattempt() {
+            obj.checkattempt = function () {
                 if (totalattempt == 0) {
                     alert("Your attempt are over!!!");
-                    // document.getElementById("restartbtn").remove();
-                    restart();
+                    obj.restart();
                     return;
                 }
                 totalattempt--;
                 document.getElementById("attemptarea").textContent = "Remaining Attempts : " + totalattempt;
             }
 
-            function restart() {
+            obj.restart = function () {
                 var restartbtn = document.createElement("button");
                 restartbtn.id = "restartbtn";
                 restartbtn.className = "startbtn";
                 restartbtn.textContent = "Restart";
-                restartbtn.addEventListener('click', restartbtnclicked, false);
+                restartbtn.addEventListener('click', obj.restartbtnclicked, false);
                 document.getElementById("gamepage").appendChild(document.createElement("br"));
                 document.getElementById('gamepage').appendChild(restartbtn);
                 document.getElementsByClassName("balls").removeEventListener();
             }
 
-            function restartbtnclicked() {
+            obj.restartbtnclicked = function () {
                 totalattempt = 10;
                 document.getElementById('gamepage').innerHTML = "";
                 document.getElementById('startpage').style.display = "block";
             }
-        })();
+            return obj;
+        }();
+        document.getElementById('start').addEventListener("click", game.startbtnclicked, false);
+
     </script>
 
 </body>

@@ -1,0 +1,48 @@
+<script>
+    function Employee() {
+        var _id, _firstname, _lastname;
+
+        this.setId = function (id) {
+            if (id > 0) {
+                _id = id;
+            } else {
+                console.log('id cannot be negative');
+            }
+        }
+
+        this.getId = function () {
+            return _id;
+        }
+
+        this.setFirstName = function (firstname) {
+            _firstname = firstname;
+        }
+
+        this.setLastName = function (lastname) {
+            _lastname = lastname;
+        }
+
+        this.getFullName = function () {
+            return ("" + _firstname + " " + _lastname).toUpperCase();
+        }
+    }
+
+    // var i=0;    
+
+    var emp1 = new Employee();
+    emp1.setId(1001);
+    emp1.setFirstName('sachin');
+    emp1.setLastName('tendulkar');
+    console.log(emp1.getId());
+    console.log(emp1.getFullName());
+    console.log(emp1);
+
+    var emp2 = new Employee();
+    emp2.setId(1002);
+    emp2.setFirstName('ash');
+    emp2.setLastName('sim');
+    console.log(emp2.getId());
+    console.log(emp2.getFullName());
+    console.log(emp2);
+
+</script>

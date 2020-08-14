@@ -1,0 +1,31 @@
+<script>
+    function Student(id, name) {
+        var obj = {};
+        obj.id = id;
+        obj.name = name;
+        obj.getString = function () {
+            return 'id is ' + this.id + " name is " + this.name;
+        }
+        var foo = 1001;
+        return obj;
+    }
+
+
+    var s1 = Student(101, 'abc');
+    var s2 = Student(102, 'pqr');
+
+    console.log(s1);
+    console.log(s2);
+    console.log(s1.getString());
+    console.log(s2.getString());
+    console.log(s2.foo);
+
+    // function Student(id, name) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.getString = function () {
+    //         return 'id is ' + this.id + " name is " + this.name;
+    //     }
+    //     var foo = 1001;
+    // }
+</script>
