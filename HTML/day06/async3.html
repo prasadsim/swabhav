@@ -1,0 +1,20 @@
+<script>
+    function doSomeIOOperation(input) {
+        return new Promise(function (resolve, reject) {
+            var data = Math.random() * input;
+            if (data > 0.5) {
+                resolve(data);
+            } else {
+                reject({ error: "some error" });
+            }
+        })
+    }
+
+    doSomeIOOperation(10).then(function (r) {
+        console.log(r);
+    }).catch(function (r) {
+        console.log(r);
+    });
+
+    console.log("end of program");
+</script>

@@ -1,0 +1,11 @@
+<script>
+    function doSomeIOOperation(input, callback) {
+        var data = Math.random() * input;
+        callback(data);
+    }
+    doSomeIOOperation(5, function (r) {
+        console.log("result is " + r);
+    });
+
+    console.log("End of program");
+</script>
