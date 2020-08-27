@@ -1,0 +1,13 @@
+<script>
+    function* doSomething(){
+        yield 'ash';
+        yield 'bob';
+        console.log('okk, we are doing generators');
+        yield 'bye';
+    }
+
+    let temp=doSomething();
+    console.log(temp.next().value);
+    console.log(temp.next().value);
+    console.log(temp.next().value);
+</script>

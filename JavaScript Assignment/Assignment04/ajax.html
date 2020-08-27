@@ -1,0 +1,13 @@
+<script>
+    var http = new XMLHttpRequest();
+    http.open("GET", "demo.json", true);
+    http.send();
+
+    http.onreadystatechange = function () {
+        if (http.status == 200 && http.readyState == 4) {
+            console.log(JSON.parse(http.responseText));
+        }
+    }
+
+    console.log("test");
+</script>

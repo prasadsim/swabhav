@@ -1,0 +1,16 @@
+<script>
+    function sum(a, b, c) {
+        console.log(a + b + c);
+    }
+
+    let nums = [4, 5, 8];
+
+    sum(nums[0], nums[1], nums[2]);
+
+    sum(...nums);
+
+    let meats = ['bacon', 'ham','chicken'];
+    let foods = ['apple', ...meats  , 'rice', 'kiwi', 'bread']
+
+    console.log(foods);
+</script>
