@@ -1,0 +1,15 @@
+<script>
+    function Customer(name, address) {
+        this.name = name;
+        this.address = address;
+        this.show = function () {
+            setTimeout(function () {
+                console.log('using bind');
+                console.log('Name : ' + this.name + '\nAddress : ' + this.address);
+            }.bind(this), 1000);
+        }
+    }
+
+    var c1 = new Customer('ash', 'mumbai');
+    c1.show();
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        table {
+            text-align: center;
+            margin-top: 50px;
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+
+        #productList {
+            border: solid 2px black;
+            margin-right: 30px;
+            border-radius: 20px;
+        }
+
+        #addBtn {
+            margin-left: 30px;
+            border-radius: 20px;
+            border: solid 2px black;
+        }
+
+        #quantityText {
+            border: solid 2px black;
+            border-radius: 15px;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading">Shopping Cart</h1>
+    <label>Products </label>
+    <select id="productList">
+        <option value="none" selected>--select--</option>
+    </select>
+
+    <label>Quantity </label>
+    <input type="text" id="quantityText">
+    <button id="addBtn">Add2Cart</button><br><br>
+
+    <table id="myTable">
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+        </tr>
+    </table>
+
+    <label id='checkoutCost' style="text-align: right; margin-left: 750px;"></label>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var totalCost = 0;
+        var products = [{
+            'id': 'iphone10',
+            'name': 'IPhone 10',
+            'price': 64000
+        }, {
+            'id': 'redmiNote8',
+            'name': 'Redmi Note 8',
+            'price': 18000
+        }, {
+            'id': 'oneplus7T',
+            'name': 'One Plus 7t',
+            'price': 34000
+        }, {
+            'id': 'realMei5',
+            'name': 'Real Me i5',
+            'price': 14000
+        }];
+
+        for (var i = 0; i < products.length; i++) {
+            $('#productList').append($("<option></option>").attr("value", products[i].id).text(products[i].name));
+        }
+
+        $('#addBtn').click(function () {
+            if ($('#productList').val() === 'none') {
+                alert('select product');
+                return;
+            } else if ($('#quantityText').val() == '' || $('#quantityText').val() <= 0) {
+                alert('enter quantity');
+                return;
+            }
+
+
+            var product = $('#productList').val();
+            $('#productList').val('none');
+            var quantity = $('#quantityText').val();
+            $('#quantityText').val('');
+
+            var index = 0;
+
+            for (var i = 0; i < products.length; i++) {
+                if (product == products[i].id) {
+                    index = i;
+                }
+            }
+
+            var productCost = products[index].price * quantity;
+
+            totalCost += productCost;
+
+            var content = '<tr>';
+            content += '<td>' + products[index].name + '</td>';
+            content += '<td>' + quantity + '</td>';
+            content += '<td>' + products[index].price + '</td>';
+            content += '<td>' + productCost + '</td>';
+            content += "</tr>"
+            $('#myTable').append(content);
+
+            $('#checkoutCost').text('Checkout Cost : ' + totalCost);
+        });
+
+    </script>
+</body>
+
+</html>
