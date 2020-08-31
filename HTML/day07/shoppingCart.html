@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <title>Shopping Cart</title>
     <style>
         body {
-            margin-top: 50px;
             text-align: center;
+            margin-top: 50px;
+            background-color: rgb(235, 235, 217);
         }
 
         table {
@@ -22,52 +22,44 @@
             border: 1px solid black;
         }
 
-
-        #productList {
-            border: solid 2px black;
-            margin-right: 30px;
-            border-radius: 20px;
-        }
-
-        #addBtn {
+        .removeBtn {
+            border-color: transparent;
             margin-left: 30px;
-            border-radius: 20px;
-            border: solid 2px black;
+            background-color: rgb(233, 81, 81);
+            border-radius: 100%;
+            color: white;
         }
 
-        #quantityText {
-            border: solid 2px black;
-            border-radius: 15px;
-            width: 30px;
+        .decreaseBtn {
+            border-color: black;
+            margin-left: 30px;
+            border-radius: 100%;
         }
     </style>
 </head>
 
 <body>
-    <h1 id="heading">Shopping Cart</h1>
-    <label>Products </label>
-    <select id="productList">
+    <h1>Shopping Cart</h1>
+    <label>Product </label>
+    <select id="dropdown">
         <option value="none" selected>--select--</option>
     </select>
 
-    <label>Quantity </label>
-    <input type="text" id="quantityText">
-    <button id="addBtn">Add2Cart</button><br><br>
+    <label style="margin-left: 50px;">Quantity </label>
+    <input type="text" id="quantityInput" style="width: 50px;"><span> px</span>
 
-    <table id="myTable">
-        <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>Total</th>
-        </tr>
-    </table>
+    <button id="addBtn" style="margin-left: 30px; border-radius: 10px; border: solid 1px black;">add</button><br><br>
 
-    <label id='checkoutCost' style="text-align: right; margin-left: 750px;"></label>
+    <table id="myTable"></table>
+    <label id="checkoutLabel" style="display: none;">Checkout Cost = <span id="checkout"></span></label>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         var totalCost = 0;
-        var products = [{
+        var selectedItems = [];
+        var selectedItemsQuantity = [];
+        var productList = [{
             'id': 'iphone10',
             'name': 'IPhone 10',
             'price': 64000
@@ -84,49 +76,150 @@
             'name': 'Real Me i5',
             'price': 14000
         }];
-
-        for (var i = 0; i < products.length; i++) {
-            $('#productList').append($("<option></option>").attr("value", products[i].id).text(products[i].name));
-        }
+        (function () {
+            for (var i = 0; i < productList.length; i++) {
+                $('#dropdown').append($("<option></option>").attr("value", productList[i].id).text(productList[i].name + " - " + productList[i].price));
+            }
+        })();
 
         $('#addBtn').click(function () {
-            if ($('#productList').val() === 'none') {
+            addBtnClicked();
+        });
+
+        function validateInput() {
+            if ($('#dropdown').val() === 'none') {
                 alert('select product');
                 return;
-            } else if ($('#quantityText').val() == '' || $('#quantityText').val() <= 0) {
+            } else if ($('#quantityInput').val() == '' || $('#quantityInput').val() <= 0) {
                 alert('enter quantity');
                 return;
+            } else {
+                return true;
             }
+        }
 
+        function addBtnClicked() {
+            if (validateInput()) {
+                var product = $('#dropdown').val();
+                $('#dropdown').val('none');
+                var quantity = $('#quantityInput').val();
+                $('#quantityInput').val('');
 
-            var product = $('#productList').val();
-            $('#productList').val('none');
-            var quantity = $('#quantityText').val();
-            $('#quantityText').val('');
+                var isAlreadyPresent = false;
+                for (var i = 0; i < selectedItems.length; i++) {
+                    if (selectedItems[i] == product) {
+                        let newQuantity = parseInt(selectedItemsQuantity[i]) + parseInt(quantity);
+                        selectedItemsQuantity[i] = newQuantity;
+                        isAlreadyPresent = true;
+                    }
+                }
 
-            var index = 0;
+                if (isAlreadyPresent == false) {
+                    selectedItems.push(product);
+                    selectedItemsQuantity.push(parseInt(quantity));
+                }
 
-            for (var i = 0; i < products.length; i++) {
-                if (product == products[i].id) {
-                    index = i;
+                printTable();
+            }
+        }
+        function printTable() {
+            var checkOutCost = 0;
+            $('#myTable').text('');
+            $('#checkoutLabel').css('display', 'block');
+            var table = '<tr>';
+            table += '<th>' + 'Item' + '</th>';
+            table += '<th>' + 'Quantity' + '</th>';
+            table += '<th>' + 'Unit Price' + '</th>';
+            table += '<th>' + 'Total' + '</th>';
+            table += '</th>';
+            $('#myTable').append(table);
+            var indexOfProductList = 0;
+            var indexOfSelectedItem = 0;
+            for (var i = 0; i < selectedItems.length; i++) {
+                for (var j = 0; j < productList.length; j++) {
+                    if (selectedItems[i] == productList[j].id) {
+                        indexOfProductList = j;
+                        indexOfSelectedItem = i;
+                        checkOutCost += (parseInt(selectedItemsQuantity[indexOfSelectedItem]) * parseInt(productList[indexOfProductList].price));
+
+                        var removeBtn = document.createElement('button');
+                        removeBtn.id = selectedItems[indexOfSelectedItem];
+                        removeBtn.className = 'removeBtn';
+                        removeBtn.textContent = 'x';
+                        removeBtn.addEventListener('click', removeBtnClicked);
+
+                        var decreaseQuantity = document.createElement('button');
+                        decreaseQuantity.textContent = '-';
+                        decreaseQuantity.id = selectedItems[indexOfSelectedItem];
+                        decreaseQuantity.className = 'decreaseBtn';
+                        decreaseQuantity.addEventListener('click', decreaseQuantityBtnClicked);
+
+                        var increaseQuantity = document.createElement('button');
+                        increaseQuantity.textContent = '+';
+                        increaseQuantity.id = selectedItems[indexOfSelectedItem];
+                        increaseQuantity.className = 'decreaseBtn';
+                        increaseQuantity.addEventListener('click', increaseQuantityBtnClicked);
+
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement('td');
+                        td1.textContent = productList[indexOfProductList].name;
+                        var td2 = document.createElement('td');                        
+                        td2.textContent = selectedItemsQuantity[indexOfSelectedItem];
+                        td2.appendChild(decreaseQuantity);
+                        td2.appendChild(increaseQuantity);
+                        var td3 = document.createElement('td');
+                        td3.textContent = productList[indexOfProductList].price;
+                        var td4 = document.createElement('td');
+                        td4.textContent = (parseInt(selectedItemsQuantity[indexOfSelectedItem]) * parseInt(productList[indexOfProductList].price));
+                        td4.appendChild(removeBtn);
+
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+
+                        document.getElementById('myTable').appendChild(tr);
+                    }
                 }
             }
 
-            var productCost = products[index].price * quantity;
+            $('#checkout').text(checkOutCost);
+        }
 
-            totalCost += productCost;
+        function removeBtnClicked() {
+            for (var i = 0; i < selectedItems.length; i++) {
+                if (this.id == selectedItems[i]) {
+                    if (confirm('remove ' + this.id + ' from the cart')) {
+                        selectedItems.splice(i, 1);
+                        selectedItemsQuantity.splice(i, 1);
+                    }
+                }
+            }
+            printTable();
+        }
 
-            var content = '<tr>';
-            content += '<td>' + products[index].name + '</td>';
-            content += '<td>' + quantity + '</td>';
-            content += '<td>' + products[index].price + '</td>';
-            content += '<td>' + productCost + '</td>';
-            content += "</tr>"
-            $('#myTable').append(content);
+        function decreaseQuantityBtnClicked() {
+            for (var i = 0; i < selectedItems.length; i++) {
+                if (this.id == selectedItems[i]) {
+                    if (selectedItemsQuantity[i] <= 1) {
+                        alert('delete this product from cart! press "x" button');
+                        return;
+                    } else {
+                        selectedItemsQuantity[i] = selectedItemsQuantity[i] - 1;
+                    }
+                }
+            }
+            printTable();
+        }
 
-            $('#checkoutCost').text('Checkout Cost : ' + totalCost);
-        });
-
+        function increaseQuantityBtnClicked() {
+            for (var i = 0; i < selectedItems.length; i++) {
+                if (this.id == selectedItems[i]) {
+                    selectedItemsQuantity[i] = selectedItemsQuantity[i] + 1;
+                }
+            }
+            printTable();
+        }
     </script>
 </body>
 
