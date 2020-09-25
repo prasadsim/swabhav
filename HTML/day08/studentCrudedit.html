@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <h1>Student CRUD</h1>
+    <div id="dataForm">
+        <p>Roll No:</p>
+        <input type="number" name="rollNo" id="rollNo">
+
+        <p>Name:</p>
+        <input type="text" name="name" id="name">
+
+        <p>Age:</p>
+        <input type="number" id="age">
+
+        <p>Email:</p>
+        <input type="email" name="email" id="email">
+
+        <p>Date Of Birth:</p>
+        <input type="date" name="date" id="date">
+        <p>Gender:</p>
+        <input type="radio" id="male" name="gender" value="true">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="false">
+        <label for="female">Female</label>
+
+        <br><br>
+        <input type="button" id="add" value="Add">
+        <input type="button" id="display" value="Display">
+    </div>
+    <br><br>
+
+    <div id="productsSection">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        var studentUrl = "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/";
+        $(document).ready(function () {
+
+            $("#display").click(function () {
+                $.ajax({
+                    type: "GET", url: studentUrl, success: function (result) {
+                        $("#productsTable").remove();
+                        $("#total").remove();
+                        $("#productsSection").append("<p id='total'>Total Length:-" + result.length + "</p>");
+                        $("#productsSection").append("<table id='productsTable' border='1'><tr><th>Roll No</th><th>Name</th><th>Age</th><th>Email</th><th>Gender</th><th>DOB</th></tr></table>");
+                        for (var index = 0; index < result.length; index++) {
+                            let currentGender = "Female";
+                            if (result[index].isMale) {
+                                currentGender = "Male";
+                            }
+                            $("#productsTable").append("<tr id=" + result[index].id + "><td>" + result[index].rollNo + "</td><td>" + result[index].name + "</td><td>" + result[index].age + "</td><td>" + result[index].email + "</td><td>" + currentGender + "</td><td>" + result[index].date + "</td><td><input type='button' class='delete' value='Delete'></td><td><input type='button' class='edit' value='Edit'></td></tr>");
+                        }
+                        $(".delete").click(function () {
+                            currentId = this.parentElement.parentElement.id;
+                            $.ajax({
+                                type: "DELETE",
+                                url: studentUrl + currentId,
+                                success: function (result) {
+                                    alert("success");
+                                    $("#display").click();
+                                },
+                                error: function () {
+                                    alert('request failed');
+                                }
+                            });
+                        });
+                        $(".edit").click(function () {
+                            let currentId = this.parentElement.parentElement.id;
+                            $("#" + currentId).css("background-color", "yellow");
+                            $.ajax({
+                                type: "GET",
+                                url: studentUrl + currentId,
+                                success: function (result) {
+                                    $("#rollNo").val(parseInt(result[0].rollNo));
+                                    $("#name").val(result[0].name);
+                                    $("#age").val(result[0].age);
+                                    $("#email").val(result[0].email);
+                                    $("#date").val(result[0].date);
+                                    if (result[0].isMale == true) {
+                                        $("#male").prop("checked", true);
+                                    }
+                                    else {
+                                        $("#female").prop("checked", true);
+                                    }
+                                    $("#dataForm").append("<input type='button' id='save' value='Save'>")
+                                    $(":button").not("#save").prop('disabled', true);
+                                    $("#save").click(function () {
+                                        $.ajax({
+                                            type: "PUT",
+                                            url: studentUrl + currentId,
+                                            data: getFilledData(),
+                                            success: function (result) {
+                                                alert("put success");
+                                                $("#" + currentId).css("background-color", "");
+                                                $("#save").remove();
+                                                $(":button").prop('disabled', false);
+                                                $("#display").click();
+                                            }
+                                        });
+                                    });
+
+
+                                },
+                                error: function () {
+                                    alert('Request failed.Try reloading the page!!');
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+            $("#add").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: studentUrl,
+                    data: getFilledData(),
+                    dataType: 'json',
+                    success: function (result) {
+                        alert("add success");
+                    }
+                });
+            });
+            function getFilledData() {
+                return {
+                    "rollNo": $("#rollNo").val(),
+                    "name": $("#name").val(),
+                    "age": $("#age").val(),
+                    "email": $("#email").val(),
+                    "date": $("#date").val(),
+                    "isMale": $("input[name='gender']:checked").val()
+                };
+            }
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .contentInput {
+      text-align: center;
+      box-shadow: 0px 0px 5px 0px black;
+      background-color: cadetblue;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 20px;
+    }
+
+    label,
+    input {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 0px 20px;
+      margin: 32px 20px 20px 5px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contentInput">
+    <h2>Student Details</h2>
+    <label for="rollno">Rollno</label>
+    <input type="number" id="rollno" name="rollno" required /><br />
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required /><br />
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" required /><br />
+    <label for="email">Email</label>
+    <input type="email" id="rollno" name="email" required /><br />
+    <label for="dob">Date</label>
+    <input type="date" id="dob" name="dob" required /><br />
+    <label for="male">Male</label>
+    <input type="radio" id="male" value="male" name="gender" required />
+    <label for="female">Female</label>
+    <input type="radio" id="female" value="female" name="gender" required /><br />
+    <button id="add">Add</button>
+    <button id="display">Display</button>
+  </div>
+  <div class="contentShow">
+    <table style="background: ghostwhite; box-shadow: 0px 0px 5px 0px black">
+      <thead>
+        <th>Sr.</th>
+        <th>RollNo</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>DOB</th>
+        <th>Gender</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $("#add").click(function () {
+      var isMale = false;
+      if ($("input[name=gender]:checked").val() == "male") {
+        isMale = true;
+      }
+      var rollNo = $("input[name=rollno]").val();
+      var name = $("input[name=name]").val();
+      var age = $("input[name=age]").val();
+      var email = $("input[name=email]").val();
+      var date = $("input[name=dob]").val();
+      var isMale = isMale;
+      console.log(
+        rollNo +
+        " " +
+        name +
+        " " +
+        age +
+        " " +
+        email +
+        " " +
+        date +
+        " " +
+        isMale
+      );
+      console.log("pawan");
+      if (checkValues(rollNo, name, age, email, date, isMale)) {
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url:
+            "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+          data: {
+            rollNo: rollNo,
+            name: name,
+            age: age,
+            email: email,
+            date: date,
+            isMale: isMale,
+          },
+          success: function (data) {
+            alert("Data Added Successfully");
+            location.reload();
+          },
+          error: function (result) {
+            alert("error");
+          },
+        });
+      } else {
+        alert("Please enter proper values");
+      }
+    });
+
+    function checkValues(rollNo, name, age, email, date, isMale) {
+      if (
+        rollNo != "" &&
+        rollNo > 0 &&
+        name != "" &&
+        age != "" &&
+        age > 0 &&
+        email != "" &&
+        date != ""
+      ) {
+        return true;
+      }
+      return false;
+    }
+
+    $("#display").click(function () {
+      $("tbody").empty();
+      $.ajax({
+        type: "GET",
+        url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+        dataType: "JSON",
+        success: function (data) {
+          $.each(data, function (index, object) {
+            var row = "<tr><td>" + index + "</td>";
+            $.each(object, function (key, value) {
+              if (key != "id") {
+                row += "<td>" + value + "</td>";
+              }
+            });
+            row += "</tr>";
+            //$("tbody").html(row);
+            $("tbody").append(row);
+          });
+        },
+        error: function (data) {
+          alert("failed to get data");
+        },
+      });
+    });
+  </script>
+</body>
+
+</html>

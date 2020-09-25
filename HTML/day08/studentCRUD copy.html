@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Student CRUD</title>
+</head>
+<style>
+    table {
+        text-align: center;
+        margin-top: 50px;
+        width: 80%;
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+
+<body>
+    <h1>Student CRUD (jquery)</h1>
+    <form>
+        <label>rollno : </label>
+        <input type="text" id="rollno"><br>
+        <label>name : </label>
+        <input type="text" id="name"><br>
+        <label>age : </label>
+        <input type="text" id="age"><br>
+        <label>email : </label>
+        <input type="email" id="email"><br>
+        <label>date : </label>
+        <input type="date" id="date"><br>
+        <label>gender : </label>
+        <input type="radio" id="male" name="gender" value="true">male
+        <input type="radio" id="female" name="gender" value="false">female<br><br>
+        <button id="addBtn">add</button>
+        <button id="displayBtn">display</button>
+    </form>
+
+    <div id="tableArea"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function Student(rollno, name, age, email, date, isMale) {
+            this.rollNo = rollNo
+            this.name = name
+            this.age = age
+            this.email = email
+            this.date = date
+            this.isMale = isMale
+        }
+
+        $(document).ready(function () {
+            $('#addBtn').click(function () {
+                let rollno = $('#rollno').val();
+                let name = $('#name').val();
+                let age = $('#age').val();
+                let email = $('#email').val();
+                let date = $('#date').val();
+                let isMale = $("input[name='gender']:checked").val();
+                var student = new Student(rollno, name, age, email, date, isMale);
+                console.log(student);
+            })
+        })
+
+    </script>
+</body>
+
+</html>

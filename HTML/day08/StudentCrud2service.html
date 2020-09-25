@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function StudentDataService(){
+            var obj = {}
+            obj.get = function(){
+                return new Promise(function (resolve,reject){
+                    $.getJSON("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",function(data){
+                        resolve(data);
+                    }).fail(function(error){
+                        reject(error)
+                    })
+                })
+            }
+            obj.getById = function(id){
+                return new Promise(function (resolve,reject){
+                    $.getJSON("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+id,function(data){
+                        resolve(data);
+                    }).fail(function(error){
+                        reject(error)
+                    })
+                })
+            }
+            obj.add = function(student){
+                return new Promise(function (resolve,reject){
+                    $.post("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",student)
+                    .done(function(data){
+                        resolve(data)
+                        console.log("Data Added");
+                    }).fail(function(error){
+                        reject(error)
+                    })
+                })
+            }
+            obj.update = function(student){
+                return new Promise(function (resolve,reject){
+                    $.ajax({
+                        METHOD : "PUT",
+                        URL :"http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students"+student.id,
+                        contentType : "application/json",
+                        data : JSON.stringify(student)
+                    }).done(function(data){
+                        resolve(data)
+                    }).fail(function(error){
+                        reject(error);
+                    })
+                })
+            }
+            obj.delete = function(id){
+                return new Promise(function (resolve,reject){
+                    $.ajax({
+                        METHOD : "DELETE",
+                        URL : "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students"+id
+                    }).done(function(data){
+                        resolve(data)
+                    }).fail(function(error){
+                        reject(error)
+                    })
+                })
+            }
+            return obj;
+        }
+        function Student(rollNo, name, age, email, date, isMale) {
+                this.rollNo = rollNo
+                this.name = name
+                this.age = age
+                this.email = email
+                this.date = date
+                this.isMale = isMale
+        }
+        
+        var s1 = new Student(101,"vinit",21,"xyz@gmail.com","1992-01-01",true);
+        var studentData = StudentDataService();                        
+        
+        studentData.get().then(function(data){
+            console.log(data);
+        }).catch(function(error){
+            console.error(error);
+        })
+
+        studentData.add(s1).then(function(data){
+            console.log(data);
+        }).catch(function(error){
+            console.error(error);
+        })
+    </script>
+</body>
+</html>

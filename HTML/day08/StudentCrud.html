@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            text-align: center;
+            margin-top: 50px;
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student CRUD ( JQuery )</h1>
+    <div>
+        <p>Roll No. : <input id="rollNo" type="text"></p>
+        <p>Name : <input id="name" type="text"></p>
+        <p>Age : <input id="age" type="text"></p>
+        <p>Email : <input id="email" type="text"></p>
+        <label>Date : </label><input type="date" id="date">
+        <p>Gender : <input type="radio" id="male" name="gender" value="male"><label>Male</label>
+            <input type="radio" id="female" name="gender" value="female"><label>Female</label>
+        </p>
+    </div>
+    <div>
+        <button id="add">Add</button>
+        <button id="display">Display</button>
+    </div>
+    <div id="table">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function Student(rollNo, name, age, email, date, isMale) {
+                this.rollNo = rollNo
+                this.name = name
+                this.age = age
+                this.email = email
+                this.date = date
+                this.isMale = isMale
+            }
+            function getGender(isMale) {
+                if (isMale)
+                    return "Male"
+                else
+                    return "Female"
+            }
+            $("#display").click(function () {
+                $("#table").html("")
+                var textInput = ""
+                $.ajax({
+                    type: "GET",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                    success: function (students) {
+                        textInput += "<table> <br> <tr> <th>RollNo</th> <th>Name</th> <th>Age</th> <th>Email</th> <th>DOB</th> <th>Gender</th><th>Delete</th><th>edit</th></tr>"
+                        for (var i = 0; i < students.length; i++) {
+                            textInput += "<tr><td>" + students[i].rollNo + "</td><td>" + students[i].name + "</td><td>" + students[i].age + "</td>"
+                                + "<td>" + students[i].email + "</td><td>" + students[i].date + "</td><td>" + getGender(students[i].isMale) + "</td><td><Button id=" + students[i].id + ">delete</Button><Button id=" + students[i].id + "'edit'>edit</Button></td>"
+                        }
+                        textInput += "</table>"
+                        $("#table").html("<h2> Total students <span class='badge'>" + students.length + "</span> </h2>" + textInput)
+                        for (var i = 0; i < students.length; i++) {
+                            $("#" + students[i].id).on('click', function () {
+                                if (confirm("Confirm do you want to delete")) {
+                                    deleteStudent(this.id)
+                                }
+                            });
+                            $("#" + students[i].id + "edit").on('click', function () {
+                                editStudentData(this.id);
+                            });
+
+                        }
+                    }
+                });
+            });
+
+            $("#add").click(function () {
+                var rollNo = $("#rollNo").val();
+                var name = $("#name").val()
+                var age = $("#age").val()
+                var email = $("#email").val()
+                var date = $("#date").val()
+                console.log(date);
+                var gender = $("input[name='gender']:checked").val()
+                var isMale = false
+
+                if (gender == "male") {
+                    isMale = true
+                }
+
+                var student = new Student(rollNo, name, age, email, date, isMale)
+
+                if (rollNo != 0 && name != "" && age != 0 && email != "" && date != "")
+                    putData(student);
+                else
+                    alert('data imperfect');
+            })
+            function putData(studentData) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                    data: studentData,
+                    success: function (data) {
+                        alert("Data Added Successfully")
+                    },
+                })
+            }
+            function deleteStudent(id) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + id,
+                    success: function (data) {
+                        alert("Deleted Successfully")
+                    }
+                })
+            }
+
+            function editStudentData(id) {
+                $("#" + id).css("background-color", "red");
+                $.ajax({
+                    type: "GET",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + id,
+                    success: function (result) {
+                        $("#rollNo").val(parseInt(result.rollNo));
+                        $("#name").val(result.name);
+                        $("#age").val(result.age);
+                        $("#email").val(result.email);
+                        $("#date").val(result.date);
+                        if (result.isMale == true) {
+                            $("#male").prop("checked", true);
+                        }
+                        else {
+                            $("#female").prop("checked", true);
+                        }
+                        $("form").append("<input type='button' id='save' value='Save'>")
+                        $(":button").not("#save").prop('disabled', true);
+                        alert('true')
+                        $("#save").click(function () {
+                            $.ajax({
+                                type: "PUT",
+                                url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + id,
+                                data: getFilledData(),
+                                success: function (result) {
+                                    alert("put success");
+                                    $("#" + currentId).css("background-color", "");
+                                    $("#save").remove();
+                                    $(":button").prop('disabled', false);
+                                    $("#display").click();
+                                }
+                            });
+                        });
+
+
+                    },
+                    error: function () {
+                        alert('Request failed.Try reloading the page!!');
+                    }
+                });
+
+            }
+        });
+    </script>
+</body>
+
+</html>

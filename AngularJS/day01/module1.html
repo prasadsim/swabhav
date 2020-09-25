@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module1</title>
+</head>
+
+<body>
+    <script src="/angular.js"></script>
+    <script>
+        angular.module('modA', [])
+            .controller('controllerA', function () {
+                console.log('controllerA created')
+
+            })
+            .run(function ($rootScope) {
+                $rootScope.message = 'welcome to controller A'
+            });
+    </script>
+
+    <div ng-app='modA' ng-controller='controllerA'>
+        {{message}}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <title>Student CRUD</title>
+    <style>
+        table {
+            text-align: center;
+            margin-top: 50px;
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student CRUD</h1>
+    <form>
+        <label>rollno : </label>
+        <input type="text" id="rollno"><br>
+        <label>name : </label>
+        <input type="text" id="name"><br>
+        <label>age : </label>
+        <input type="text" id="age"><br>
+        <label>email : </label>
+        <input type="email" id="email"><br>
+        <label>date : </label>
+        <input type="date" id="date"><br>
+        <label>gender : </label>
+        <input type="radio" id="male" name="gender" value="true">male
+        <input type="radio" id="female" name="gender" value="false">female<br><br>
+        <button id="addBtn">add</button>
+        <button id="displayBtn">display</button>
+    </form>
+    <div id="tableArea"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let urlData = "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students";
+        $(document).ready(function () {
+            var students = [];
+            function Student(rollNo, name, age, email, date, isMale) {
+                this.rollNo = rollNo
+                this.name = name
+                this.age = age
+                this.email = email
+                this.date = date
+                this.isMale = isMale
+            }
+
+            function checkGender(isMale) {
+                if (isMale)
+                    return 'male';
+                else
+                    return 'female';
+            }
+
+            $('#addBtn').on('click', function () {
+                let rollNo = $('#rollno').val();
+                let name = $('#name').val();
+                let age = $('#age').val();
+                let email = $('#email').val();
+                let date = $('#date').val();
+                let gender = $("input[name='gender']:checked").val();
+                let isMale = false;
+                if (gender == 'male')
+                    isMale = true;
+
+                var student = new Student(rollNo, name, age, email, date, isMale);
+
+                if (rollNo != 0 && name != "" && age != 0 && email != "" && date != "") {
+                    insertStudentData(student);
+                }
+                else {
+                    alert("invalid data entered");
+                    return;
+                }
+                console.log(student);
+            });
+
+            function insertStudentData(student) {
+                $.ajax({
+                    type: "POST",
+                    url: urlData,
+                    data: students,
+                    success: function (data) {
+                        alert('Data added successfully');
+                    },
+                    error: function () {
+                        alert('some error has occured');
+                    }
+                })
+            }
+
+
+            $('#displayBtn').click(function () {
+                $('#tableArea').empty();
+                var tableData = '';
+                $.ajax({
+                    type: "GET",
+                    data:students,
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                    success: function (students) {
+                        tableData += "<table> <br> <tr> <th>Id</th> <th>RollNo</th> <th>Name</th> <th>Age</th> <th>Email</th> <th>DOB</th> <th>Gender</th> <th>Edit</th><th>Delete</th></tr>";
+                        for (var i = 0; i < students.length; i++) {
+                            textInput += "<tr id    =" + students[i].id + "><td>" + students[i].id + "</td><td>" + students[i].rollNo + "</td><td>" + students[i].name + "</td><td>" + students[i].age + "</td>" + "<td>" + students[i].email + "</td><td>" + students[i].date + "</td><td>" + checkGender(students[i].isMale) + "</td>" + "<td> <button id=update" + students[i].id + ">Edit</button></td>" + "<td><Button id=delete" + students[i].id + ">X</Button></td></tr>"
+                        }
+                        tableData += "</table>"
+                        console.log('h')
+                    }
+                })
+                $('#tableArea').html(tableData);
+            });
+
+        });
+
+    </script>
+</body>
+
+
+</html>
