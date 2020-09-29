@@ -1,0 +1,1 @@
+SELECT * FROM emp WHERE job=(SELECT job FROM emp WHERE ename='smith');

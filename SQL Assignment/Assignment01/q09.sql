@@ -1,0 +1,1 @@
+SELECT hiredate, DATEDIFF(CURDATE(),hiredate) AS tenure FROM emp

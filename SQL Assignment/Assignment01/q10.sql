@@ -1,0 +1,1 @@
+SELECT distinct deptno FROM emp 

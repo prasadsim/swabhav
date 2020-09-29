@@ -1,0 +1,1 @@
+SELECT ename, 12*(sal+ifnull(comm,0)) AS “annual_sal” FROM emp ORDER BY ename ASC;
