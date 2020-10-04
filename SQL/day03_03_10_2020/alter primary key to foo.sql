@@ -1,0 +1,1 @@
+ALTER TABLE foo ADD PRIMARY KEY (description);
