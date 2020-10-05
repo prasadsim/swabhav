@@ -35,6 +35,8 @@ public class FileInputWithSqlQuery {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			conn.close();
 		}
 
 	}

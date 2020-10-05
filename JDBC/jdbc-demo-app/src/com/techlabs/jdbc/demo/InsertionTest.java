@@ -26,6 +26,7 @@ public class InsertionTest {
 		} finally {
 			if (rs != null) {
 				rs.close();
+				conn.close();
 			}
 		}
 	}

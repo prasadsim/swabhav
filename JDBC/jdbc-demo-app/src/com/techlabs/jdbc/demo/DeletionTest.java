@@ -33,6 +33,7 @@ public class DeletionTest {
 		} finally {
 			if (rs != null) {
 				rs.close();
+				conn.close();
 			}
 		}
 	}

@@ -7,7 +7,7 @@ public class CRUDOperation {
 	static Statement stmt = null;
 	static ResultSet rs = null;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/swabhav?user=root&password=root");
 			System.out.println("successfull connection");
@@ -18,6 +18,8 @@ public class CRUDOperation {
 			deleteQuery("delete from intern where name=\"mutuz\";");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			conn.close();
 		}
 	}
 

@@ -33,6 +33,7 @@ public class UpdationTest {
 		} finally {
 			if (rs != null) {
 				rs.close();
+				conn.close();
 			}
 		}
 	}
