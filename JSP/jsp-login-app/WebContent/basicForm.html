@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<form name="myForm" method="GET" onsubmit="validateForm()">
+		UserName:<input type="text" name="username"><br>
+		Password:<input type="password" name="password"><br> <input
+			type="submit" value="Submit" onclick="validateForm()">
+	</form>
+</body>
+<script>
+	function validateForm() {
+		var name = document.getElementByName("username").value;
+		var password = document.getElementByName("password").value;
+		if (name == "") {
+			alert("Name can't be blank");
+		} else if (password == "") {
+			alert("Password can't be blank");
+		}
+	}
+</script>
+</html>
+

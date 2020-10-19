@@ -1,0 +1,29 @@
+<html>
+<body>
+	<script>
+		function validateform() {
+			var username = document.myform.username.value;
+			var password = document.myform.password.value;
+
+			if (username == "") {
+				document.getElementById("errorMsgUserName").style.display = "block";
+				document.getElementById("errorMsgUserName").style.color = "red";
+				return false;
+			} else if (password == "") {
+				document.getElementById("errorMsgPassword").style.display = "block";
+				document.getElementById("errorMsgPassword").style.color = "red";
+				return false;
+			}
+		}
+	</script>
+<body>
+	<form name="myform" method="post" action="auth.jsp"
+		onsubmit="return validateform()">
+		UserName: <input type="text" name="username"><label
+			style="display: none;" id="errorMsgUserName">Enter UserName</label><br />
+		Password: <input type="password" name="password"><label
+			style="display: none;" id="errorMsgPassword">Enter Password</label><br />
+		<input type="submit" value="submit">
+	</form>
+</body>
+</html>
