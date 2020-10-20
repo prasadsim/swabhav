@@ -6,19 +6,17 @@
 <body>
 	<%
 		int value;
-		if (session.getAttribute("counter") == null) {
+		if (application.getAttribute("counter") == null) {
 			value = 0;
 		} else {
-			value = (int) session.getAttribute("counter");
+			value = (int) application.getAttribute("counter");
 		}
 		int oldValue = value;
 		value++;
-		session.setAttribute("counter", value);
+		application.setAttribute("counter", value);
 		out.print("Old: " + oldValue);
 		out.print("<br>New: " + value);
-		out.print("<br>Session Id : "+session.getId());
-	%>
-	<br>
+	%><br>
 	<a href="Summary.jsp">Summary</a>
 </body>
 </html>
