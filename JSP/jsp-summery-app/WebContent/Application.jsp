@@ -5,18 +5,18 @@
 </head>
 <body>
 	<%
-		int value;
+		int oldValue, newValue;
 		if (application.getAttribute("counter") == null) {
-			value = 0;
+			oldValue = 0;
 		} else {
-			value = (int) application.getAttribute("counter");
+			oldValue = (int) application.getAttribute("counter");
 		}
-		int oldValue = value;
-		value++;
-		application.setAttribute("counter", value);
+		newValue = oldValue + 1;
+		application.setAttribute("counter", newValue);
 		out.print("Old: " + oldValue);
-		out.print("<br>New: " + value);
-	%><br>
+		out.print("<br>New: " + newValue);
+	%>
+	<br>
 	<a href="Summary.jsp">Summary</a>
 </body>
 </html>

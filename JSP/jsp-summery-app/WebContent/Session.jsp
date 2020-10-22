@@ -5,18 +5,17 @@
 </head>
 <body>
 	<%
-		int value;
+		int oldValue, newValue;
 		if (session.getAttribute("counter") == null) {
-			value = 0;
+			oldValue = 0;
 		} else {
-			value = (int) session.getAttribute("counter");
+			oldValue = (int) session.getAttribute("counter");
 		}
-		int oldValue = value;
-		value++;
-		session.setAttribute("counter", value);
+		newValue = oldValue + 1;
+		session.setAttribute("counter", newValue);
 		out.print("Old: " + oldValue);
-		out.print("<br>New: " + value);
-		out.print("<br>Session Id : "+session.getId());
+		out.print("<br>New: " + newValue);
+		out.print("<br>Session Id : " + session.getId());
 	%>
 	<br>
 	<a href="Summary.jsp">Summary</a>
