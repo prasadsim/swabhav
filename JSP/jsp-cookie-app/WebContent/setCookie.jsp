@@ -10,24 +10,13 @@
 	<h2>Cookie Created</h2>
 	<br />
 	<%
-		Cookie cookie = new Cookie("Name", "Prasad");
-		cookie.setMaxAge(60 * 60);
-		response.addCookie(cookie);
-
-		Cookie[] getCookie = request.getCookies();
-
-		if (getCookie == null) {
-			out.print("no Cookie found");
-	%><body style='background-color: red;'>
-	<%
-		} else {
-			out.print("Cookie found");
-	%>
-	<body style='background-color: green;'>
-	<%
-		}
-	%>
+		Cookie color = new Cookie("color", "green");
+		color.setMaxAge(60 * 60);
+		response.addCookie(color);
+	%><a href="getCookie.jsp">view</a>
 
 
 </body>
+
+
 </html>
