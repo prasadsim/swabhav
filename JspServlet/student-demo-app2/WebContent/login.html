@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>login</title>
+</head>
+<body>
+	<form name="myform" method="post" action="authController"
+		onsubmit="return validateform()">
+		UserName: <input type="text" name="username"><label
+			style="display: none;" id="errorMsgUserName">*</label><br />
+		Password: <input type="password" name="password"><label
+			style="display: none;" id="errorMsgPassword">*</label><br />
+		<input type="submit" value="login">
+	</form>
+</body>
+<script>
+	function validateform() {
+		var username = document.myform.username.value;
+		var password = document.myform.password.value;
+
+		if (username == "") {
+			document.getElementById("errorMsgUserName").style.display = "block";
+			document.getElementById("errorMsgUserName").style.color = "red";
+			return false;
+		} else if (password == "") {
+			document.getElementById("errorMsgPassword").style.display = "block";
+			document.getElementById("errorMsgPassword").style.color = "red";
+			return false;
+		}
+	}
+</script>
+</html>
