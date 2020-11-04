@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <script src="/angular-js.js"></script>
+    <script>
+        angular.module('modA', []).controller('controllerA', function ($scope) {
+            $scope.load = function () {
+                $scope.student = [{
+                    id: 101,
+                    name: 'prasad',
+                    img: 'student1.jpg'
+                }, {
+                    id: 102,
+                    name: 'janvhi',
+                    img: 'student2.jpg'
+                }]
+            }
+        })
+    </script>
+</head>
+
+<body ng-app='modA'>
+    <div ng-controller='controllerA'>
+        <button type="button" ng-click='load()'>Load</button><br>
+        <div ng-repeat='student in student'>
+            {{student.id}}
+            {{student.name}}
+            <img height="200px" width="150px" ng-src="{{student.img}}">
+        </div>
+    </div>
+</body>
+
+</html>

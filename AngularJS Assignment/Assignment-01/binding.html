@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script src="/angular-js.js"></script>
+   <script>
+       angular.module('binding',[]).controller('oneWayBindingController',function($scope){
+           $scope.student={
+               roll:101,
+               name:'prasad',
+               cgpa:8.45
+           }
+       })
+       .controller('twoWayBindingController',function($scope){
+           $scope.student={
+               roll:101,
+               name:'prasad',
+               cgpa:8.45
+           }
+       })
+   </script>
+</head>
+<body ng-app='binding'>
+    <div ng-controller='oneWayBindingController'>
+        <h1>One way binding</h1>
+        <p>{{student.roll}}</p>
+        <p>{{student.name}}</p>
+        <p>{{student.cgpa}}</p>
+    </div>
+    <div ng-controller='twoWayBindingController'>
+        <h1>two way binding</h1>
+        roll <input ng-model='student.roll'>
+        name <input ng-model='student.name'>
+        cgpa <input ng-model='student.cgpa'>
+        <p>{{student.roll}}</p>
+        <p>{{student.name}}</p>
+        <p>{{student.cgpa}}</p>
+    </div>
+</body>
+</html>

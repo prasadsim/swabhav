@@ -47,4 +47,14 @@ public class EmployeeService {
 			}
 		}
 	}
+
+	public List<Employee> getSearchedEmployee(String searchName) {
+		List<Employee> searchedEmployees = new ArrayList<Employee>();
+		for (Employee emp : employees) {
+			if (searchName.equalsIgnoreCase(emp.getName())) {
+				searchedEmployees.add(emp);
+			}
+		}
+		return searchedEmployees;
+	}
 }

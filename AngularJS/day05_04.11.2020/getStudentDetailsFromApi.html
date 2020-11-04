@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <title>Student Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #d7e4db;
+            background-color: rgb(151, 213, 255);
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            background-color: white;
+        }
+    </style>
+    <script src="/angular.js"></script>
+    <script>
+        angular.module('myMod', [])
+            .controller('myCtrl', function ($scope, $http) {
+                $scope.students = [];
+                $scope.getDetails = function () {
+                    document.getElementById('tableArea').style.display = 'block';
+                    document.getElementById('buttonArea').style.display = 'none';
+                    document.getElementById('inputArea').style.display = 'none';
+                    $http.get('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students')
+                        .then(function (response) {
+                            $scope.students = [];
+                            for (var i = 0; i < response.data.length; i++) {
+                                $scope.students.push(response.data[i]);
+                            }
+                        })
+                }
+                $scope.getGender = function (student) {
+                    if (student.isMale) {
+                        return "Male";
+                    } else {
+                        return "Female";
+                    }
+                }
+                $scope.getPostForm = function () {
+                    document.getElementById('inputArea').style.display = 'block';
+                    document.getElementById('buttonArea').style.display = 'none';
+                    document.getElementById('tableArea').style.display = 'none';
+                }
+                $scope.student = {};
+                $scope.postDetails = function () {
+                    $scope.student.rollno = $scope.rollno;
+                    $scope.student.name = $scope.name;
+                    $scope.student.age = $scope.age;
+                    $scope.student.email = $scope.email;
+                    $scope.student.date = $scope.dob;
+                    $scope.student.isMale = $scope.gender;
+                    $http({
+                        method: "POST",
+                        url: 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students',
+                        data: $scope.student,
+                        success: function () {
+                            alert('Data Added Successfully!!!');
+                        }
+                    })
+                    $scope.showMainArea();
+                }
+                $scope.showMainArea = function () {
+                    document.getElementById('buttonArea').style.display = 'block';
+                    document.getElementById('inputArea').style.display = 'none';
+                    document.getElementById('tableArea').style.display = 'none';
+                }
+            })
+
+    </script>
+</head>
+
+<body ng-app='myMod' ng-controller='myCtrl'>
+    <h1>Student Details</h1>
+    <div id="buttonArea">
+        <button ng-click='getDetails()'>GET</button>
+        <button ng-click='getPostForm()'>POST</button>
+    </div>
+
+    <div id="inputArea" style="display: none;">
+        <form>
+            Roll No <input type="number" ng-model='rollno'> <br><br>
+            Name <input type="text" ng-model='name'> <br><br>
+            Age <input type="number" ng-model='age'> <br><br>
+            Email <input type="email" ng-model='email'> <br><br>
+            DOB <input type="date" ng-model='dob'> <br><br>
+            Gender <input type="radio" ng-model='gender' value="true"> Male
+            <input type="radio" ng-model='gender' value="false"> Female <br><br>
+            <input type="submit" value="sumbit" ng-click="postDetails()">
+        </form>
+    </div>
+
+    <div id="tableArea" style="display: none;">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>RollNo</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Male</th>
+            </tr>
+            <tr ng-repeat="student in students">
+                <td>{{student.id}}</td>
+                <td>{{student.rollNo}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.date}}</td>
+                <td>{{getGender(student)}}</td>
+            </tr>
+        </table>
+        <button ng-click='getPostForm()'>add</button>
+    </div>
+</body>
+
+</html>

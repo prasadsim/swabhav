@@ -13,10 +13,16 @@
 	<h1>Employee Details</h1>
 	<%
 		if (session.getAttribute("username") == null) {
-		response.sendRedirect("login.html");
-	}
-	List<Employee> employees = (List<Employee>) request.getAttribute("employees");
+			response.sendRedirect("login.html");
+		}
+		List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 	%>
+	<div>
+		<form action="SearchController" method="get">
+			<input type="text" name="searchText" id="searchText"> <input
+				type="submit" value="search">
+		</form>
+	</div>
 	<table border="1" style="width: 50%" height="50%">
 		<thead>
 			<tr>

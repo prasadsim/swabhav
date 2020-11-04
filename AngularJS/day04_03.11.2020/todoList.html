@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>TO-DO List</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body ng-app='main' ng-controller='ctrl'>
+
+    <h1>TO-DO List</h1>
+    <div id="textarea">
+        <input placeholder="Enter your TODO ..." type="text" id="textbox">
+        <button ng-click="addBtnClicked()" id="addbtn" class="btn"><span> + </span></button>
+    </div><br>
+
+    <div id="notcompleted" class="heading">
+        <p>Not Completed Task<span id="nc-count"></span></p>
+        <ul id="n-c-ul"></ul>
+    </div><br>
+
+    <div id="completed" class="heading">
+        <p>Completed Task <span id="c-count"></span></p>
+        <ul id="c-ul"></ul>
+    </div>
+
+</body>
+
+<script src="/angular.js"></script>
+<script>
+    angular.module('main', [])
+        .controller('ctrl', function ($scope) {
+            $scope.c_count = 0;
+            $scope.nc_count = 0;
+            $scope.addBtnClicked = function () {
+                $scope.text = document.getElementById('textbox').value;
+                console.log($scope.text);
+                if ($scope.text.trim() == "") {
+                    alert("Enter Something!!!");
+                    document.getElementById("textbox").value = "";
+                    return;
+                }
+                document.getElementById("textbox").value = "";
+                var checkBox = document.createElement("input");
+                checkBox.type = "checkbox";
+                checkBox.style.marginRight = '15px';
+
+                var li = document.createElement("li");
+                li.className = "Li";
+                li.append(checkBox);
+                li.append($scope.text);
+
+                var deletebtn = document.createElement("button");
+                deletebtn.id = "closebtn";
+                deletebtn.className = "btn";
+                deletebtn.textContent = "x";
+                deletebtn.style.marginLeft = '100'
+                deletebtn.style.alignContent = 'right';
+                deletebtn.addEventListener("click", $scope.deleteList, false);
+                li.append(deletebtn);
+                document.getElementById("n-c-ul").appendChild(li);
+                $scope.nc_count++;
+                $scope.updateCount();
+                checkBox.addEventListener("click", $scope.changeTask, false);
+            }
+
+            $scope.changeTask = function () {
+                var removed = this.parentElement;
+                this.parentElement.remove();
+                if (this.checked == false) {
+                    $scope.nc_count++;
+                    $scope.c_count--;
+                    document.querySelector("#n-c-ul").appendChild(removed);
+                    $scope.updateCount();
+                } else {
+                    $scope.nc_count--;
+                    $scope.c_count++;
+                    document.querySelector("#c-ul").appendChild(removed);
+                    $scope.updateCount();
+                }
+            }
+
+            $scope.deleteList = function () {
+                var choice = confirm("Delete this list : " + this.parentElement.textContent);
+                if (choice == 0) {
+                    return;
+                }
+                if (this.parentElement.parentElement.id == "n-c-ul") {
+                    $scope.nc_count--;
+                } else if (this.parentElement.parentElement.id == "c-ul") {
+                    $scope.c_count--;
+                }
+                $scope.updateCount();
+                this.parentElement.remove();
+            }
+
+            $scope.updateCount = function () {
+                document.getElementById("c-count").textContent = " : " + $scope.c_count;
+                document.getElementById("nc-count").textContent = " : " + $scope.nc_count;
+            }
+        })
+</script>
+
+</html>

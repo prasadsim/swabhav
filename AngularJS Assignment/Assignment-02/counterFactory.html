@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Counter Factory</title>
+    <script src="/angular-js.js"></script>
+    <script src="counterFactory.js"></script>
+</head>
+
+<body ng-app='myMod'>
+    <div ng-controller='incrementController'>
+        <button ng-click=increment()>increment</button>
+    </div>
+    <div ng-controller='decrementController'>
+        <button ng-click=decrement()>decrement</button>
+    </div>
+    <p>{{counterResult}}</p>
+</body>
+
+</html>

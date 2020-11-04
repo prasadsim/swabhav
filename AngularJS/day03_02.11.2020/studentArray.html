@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="/angular.js"></script>
+    <script>
+        angular.module('modA', [])
+            .filter('grade', function () {
+                return function (grade) {
+                    if (grade >= 9) {
+                        return 'A'
+                    } else if (grade >= 8) {
+                        return 'B'
+                    } else {
+                        return 'C'
+                    }
+                }
+            })
+            .controller('controllerA', function ($scope) {
+                $scope.load = function () {
+                    $scope.student = [{
+                        id: 101,
+                        name: 'prasad',
+                        cgpa: 8.4
+                    }, {
+                        id: 102,
+                        name: 'ash',
+                        cgpa: 9.4
+                    }]
+                }
+            })
+    </script>
+</head>
+
+<body ng-app='modA'>
+    <div ng-controller='controllerA'>
+        <button type="button" ng-click='load()'>load</button>
+        <div ng-repeat='student in student'>
+            {{student.id}} <br>
+            {{student.name}} <br>
+            {{student.cgpa|grade}} <br>
+        </div>
+    </div>
+</body>
+
+</html>

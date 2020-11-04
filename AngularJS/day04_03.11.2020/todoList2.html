@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <title>TO-DO List</title>
+    <style>
+        
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,th{
+            border:1px solid #d7e4db;
+            background-color: greenyellow;
+            text-align: center;
+            padding: 10px;
+        }
+        td{
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body ng-app="main" ng-controller="ctrl">
+    <h1>TO-DO List</h1>
+    <form ng-submit="add()">
+        <input type="text" ng-model="todoString" size="80" placeholder="Enter Todo task...">
+        <input type="submit" value="+">
+    </form>
+    <div>
+        <table>
+            <tr>
+                <th>Done</th>
+                <th>Task</th>
+                <th>Date</th>
+                <th>Remove</th>
+            </tr>
+            <tr ng-repeat="task in todoList">
+                <td><input type="checkbox" ng-change="change(task)" ng-model="task.checked" ></td>
+                <td ng-style="task.stroke">{{task.task}}</td>
+                <td>{{task.date|date:'dd/MM/yyyy   hh:mm:ss'}}</td>
+                <td><button ng-click="delete(task)">Remove</button></td>
+            </tr>
+        </table>
+        <span ng-bind="task"></span>
+    </div>
+
+    <script src="/angular.js"></script>
+
+    <script>
+        angular.module("main", []).controller("ctrl", function ($scope) {
+
+            if(typeof(Storage)!=='undefined'){
+                var tasks=localStorage.getItem("tasks");
+                if(tasks!==null){
+                    $scope.todoList=JSON.parse(tasks);
+                }else{
+                    $scope.todoList = [];
+                }
+            }
+
+            $scope.updateStorage=function(){
+                localStorage.setItem("tasks",JSON.stringify($scope.todoList));
+            }         
+
+            $scope.change=function(x){
+                for(var i=0;i<$scope.todoList.length;i++){
+                    if($scope.todoList[i]==x){
+                        if(x.checked){
+                            $scope.todoList[i].date=new Date();
+                            $scope.todoList[i].checked=true;
+                            $scope.todoList[i].stroke={
+                                'text-decoration-line':'line-through'
+                            }
+                            $scope.updateStorage();
+                        }else{
+                            $scope.todoList[i].date='';
+                            $scope.todoList[i].checked=false;
+                            $scope.todoList[i].stroke={
+                                'text-decoration-line':'none'
+                            }
+                        }
+                    }
+                }
+            }
+
+            $scope.add = function () {
+                if ($scope.todoString.trim() == "") {
+                    alert("enter something!!")
+                    return;
+                }
+                $scope.todoList.push({task:$scope.todoString, checked:false, date:'', stroke:''});
+                $scope.updateStorage();
+                $scope.todoString = "";
+            };
+
+            $scope.delete = function (task) {
+                var choice=confirm('Delete this Task '+task.task+' ?');
+                if(choice==0){
+                    return;
+                }
+                for (var i = 0; i < $scope.todoList.length; i++) {
+                    if (task == $scope.todoList[i]) {
+                        $scope.todoList.splice(i, 1);
+                        $scope.updateStorage();
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

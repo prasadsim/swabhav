@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>factory example</title>
+    <script src="/angular-js.js"></script>
+    <script>
+        angular.module('myMod', [])
+            .factory('myFactory', function () {
+                var factory = {};
+                factory.subtract = function (a, b) {
+                    return a - b;
+                }
+                factory.add = function (a, b) {
+                    return a + b;
+                }
+                factory.mul = function (a, b) {
+                    return a * b;
+                }
+                factory.div = function (a, b) {
+                    return a / b;
+                }
+                return factory;
+            })
+            .controller('myCtrl', function ($scope, myFactory) {
+                $scope.add = function () {
+                    $scope.result = myFactory.add($scope.num1, $scope.num2);
+                }
+                $scope.sub = function () {
+                    $scope.result = myFactory.subtract($scope.num1, $scope.num2);
+                }
+                $scope.mul = function () {
+                    $scope.result = myFactory.mul($scope.num1, $scope.num2);
+                }
+                $scope.div = function () {
+                    $scope.result = myFactory.div($scope.num1, $scope.num2);
+                }
+            })
+
+    </script>
+</head>
+
+<body ng-app='myMod' ng-controller='myCtrl'>
+    <h1>Factory Example</h1>
+    Enter 1st Number <input type="number" ng-model='num1'> <br>
+    Enter 2st Number <input type="number" ng-model='num2'> <br>
+    <button ng-click='add()'>add</button>
+    <button ng-click='sub()'>subtract</button>
+    <button ng-click='mul()'>multiple</button>
+    <button ng-click='div()'>divide</button>
+    <h2>{{result}}</h2>
+</body>
+
+</html>

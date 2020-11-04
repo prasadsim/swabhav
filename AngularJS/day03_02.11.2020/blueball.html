@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <title>BlueBall Game</title>
+    <style>
+        .greyBall {
+            height: 20px;
+            width: 20px;
+            color: grey;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/angular.js"></script>
+    <script>
+        angular.module('myMod', []).controller('myController', function ($scope) {
+            var totalAttempt = 5;
+            var totalBalls = 50;
+            var randomNo = Math.floor((Math.random() * totalBalls) + 1);
+            $scope.start = function () {
+                angular.element(document.getElementById('startBtn').style.display = 'none');
+                var ballArea = angular.element(document.getElementById('ballArea'));
+                console.log(randomNo);
+                for (var i = 1; i <= totalBalls; i++) {
+                    var ball = angular.element(document.createElement("button"));
+                    ball.id = i;
+                    ball.innerHTML = ""+ball.id;
+                    ballArea.append(ball);
+                    console.log(ball.id + ' ball');
+                    // var ball = angular.element(document.createElement("button"))
+                    // // ball.textContent='hello';
+                    // ball.attr('id',i);
+                    // ball.attr('class','greyBall');
+                    // // $("#"+i).attr('value', i);
+                    // $('#'+i).text(i);
+                    // // button.attr('innerHTML',i);
+                    // ball.attr('value',i);
+
+                    // angular.element(document.getElementById('ballArea')).append(ball);
+                    // angular.element(document.getElementById('startBtn')).remove();
+                    // $('#'+i).click($scope.check);
+
+
+                    // button.textContent = i;
+                    // button.id = i;
+                    // button.value = i;
+                    // if (i % 10 == 0) {
+                    //     ballArea.append(angular.element(document.createElement("br")));
+                    // }
+                    // button.onclick = function () {
+                    //     $scope.checkAttempt();
+                    //     if (this.value == randomNo) {
+                    //         this.setAttribute("class", "bluebtn balls");
+                    //         setTimeout(function () { alert("You Win"); }, 1000);
+                    //     } else if (this.value < randomNo) {
+                    //         this.setAttribute("class", "redbtn balls");
+                    //     } else if (this.value > randomNo) {
+                    //         this.setAttribute("class", "greenbtn balls");
+                    //     }
+                    // }
+                    // ballArea.append(button);
+                }
+            }
+
+            $scope.check = function () {
+                console.log($(this).attr("id") + "analysing" + randomNo);
+            }
+            $scope.checkAttempt = function () {
+                if (totalAttempt == 0) {
+                    setTimeout(() => {
+                        alert("You Won!!!")
+                    }, 1000);
+                    location.reload();
+                    return;
+                }
+                totalAttempt--;
+                angular.element(document.getElementById("remainingAttemp")).textContent = "Remaining Attempts : " + totalattempt;
+            }
+        })
+    </script>
+</head>
+
+<body ng-app='myMod'>
+    <div ng-controller='myController'>
+        <h2 id="remainingAttemp"></h2>
+        <div id="ballArea">
+
+        </div>
+        <button ng-click='start()' id="startBtn">START</button>
+    </div>
+</body>
+
+</html>

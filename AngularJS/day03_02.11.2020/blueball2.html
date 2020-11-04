@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <title>Blueball Game</title>
+    <style>
+        .ball {
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body ng-app='myMod' ng-controller='myCtrl'>
+    <div id="ruleset" style="display: block;">
+        <h1>
+            Blueball Game <br>
+        </h1>
+        <h2>Game Rules</h2>
+        <p>1. There will be Total 50 Grey Balls.
+            <br>2. You have to select any random ball. <br>3. If the ball color turns to <span
+                style="color: blue;">BLUE</span> you win with first
+            selection. <br>4. If the ball color turn to <span style="color: red;">RED</span> then the <span
+                style="color: blue;">BLUE</span> ball will be at the right or bottom. <br>5. If
+            the ball color turn to <span style="color: green;">GREEN</span> then the <span
+                style="color: blue;">BLUE</span> ball will be at the left or above. <br>6. Player will get 5
+            attempts to solve the game.
+        </p>
+        <button ng-click='start()'>Start</button>
+    </div>
+    <div id="gameArea" style="display: none;">
+        <h1>
+            Blueball Game <br>
+        </h1>
+        <h3>Remaining Attempts:{{remainingAttempt}}</h3>
+        <h2>{{result}}</h2>
+        <button class='ball' ng-repeat='ball in buttons' ng-click='analyze(ball)' id="{{ball}}">{{ball}}</button>
+        <button ng-click="restart()" id="restartBtn" style="display: none;">{{option}}</button>
+    </div>
+
+</body>
+<script src="/angular.js"></script>
+<script>
+    angular.module('myMod', [])
+        .controller('myCtrl', function ($scope) {
+            $scope.start = function () {
+                document.getElementById('restartBtn').style.display = "none";
+                document.getElementById('ruleset').style.display = "none";
+                document.getElementById('gameArea').style.display = "block";
+                $scope.randomNo = Math.floor(Math.random() * 50) + 1;
+                console.log($scope.randomNo);
+                $scope.remainingAttempt = 5;
+                $scope.tried = [];
+                $scope.buttons = [];
+                $scope.option = "";
+                $scope.result = "";
+                $scope.setButtons();
+            }
+
+            $scope.restart=function(){
+                location.reload();
+            }
+
+            $scope.setButtons = function () {
+                for (var i = 1; i <= 50; i++) {
+                    $scope.buttons.push(i);
+                }
+            }
+
+            $scope.end = function (msg) {
+                document.getElementById('restartBtn').style.display = "block";
+                $scope.result = msg;
+                $scope.buttons = [];
+                $scope.option = 'play again';
+            }
+
+            $scope.isTried = function (x) {
+                for (i of $scope.tried) {
+                    if (i == x) {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            $scope.analyze = function (x) {
+                if (!$scope.isTried(x)) {
+                    $scope.tried.push(x);
+                    $scope.remainingAttempt--;
+                }
+
+                if ($scope.remainingAttempt == 0) {
+                    document.getElementById($scope.randomNo).style.backgroundColor = 'blue';
+                    setTimeout(() => {
+                        $scope.end('you lose the Game');
+                    }, 1000);
+                    return;
+                }
+
+                if (x < $scope.randomNo) {
+                    document.getElementById(x).style.backgroundColor = 'red';
+                } else if (x > $scope.randomNo) {
+                    document.getElementById(x).style.backgroundColor = 'green';
+                } else {
+                    document.getElementById(x).style.backgroundColor = 'blue';
+                    setTimeout(() => {
+                        $scope.end('Congratulation you won this Game!!!');
+                    }, 500);
+                }
+            }
+        }
+        );
+
+
+</script>
+
+</html>

@@ -1,0 +1,18 @@
+<html>
+
+<body ng-app="loop">
+    <div ng-controller="loopController">
+        <h1 ng-repeat='number in intArray'>{{number}}</h1>
+        <h1 ng-repeat='string in stringArray'>{{string}}</h1>
+    </div>
+
+</body>
+<script src="/angular-js.js"></script>
+<script>
+    angular.module('loop', []).controller('loopController', function ($scope) {
+        $scope.intArray = [1, 2, 3, 4, 5];
+        $scope.stringArray=["ash","prasad",'vinit','pawan','jay']
+    });
+</script>
+
+</html>
