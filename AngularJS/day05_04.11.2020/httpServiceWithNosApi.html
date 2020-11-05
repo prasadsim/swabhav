@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NOS API</title>
+</head>
+<script src="angular.js"></script>
+<script>
+    angular.module('myMod', [])
+        .controller('myCtrl', function ($scope, $http) {
+            if (typeof (Storage) !== 'undefined') {
+                var fact =  JSON.parse(localStorage.getItem('facts'));
+                if (fact != null) {
+                    $scope.results = fact;
+                } else {
+                    $scope.results = '';
+                }
+            }
+            $scope.results=[];
+            $scope.getResult = function () {
+                $http.get("http://numbersapi.com/" + $scope.input)
+                    .then(function (response) {
+                        $scope.results.push(response.data);
+                        localStorage.setItem('facts', JSON.stringify($scope.results));
+                        $scope.results = JSON.parse(localStorage.getItem('facts'));
+                    });
+            }
+
+        })
+</script>
+
+<body ng-app='myMod' ng-controller='myCtrl'>
+    Enter no :- <input type="number" ng-model="input">
+    <button ng-click="getResult()">submit</button>
+    <h1 ng-repeat="fact in results">{{fact}}</h1>
+
+</body>
+
+</html>

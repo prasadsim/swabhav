@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>SPA without ROUTE</title>
+    <script src="/angular.js"></script>
+    <script src="spaWithoutRoute.js"></script>
+</head>
+
+<body ng-app='myMod' ng-controller='myCtrl'>
+    <h1>SPA without ROUTE</h1>
+    <nav>
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#career">career</a>
+    </nav>
+    <div ng-hide='homeVar' id="home">
+        <h1>Home Page</h1>
+    </div>
+    <div ng-hide='aboutVar' id="about">
+        <h1>About Page</h1>
+    </div>
+    <div ng-hide='careerVar' id="career">
+        <h1>Career Page</h1>
+    </div>
+</body>
+
+</html>
