@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+		<interceptors>
+			<interceptor name="myInterceptor"
+				class="com.techlabs.action.MyInterceptor"></interceptor>
+		</interceptors>
+		<action name="login" class="com.techlabs.action.LoginAction">
+			<result name="input">loginForm.jsp</result>
+			<result name="success">welcomeLogin.jsp</result>
+		</action>
+		<action name="login1"
+			class="com.techlabs.action.LoginActionWithInterceptor" method="login">
+			<result name="input">loginForm.jsp</result>
+		</action>
+		<action name="login2"
+			class="com.techlabs.action.LoginActionWithInterceptor"
+			method="execute">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<result name="input">loginForm.jsp</result>
+			<result name="success">welcomeLogin.jsp</result>
+		</action>
+		<action name="loginDo"
+			class="com.techlabs.action.LoginWithSession" method="loginDo">
+			<result name="input">loginForm.jsp</result>
+			<result name="success">welcomeLogin.jsp</result>
+		</action>
+		<action name="loginDoE"
+			class="com.techlabs.action.LoginWithSession" method="execute">
+			<result name="success">loginForm.jsp</result>
+		</action>
+
+
+	</package>
+</struts>

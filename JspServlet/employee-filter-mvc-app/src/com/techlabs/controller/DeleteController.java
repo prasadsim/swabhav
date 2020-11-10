@@ -36,7 +36,6 @@ public class DeleteController extends HttpServlet {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd = request.getRequestDispatcher("/EmployeeController");
 		rd.forward(request, response);
-
 	}
 
 	/**

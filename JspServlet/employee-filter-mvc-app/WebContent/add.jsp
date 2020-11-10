@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="add" method="GET">
+	<form action="add" method="post">
 		Name<input type="text" name="name"><br> 
 		Role<input type="text" name="role"><br>
 		<button name="add">Add</button>

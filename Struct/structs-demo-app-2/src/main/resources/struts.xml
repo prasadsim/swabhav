@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+		<action name="welcome"
+			class="com.techlabs.action.WelcomeAction">
+			<result name="success">welcome.jsp</result>
+		</action>
+		<action name="hello" class="com.techlabs.action.HelloAction">
+			<result name="success">hello.jsp</result>
+		</action>
+		<action name="session"
+			class="com.techlabs.action.SessionAction">
+			<result name="success">session.jsp</result>
+		</action>
+		<action name="browse" class="com.techlabs.action.BrowseAction">
+			<result name="success">browse.jsp</result>
+		</action>
+		<action name="login" class="com.techlabs.action.LoginAction">
+			<result name="input">login.jsp</result>
+			<result name="success">welcomeLogin.jsp</result>
+		</action>
+		<action name="register"
+			class="com.techlabs.action.RegisterAction">
+			<result name="input">register.jsp</result>
+			<result name="success">welcomeRegister.jsp</result>
+		</action>
+
+		<action name="addCustomer"
+			class="com.techlabs.action.CustomerAction">
+			<result name="success">addCustomer.jsp</result>
+		</action>
+		<action name="customer"
+			class="com.techlabs.action.CustomerAction">
+			<result name="success">successCustomer.jsp</result>
+		</action>
+
+		<action name="registerDo"
+			class="com.techlabs.action.RegisterAction2" method="registerDo">
+			<result name="success">registerVM.jsp</result>
+			<result name="input">inputRegisterVM.jsp</result>
+		</action>
+
+		<action name="registerDo1"
+			class="com.techlabs.action.RegisterAction3" method="registerDo">
+			<result name="success">registerVM.jsp</result>
+			<result name="success">inputRegisterVM.jsp</result>
+		</action>
+	</package>
+</struts>

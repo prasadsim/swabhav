@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+		<action name="student"
+			class="com.techlabs.action.StudentAction" method="execute">
+			<result name="success">student.jsp</result>
+		</action>
+		<action name="add" class="com.techlabs.action.AddStudentAction"
+			method="doAdd">
+			<result name="input">add.jsp</result>
+		</action>
+		<action name="doAdd"
+			class="com.techlabs.action.AddStudentAction" method="execute">
+			<result name="success" type="chain">student</result>
+		</action>
+		<action name="edit"
+			class="com.techlabs.action.EditStudentAction" method="doEdit">
+			<result name="input">edit.jsp</result>
+		</action>
+		<action name="doEdit"
+			class="com.techlabs.action.EditStudentAction" method="execute">
+			<result name="success" type="chain">student</result>
+		</action>
+		<action name="delete"
+			class="com.techlabs.action.DeleteStudentAction" method="execute">
+			<result name="success" type="chain">student</result>
+		</action>
+	</package>
+</struts>

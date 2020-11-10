@@ -42,7 +42,7 @@
 				<td><%=employee.getName()%></td>
 				<td><%=employee.getRole()%></td>
 
-				<td><form action="EditController" method="GET">
+				<td><form action="EditController" method="POST">
 						<input type="hidden" id="emp" name="empId"
 							value="<%=employee.getId()%>"> <input type="submit"
 							value="Edit">
@@ -58,7 +58,7 @@
 			%>
 		</tbody>
 	</table>
-	<form action="add" method="POST">
+	<form action="add" method="get">
 		<input type="submit" value="Add">
 	</form>
 </body>

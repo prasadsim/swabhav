@@ -34,7 +34,13 @@ public class AddController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		RequestDispatcher rd = request.getRequestDispatcher("add.jsp");
+		rd.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("Inside Add Controller");
 		UUID id = UUID.randomUUID();
 		request.setAttribute("id", id);
@@ -47,17 +53,4 @@ public class AddController extends HttpServlet {
 		System.out.println(service.employees.size());
 		response.sendRedirect("EmployeeController");
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RequestDispatcher rd = request.getRequestDispatcher("add.jsp");
-		rd.forward(request, response);
-
-	}
-
 }

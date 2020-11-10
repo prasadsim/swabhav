@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(value = { "/add", "/DeleteController", "/EditController", "/EmployeeController" })
+@WebFilter(value = { "/DeleteController", "/EditController", "/EmployeeController" })
 public class LoginFilter implements Filter {
 
 	/**
