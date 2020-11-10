@@ -12,9 +12,9 @@ public class StudentAction extends ActionSupport {
 
 	public String execute() {
 		students = StudentService.getInstance().getStudents();
-		for (Student s : students) {
-			System.out.println(s.getName());
-		}
+//		for (Student s : students) {
+//			System.out.println(s.getName());
+//		}
 		return SUCCESS;
 	}
 

@@ -10,7 +10,7 @@ public class Student {
 	public Student() {
 	}
 
-	public Student(UUID id, String name, int rollno, int age) {
+	public Student(String id, String name, int rollno, int age) {
 		this.id = id.toString();
 		this.name = name;
 		this.rollno = rollno;
@@ -21,7 +21,7 @@ public class Student {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id.toString();
 	}
 

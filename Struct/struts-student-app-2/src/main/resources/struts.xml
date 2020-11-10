@@ -19,7 +19,7 @@
 		</action>
 		<action name="edit"
 			class="com.techlabs.action.EditStudentAction" method="doEdit">
-			<result name="input">edit.jsp</result>
+			<result name="success">edit.jsp</result>
 		</action>
 		<action name="doEdit"
 			class="com.techlabs.action.EditStudentAction" method="execute">
@@ -27,7 +27,7 @@
 		</action>
 		<action name="delete"
 			class="com.techlabs.action.DeleteStudentAction" method="execute">
-			<result name="success" type="chain">student</result>
+			<result name="success" type="redirect">student</result>
 		</action>
 	</package>
 </struts>

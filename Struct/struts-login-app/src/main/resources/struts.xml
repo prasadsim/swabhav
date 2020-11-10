@@ -14,14 +14,15 @@
 			<result name="success">welcomeLogin.jsp</result>
 		</action>
 		<action name="login1"
-			class="com.techlabs.action.LoginActionWithInterceptor" method="login">
-			<result name="input">loginForm.jsp</result>
+			class="com.techlabs.action.LoginActionWithInterceptor" method="execute">
+			<result name="success">loginForm.jsp</result>
 		</action>
 		<action name="login2"
 			class="com.techlabs.action.LoginActionWithInterceptor"
-			method="execute">
+			method="loginDo">
 			<interceptor-ref name="params"></interceptor-ref>
 			<interceptor-ref name="myInterceptor"></interceptor-ref>
+			<result name="error">loginForm.jsp</result>
 			<result name="input">loginForm.jsp</result>
 			<result name="success">welcomeLogin.jsp</result>
 		</action>

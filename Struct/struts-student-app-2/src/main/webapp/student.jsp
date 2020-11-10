@@ -22,19 +22,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<s:iterator value="students" status="studentsStatus">
+			<s:iterator value="students">
 				<tr>
 					<td><s:property value="id" /></td>
 					<td><s:property value="name" /></td>
 					<td><s:property value="rollno" /></td>
 					<td><s:property value="age" /></td>
 					<td><s:form action="edit">
-							<s:textfield type="hidden" name="editStudent"
-								value="#student.getId()"></s:textfield>
+							<s:hidden name="editStudent" value="%{id}" />
 							<s:submit value="edit"></s:submit>
 						</s:form></td>
 					<td><s:form action="delete">
-							<s:textfield type="hidden" name="deleteStudent" test="#studentsStatus.getId"></s:textfield>
+							<s:hidden name="deleteStudent" value="%{id}" />
 							<s:submit value="delete"></s:submit>
 						</s:form></td>
 				</tr>

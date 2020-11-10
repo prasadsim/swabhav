@@ -9,32 +9,41 @@ import com.techlabs.service.StudentService;
 
 public class EditStudentAction extends ActionSupport implements ModelDriven<Student> {
 
-	private Student student;
-
-	public String execute() {
-		student.setId(UUID.randomUUID());
-		System.out.println("success " + student.getId() + "  " + student.getName());
-		StudentService.getInstance().addStudent(student);
-		return SUCCESS;
-	}
-
-	
-	public String doEdit() {
-		System.out.println("doAdd " + student.getId() + "  " + student.getName());
-		return INPUT;
-	}
+	private String editStudent;
+	private Student editStudentObject;
 
 	@Override
 	public Student getModel() {
-		student = new Student();
-		return student;
+		editStudentObject = new Student();
+		return editStudentObject;
 	}
 
-	public Student getStudent() {
-		return student;
+	public String execute() {
+		System.out.println(editStudentObject.getId() + " " + editStudentObject.getName());
+		StudentService service = StudentService.getInstance();
+		service.updateStudent(editStudentObject);
+		return SUCCESS;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public String doEdit() {
+		editStudentObject = StudentService.getInstance().getStudentById(editStudent);
+		return "success";
 	}
+
+	public String getEditStudent() {
+		return editStudent;
+	}
+
+	public void setEditStudent(String editStudent) {
+		this.editStudent = editStudent;
+	}
+
+	public Student getEditStudentObject() {
+		return editStudentObject;
+	}
+
+	public void setEditStudentObject(Student editStudentObject) {
+		this.editStudentObject = editStudentObject;
+	}
+
 }

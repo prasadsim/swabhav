@@ -12,7 +12,7 @@ public class AddStudentAction extends ActionSupport implements ModelDriven<Stude
 	private Student student;
 
 	public String execute() {
-		student.setId(UUID.randomUUID());
+		student.setId(UUID.randomUUID().toString());
 		System.out.println("success " + student.getId() + "  " + student.getName());
 		StudentService.getInstance().addStudent(student);
 		return SUCCESS;

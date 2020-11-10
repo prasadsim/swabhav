@@ -8,7 +8,6 @@ public class DeleteStudentAction extends ActionSupport {
 	private String deleteStudent;
 
 	public String execute() {
-		System.out.println("delete" + deleteStudent);
 		StudentService.getInstance().deleteStudent(deleteStudent);
 		return SUCCESS;
 	}

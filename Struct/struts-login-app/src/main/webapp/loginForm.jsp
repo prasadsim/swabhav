@@ -13,7 +13,7 @@
 <title>Login</title>
 </head>
 <body>
-	<s:form action="loginDo">
+	<s:form action="login2">
 		<s:textfield name="username" label="Username"></s:textfield>
 		<s:password name="password" label="Password"></s:password>
 		<s:property value="message" />

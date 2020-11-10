@@ -10,10 +10,10 @@ public class StudentService {
 
 	private List<Student> students = new ArrayList<Student>();
 	private static StudentService instance;
-	Student s1 = new Student(UUID.randomUUID(), "prasad", 101, 22);
-	Student s2 = new Student(UUID.randomUUID(), "ash", 102, 23);
-	Student s3 = new Student(UUID.randomUUID(), "vinit", 103, 24);
-	Student s4 = new Student(UUID.randomUUID(), "pawan", 104, 22);
+	Student s1 = new Student(UUID.randomUUID().toString(), "prasad", 101, 22);
+	Student s2 = new Student(UUID.randomUUID().toString(), "ash", 102, 23);
+	Student s3 = new Student(UUID.randomUUID().toString(), "vinit", 103, 24);
+	Student s4 = new Student(UUID.randomUUID().toString(), "pawan", 104, 22);
 
 	private StudentService() {
 		students.add(s1);
@@ -41,6 +41,16 @@ public class StudentService {
 		for (Student s : students) {
 			if (s.getId().equals(id)) {
 				students.remove(s);
+			}
+		}
+	}
+
+	public void updateStudent(Student updateStudent) {
+		for (Student s : students) {
+			if (s.getId().equals(updateStudent.getId())) {
+				s.setName(updateStudent.getName());
+				s.setAge(updateStudent.getAge());
+				s.setRollno(updateStudent.getRollno());
 			}
 		}
 	}
