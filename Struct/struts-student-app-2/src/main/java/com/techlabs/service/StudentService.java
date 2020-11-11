@@ -41,6 +41,7 @@ public class StudentService {
 		for (Student s : students) {
 			if (s.getId().equals(id)) {
 				students.remove(s);
+				break;
 			}
 		}
 	}

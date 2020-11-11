@@ -19,7 +19,6 @@ public class EditStudentAction extends ActionSupport implements ModelDriven<Stud
 	}
 
 	public String execute() {
-		System.out.println(editStudentObject.getId() + " " + editStudentObject.getName());
 		StudentService service = StudentService.getInstance();
 		service.updateStudent(editStudentObject);
 		return SUCCESS;

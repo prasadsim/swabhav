@@ -13,7 +13,7 @@ public class AddStudentAction extends ActionSupport implements ModelDriven<Stude
 
 	public String execute() {
 		student.setId(UUID.randomUUID().toString());
-		System.out.println("success " + student.getId() + "  " + student.getName());
+		System.out.println("success " + student.getId() + "  " + student.getName()+" adding");
 		StudentService.getInstance().addStudent(student);
 		return SUCCESS;
 	}
@@ -31,8 +31,7 @@ public class AddStudentAction extends ActionSupport implements ModelDriven<Stude
 	}
 
 	public String doAdd() {
-		System.out.println("doAdd " + student.getId() + "  " + student.getName());
-		return INPUT;
+		return SUCCESS;
 	}
 
 	@Override
