@@ -56,7 +56,8 @@
 		</action>
 		<action name="delete"
 			class="com.techlabs.action.DeleteStudentAction" method="execute">
-			
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="auth" />
 			<result name="login" type="chain">login</result>
 			<result name="success" type="redirect">student</result>
 		</action>
