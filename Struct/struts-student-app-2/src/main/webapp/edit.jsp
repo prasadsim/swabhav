@@ -11,12 +11,11 @@
 <body>
 	<h1>Edit Student</h1>
 	<s:form action="doEdit">
-		<s:hidden name="id" value="%{editStudentObject.id}" />
-		<s:textfield name="name" value="%{editStudentObject.name}"
+		<s:textfield name="name" value="%{editStudentVm.name}"
 			label="Name "></s:textfield>
 		<s:textfield name="rollno" type="number"
-			value="%{editStudentObject.rollno}" label="RollNo "></s:textfield>
-		<s:textfield name="age" type="number" value="%{editStudentObject.age}"
+			value="%{editStudentVm.rollno}" label="RollNo "></s:textfield>
+		<s:textfield name="age" type="number" value="%{editStudentVm.age}"
 			label="Age "></s:textfield>
 		<s:submit value="submit"></s:submit>
 	</s:form>

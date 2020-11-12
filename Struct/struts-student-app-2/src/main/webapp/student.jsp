@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Student Details</h1>
-	<table border="1" style="width: 50%" height="50%">
+	<table border="1" style="width: 100%" height="50%">
 		<thead>
 			<tr>
 				<th>Id</th>

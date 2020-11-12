@@ -112,7 +112,7 @@
 				<Context docBase="struts-json-demo-app" path="/struts-json-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-json-demo-app"/>
 					
 				
-			</Host>
+			<Context docBase="employee-json-app" path="/employee-json-app" reloadable="true" source="org.eclipse.jst.j2ee.server:employee-json-app"/><Context docBase="struts-registration-app" path="/struts-registration-app" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-registration-app"/><Context docBase="struts-student-app-4" path="/struts-student-app-4" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-student-app-4"/><Context docBase="struts-registration-email-app" path="/struts-registration-email-app" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-registration-email-app"/></Host>
 		</Engine>
 	</Service>
 </Server>

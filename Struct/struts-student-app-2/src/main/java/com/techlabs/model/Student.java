@@ -1,7 +1,5 @@
 package com.techlabs.model;
 
-import java.util.UUID;
-
 public class Student {
 
 	private String id, name;
