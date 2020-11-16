@@ -4,11 +4,12 @@ import com.opensymphony.xwork2.Action;
 
 public class RegisterAction implements Action {
 
-	private String name, message;
-	private String phone;
+	private String name = null, message = null;
+	private String phone = null;
 
 	@Override
 	public String execute() throws Exception {
+		System.out.println(name + "  " + phone);		
 		return SUCCESS;
 	}
 

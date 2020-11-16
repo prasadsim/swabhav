@@ -4,9 +4,16 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.excludePattern"
+		value="/botdetectcaptcha" />
+
 	<package name="main" extends="struts-default">
-		<action name="sendEmail"
-			class="com.techlabs.action.EmailAction" method="execute">
+		<action name="register">
+			<result>register.jsp</result>
+		</action>
+		<action name="sendemail"
+			class="com.techlabs.action.RegisterAction">
 			<result name="success">success.jsp</result>
 			<result name="error">failure.jsp</result>
 		</action>

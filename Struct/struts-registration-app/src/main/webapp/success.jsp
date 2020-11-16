@@ -13,6 +13,6 @@
 	<s:property value="name" />
 	<br> Phone is :
 	<s:property value="phone" />
-
+	<a href="register">register</a>
 </body>
 </html>

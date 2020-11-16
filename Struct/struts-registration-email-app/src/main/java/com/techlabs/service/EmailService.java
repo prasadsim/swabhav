@@ -12,39 +12,44 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailService {
 
-	public boolean sendMail(String from, String password, String to, String subject, String body) {
-
-		Properties properties = new Properties();
-		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.host", "smtp.gmail.com");
-		properties.put("mail.smtp.port", "587");
-
-		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+	public int sendMail(String to) {
+		Properties props = new Properties();
+		// Settiing Gmail smtp properties
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		// Enter Senders Email-id
+		String email = "";
+		// Enter Senders Password
+		String password = "";
+		// check the authentication
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(from, password);
+				return new PasswordAuthentication(email, password);
 			}
 		});
 
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(from));
+			message.setFrom(new InternetAddress(email));
 
+			// recipients email address
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 
-			message.setSubject(subject);
+			// add the Subject of email
+			message.setSubject("java code email test");
 
-			message.setText(body);
+			// message body
+			message.setText("hello");
 
 			Transport.send(message);
-			
-			return true;
+			return 1;
 		} catch (MessagingException e) {
 			e.printStackTrace();
-			return false;
+			return 0;
 		}
 
 	}
-
 }
