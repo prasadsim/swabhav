@@ -1,25 +1,26 @@
 package com.techlab.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
-
 	@Id
-	private String id;
+	@GeneratedValue
+	private int id;
 	private String name;
 	@ManyToOne
 	@JoinColumn
 	private Department dept;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -37,6 +38,11 @@ public class Employee {
 
 	public void setDept(Department dept) {
 		this.dept = dept;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", dept=" + dept.getId() + "]";
 	}
 
 }

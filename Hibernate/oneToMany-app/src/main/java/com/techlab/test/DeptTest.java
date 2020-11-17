@@ -25,54 +25,54 @@ public class DeptTest {
 			RollbackException, HeuristicMixedException, HeuristicRollbackException {
 		Configuration cfg = new Configuration();
 		SessionFactory factory = cfg.configure().buildSessionFactory();
-
-		Department d1 = new Department();
-		d1.setId(UUID.randomUUID().toString());
-		d1.setName("it");
-		Department d2 = new Department();
-		d2.setId(UUID.randomUUID().toString());
-		d2.setName("hr");
-
-		Employee e1 = new Employee();
-		e1.setId(UUID.randomUUID().toString());
-		e1.setName("prasad");
-		e1.setDept(d1);
-		Employee e2 = new Employee();
-		e2.setId(UUID.randomUUID().toString());
-		e2.setName("vinit");
-		e2.setDept(d1);
-		Employee e3 = new Employee();
-		e3.setId(UUID.randomUUID().toString());
-		e3.setName("dipesh");
-		e3.setDept(d2);
-		Employee e4 = new Employee();
-		e4.setId(UUID.randomUUID().toString());
-		e4.setName("rajat");
-		e4.setDept(d2);
-
-		Set<Employee> emps1 = new HashSet();
-		emps1.add(e1);
-		emps1.add(e2);
-
-		Set<Employee> emps2 = new HashSet();
-		emps2.add(e3);
-		emps2.add(e4);
-
-		d1.setEmployees(emps1);
-		d2.setEmployees(emps2);
+//
+//		Department d1 = new Department();
+//		d1.setName("it");
+//		Department d2 = new Department();
+//		d2.setName("hr");
+//
+//		Employee e1 = new Employee();
+//		e1.setName("prasad");
+//		e1.setDept(d1);
+//		Employee e2 = new Employee();
+//		e2.setName("vinit");
+//		e2.setDept(d1);
+//		Employee e3 = new Employee();
+//		e3.setName("dipesh");
+//		e3.setDept(d2);
+//		Employee e4 = new Employee();
+//		e4.setName("rajat");
+//		e4.setDept(d2);
+//
+//		Set<Employee> emps1 = new HashSet();
+//		emps1.add(e1);
+//		emps1.add(e2);
+//
+//		Set<Employee> emps2 = new HashSet();
+//		emps2.add(e3);
+//		emps2.add(e4);
+//
+//		d1.setEmployees(emps1);
+//		d2.setEmployees(emps2);
 
 		Session session = factory.openSession();
 		Transaction transaction = null;
 		try {
 			transaction = (Transaction) session.beginTransaction();
-
+//
 //			session.save(d1);
 //			session.save(d2);
+//			session.save(e1);
+//			session.save(e2);
+//			session.save(e3);
+//			session.save(e4);
 
 			List<Department> deptList1 = session.createQuery("from Department").list();
 			for (Department d : deptList1) {
 				System.out.println(d);
 			}
+//			Department d = (Department) session.load(Department.class, "3e711e85-ba7c-464c-89d0-bf9d1d040030");
+//			session.delete(d);
 			transaction.commit();
 
 		} catch (HibernateException e) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.techlabs.entity.Student;
@@ -12,7 +13,8 @@ import com.techlabs.entity.Student;
 public class StudentRepository {
 
 	private List<Student> students = null;
-	private SessionFactory factory = null;
+	@Autowired
+	private SessionFactory factory;
 
 	public List<Student> getStudents() {
 		Session session = factory.openSession();
