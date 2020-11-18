@@ -18,46 +18,46 @@
 			class="com.techlabs.action.StudentAction" method="execute">
 			<interceptor-ref name="params"></interceptor-ref>
 			<interceptor-ref name="auth" />
-			<result name="login" type="chain">login</result>
+			<result name="login" type="redirect">login</result>
 			<result name="success">student.jsp</result>
 		</action>
 
 		<action name="loginUser"
 			class="com.techlabs.action.LoginAction" method="doLogin">
-			<result name="login" type="chain">login</result>
-			<result name="success" type="chain">student</result>
+			<result name="login" type="redirect">login</result>
+			<result name="success" type="redirect">student</result>
 		</action>
 
 		<action name="add" class="com.techlabs.action.AddStudentAction"
 			method="execute">
 			<interceptor-ref name="params"></interceptor-ref>
 			<interceptor-ref name="auth" />
-			<result name="login" type="chain">login</result>
+			<result name="login" type="redirect">login</result>
 			<result name="success">add.jsp</result>
 		</action>
 		<action name="doAdd"
 			class="com.techlabs.action.AddStudentAction" method="doAdd">
 
-			<result name="login" type="chain">login</result>
-			<result name="success" type="chain">student</result>
+			<result name="login" type="redirect">login</result>
+			<result name="success" type="redirect">student</result>
 		</action>
 		<action name="edit"
 			class="com.techlabs.action.EditStudentAction" method="execute">
 			<interceptor-ref name="params"></interceptor-ref>
 			<interceptor-ref name="auth" />
-			<result name="login" type="chain">login</result>
+			<result name="login" type="redirect">login</result>
 			<result name="success">edit.jsp</result>
 		</action>
 		<action name="doEdit"
 			class="com.techlabs.action.EditStudentAction" method="doEdit">
 
-			<result name="login" type="chain">login</result>
-			<result name="success" type="chain">student</result>
+			<result name="login" type="redirect">login</result>
+			<result name="success" type="redirect">student</result>
 		</action>
 		<action name="delete"
 			class="com.techlabs.action.DeleteStudentAction" method="execute">
 
-			<result name="login" type="chain">login</result>
+			<result name="login" type="redirect">login</result>
 			<result name="success" type="redirect">student</result>
 		</action>
 	</package>
