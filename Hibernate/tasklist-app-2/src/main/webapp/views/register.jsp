@@ -11,6 +11,9 @@
 <body>
 	<h1>Register</h1>
 	<s:form action="doRegister">
+		<p style="color: red">
+			<s:property value="msg" />
+		</p>
 		<s:textfield name="firstname" label="Enter Firstname"></s:textfield>
 		<s:textfield name="lastname" label="Enter Lastname"></s:textfield>
 		<s:textfield name="email" label="Enter email"></s:textfield>

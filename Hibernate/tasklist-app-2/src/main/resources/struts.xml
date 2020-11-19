@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+		<interceptors>
+			<interceptor name="userInterceptor"
+				class="com.techlab.interceptor.UserInterceptor"></interceptor>
+			<interceptor-stack name="task">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="userInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="login" class="com.techlab.action.LoginAction"
+			method="execute">
+			<result name="success">/views/login.jsp</result>
+		</action>
+		<action name="doLogin" class="com.techlab.action.LoginAction"
+			method="doLogin">
+			<result name="success" type="redirect">home</result>
+			<result name="input">/views/login.jsp</result>
+		</action>
+		<action name="register"
+			class="com.techlab.action.AddUserAction" method="execute">
+			<result name="success">/views/register.jsp</result>
+		</action>
+		<action name="doRegister"
+			class="com.techlab.action.AddUserAction" method="doAdd">
+			<result name="success" type="redirect">login</result>
+			<result name="input">/views/register.jsp</result>
+		</action>
+		<action name="add" class="com.techlab.action.AddUserAction"
+			method="execute">
+			<result name="success">/views/userAdd.jsp</result>
+		</action>
+		<action name="doAdd" class="com.techlab.action.AddUserAction"
+			method="doAdd">
+			<result name="success" type="redirect">home</result>
+			<result name="input">/views/userAdd.jsp</result>
+		</action>
+		<action name="home"
+			class="com.techlab.action.DisplayUserAction" method="execute">
+			<result name="success">/views/userDisplay.jsp</result>
+		</action>
+		<action name="edit" class="com.techlab.action.EditUserAction"
+			method="execute">
+			<result name="success">/views/userEdit.jsp</result>
+		</action>
+		<action name="doEdit" class="com.techlab.action.EditUserAction"
+			method="doEdit">
+			<result name="success" type="redirect">home</result>
+			<result name="input">/views/userEdit.jsp</result>
+		</action>
+		<action name="delete"
+			class="com.techlab.action.DeleteUserAction" method="execute">
+			<result name="success" type="redirect">home</result>
+		</action>
+		<action name="task"
+			class="com.techlab.action.DisplayTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success">/views/taskDisplay.jsp</result>
+		</action>
+		<action name="taskCheck"
+			class="com.techlab.action.DisplayTaskAction" method="doCheck">
+			<interceptor-ref name="task" />
+			<result name="success">/views/taskDisplay.jsp</result>
+		</action>
+		<action name="addTask" class="com.techlab.action.AddTaskAction"
+			method="execute">
+			<interceptor-ref name="task" />
+			<result name="success">/views/taskAdd.jsp</result>
+		</action>
+		<action name="doAddTask"
+			class="com.techlab.action.AddTaskAction" method="doAdd">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">task</result>
+			<result name="input">/views/taskAdd.jsp</result>
+		</action>
+
+
+	</package>
+</struts>

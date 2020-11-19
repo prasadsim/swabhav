@@ -103,7 +103,7 @@
 				<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 				<Context docBase="student-app" path="/student-app" reloadable="true" source="org.eclipse.jst.j2ee.server:student-app"/>
-			<Context docBase="basic-app" path="/basic-app" reloadable="true" source="org.eclipse.jst.j2ee.server:basic-app"/><Context docBase="tasklist-app" path="/tasklist-app" reloadable="true" source="org.eclipse.jst.j2ee.server:tasklist-app"/></Host>
+			<Context docBase="basic-app" path="/basic-app" reloadable="true" source="org.eclipse.jst.j2ee.server:basic-app"/><Context docBase="tasklist-app" path="/tasklist-app" reloadable="true" source="org.eclipse.jst.j2ee.server:tasklist-app"/><Context docBase="tasklist-app-2" path="/tasklist-app-2" reloadable="true" source="org.eclipse.jst.j2ee.server:tasklist-app-2"/></Host>
 		</Engine>
 	</Service>
 </Server>
