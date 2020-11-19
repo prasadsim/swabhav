@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Task</title>
+<title>SubTask</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -21,8 +22,8 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Task</h1>
-		<a href="addTask" class="btn btn-link" style="margin-left: 5%">add</a>
+		<h1>SubTask</h1>
+		<a href="addSubTask" class="btn btn-link" style="margin-left: 5%">add</a>
 		<table class="table table-hover" style="width: 100%" height="auto"
 			id="myTable">
 			<thead>
@@ -31,27 +32,22 @@
 					<th>ID</th>
 					<th>TITLE</th>
 					<th>DATE</th>
-					<th>SUBTASK</th>
 					<th>EDIT</th>
 					<th>DELETE</th>
 				</tr>
 			</thead>
 			<tbody>
-				<s:iterator value="tasks">
+				<s:iterator value="subTasks">
 					<tr>
 						<td><s:checkbox name="done" fieldValue="%{done}" /></td>
 						<td><s:property value="id" /></td>
 						<td><s:property value="title" /></td>
 						<td><s:date name="date" format="YYYY/MM/DD" /></td>
-						<td><s:form action="subTask">
-								<s:hidden name="id" value="%{id}" />
-								<s:submit class="btn btn-success" value="SubTasks"></s:submit>
-							</s:form></td>
-						<td><s:form action="editTask">
+						<td><s:form action="editSubTask">
 								<s:hidden name="id" value="%{id}" />
 								<s:submit class="btn btn-warning" value="edit"></s:submit>
 							</s:form></td>
-						<td><s:form action="deleteTask">
+						<td><s:form action="deleteSubTask">
 								<s:hidden name="id" value="%{id}" />
 								<s:submit class="btn btn-danger" value="delete"></s:submit>
 							</s:form></td>
@@ -60,6 +56,5 @@
 			</tbody>
 		</table>
 	</div>
-
 </body>
 </html>

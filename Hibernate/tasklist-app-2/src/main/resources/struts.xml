@@ -58,13 +58,9 @@
 			class="com.techlab.action.DeleteUserAction" method="execute">
 			<result name="success" type="redirect">home</result>
 		</action>
+
 		<action name="task"
 			class="com.techlab.action.DisplayTaskAction" method="execute">
-			<interceptor-ref name="task" />
-			<result name="success">/views/taskDisplay.jsp</result>
-		</action>
-		<action name="taskCheck"
-			class="com.techlab.action.DisplayTaskAction" method="doCheck">
 			<interceptor-ref name="task" />
 			<result name="success">/views/taskDisplay.jsp</result>
 		</action>
@@ -78,6 +74,55 @@
 			<interceptor-ref name="task" />
 			<result name="success" type="redirect">task</result>
 			<result name="input">/views/taskAdd.jsp</result>
+		</action>
+		<action name="editTask"
+			class="com.techlab.action.EditTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success">/views/taskEdit.jsp</result>
+		</action>
+		<action name="doEditTask"
+			class="com.techlab.action.EditTaskAction" method="doEdit">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">task</result>
+			<result name="input">/views/taskEdit.jsp</result>
+		</action>
+		<action name="deleteTask"
+			class="com.techlab.action.DeleteTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">task</result>
+		</action>
+
+		<action name="subTask"
+			class="com.techlab.action.DisplaySubTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success">/views/subTaskDisplay.jsp</result>
+		</action>
+		<action name="addSubTask"
+			class="com.techlab.action.AddSubTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success">/views/subTaskAdd.jsp</result>
+		</action>
+		<action name="doAddSubTask"
+			class="com.techlab.action.AddSubTaskAction" method="doAdd">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">subTask</result>
+			<result name="input">/views/subTaskAdd.jsp</result>
+		</action>
+		<action name="editSubTask"
+			class="com.techlab.action.EditSubTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success">/views/subTaskEdit.jsp</result>
+		</action>
+		<action name="doEditSubTask"
+			class="com.techlab.action.EditSubTaskAction" method="doEdit">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">subTask</result>
+			<result name="input">/views/subTaskEdit.jsp</result>
+		</action>
+		<action name="deleteSubTask"
+			class="com.techlab.action.DeleteSubTaskAction" method="execute">
+			<interceptor-ref name="task" />
+			<result name="success" type="redirect">subTask</result>
 		</action>
 
 

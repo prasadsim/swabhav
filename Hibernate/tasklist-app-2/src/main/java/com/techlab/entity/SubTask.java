@@ -10,17 +10,27 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class SubTask {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
 	private String title;
 	private Date date;
 	private boolean done;
-	
+
 	@ManyToOne
 	@JoinColumn
-	private Task task;	
+	private Task task;
+
+	public SubTask() {
+	}
+
+	public SubTask(String title, Date date, boolean done, Task task) {
+		this.title = title;
+		this.date = date;
+		this.done = done;
+		this.task = task;
+	}
 
 	public Task getTask() {
 		return task;
@@ -58,10 +68,12 @@ public class SubTask {
 		return done;
 	}
 
+	public boolean getDone() {
+		return done;
+	}
+
 	public void setDone(boolean done) {
 		this.done = done;
 	}
-
-
 
 }

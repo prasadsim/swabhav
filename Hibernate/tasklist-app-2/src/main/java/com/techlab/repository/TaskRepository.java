@@ -38,9 +38,10 @@ public class TaskRepository {
 		fact.getCurrentSession().delete(getTask(id));
 	}
 
-	public void editTask(int id, String title) {
+	public void editTask(int id, String title, boolean done) {
 		Task task = getTask(id);
 		task.setTitle(title);
+		task.setDone(done);
 		fact.getCurrentSession().update(task);
 	}
 

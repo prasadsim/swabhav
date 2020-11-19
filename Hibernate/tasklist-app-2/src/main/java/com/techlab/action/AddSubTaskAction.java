@@ -1,7 +1,5 @@
 package com.techlab.action;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -11,45 +9,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.techlab.entity.User;
-import com.techlab.service.TaskService;
+import com.techlab.entity.Task;
+import com.techlab.service.SubTaskService;
+import com.techlab.viewmodel.AddSubTaskVm;
 import com.techlab.viewmodel.AddTaskVm;
 
-public class AddTaskAction extends ActionSupport implements ModelDriven<AddTaskVm>, SessionAware {
+public class AddSubTaskAction extends ActionSupport implements ModelDriven<AddSubTaskVm>, SessionAware {
 
 	@Autowired
-	private TaskService service;
-	private AddTaskVm task;
+	private SubTaskService service;
+	private AddSubTaskVm subTask;
 	private SessionMap<String, Object> session;
 	private String msg;
 
 	public String execute() {
-		task.setDate(new Date());
+		subTask.setDate(new Date());
 		return SUCCESS;
 	}
 
 	public String doAdd() {
-		if (task.getTitle() == "") {
+		if (subTask.getTitle() == "") {
 			setMsg("Enter Title");
 			return INPUT;
 		}
-		User user = (User) session.get("user");
-		service.addTask(task.getTitle(), task.getDate(), user);
+		Task task = (Task) session.get("task");
+		service.addSubTask(task.getTitle(), task.getDate(), task);
 		return SUCCESS;
 	}
 
-	public AddTaskVm getTask() {
-		return task;
+	public AddSubTaskVm getSubTask() {
+		return subTask;
 	}
 
-	public void setTask(AddTaskVm task) {
-		this.task = task;
+	public void setSubTask(AddSubTaskVm task) {
+		this.subTask = task;
 	}
 
 	@Override
-	public AddTaskVm getModel() {
-		task = new AddTaskVm();
-		return task;
+	public AddSubTaskVm getModel() {
+		subTask = new AddSubTaskVm();
+		return subTask;
 	}
 
 	@Override

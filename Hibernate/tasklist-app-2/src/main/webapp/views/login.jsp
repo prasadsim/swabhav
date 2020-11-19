@@ -15,7 +15,7 @@
 			<s:property value="msg" />
 		</p>
 		<s:textfield name="user" label="Enter Username"></s:textfield>
-		<s:textfield name="pass" label="Enter Password"></s:textfield>
+		<s:password name="pass" label="Enter Password"></s:password>
 		<s:submit value="login"></s:submit>
 	</s:form>
 </body>

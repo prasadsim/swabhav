@@ -27,8 +27,8 @@ public class TaskService {
 		repo.deleteTask(id);
 	}
 
-	public void editTask(int id, String title) {
-		repo.editTask(id, title);
+	public void editTask(int id, String title, boolean done) {
+		repo.editTask(id, title, done);
 	}
 
 	public Task getTask(int id) {

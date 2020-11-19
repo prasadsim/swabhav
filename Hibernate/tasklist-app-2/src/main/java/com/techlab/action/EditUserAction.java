@@ -24,7 +24,7 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 		return SUCCESS;
 	}
 
-	public String doEdit() {
+	public String doEdit() {		
 		if (user.getFirstname() == "") {
 			msg = "Enter Firstname";
 			return INPUT;

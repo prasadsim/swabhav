@@ -80,7 +80,7 @@ public class Task {
 		this.date = date;
 	}
 
-	public boolean isDone() {
+	public boolean getDone() {
 		return done;
 	}
 
