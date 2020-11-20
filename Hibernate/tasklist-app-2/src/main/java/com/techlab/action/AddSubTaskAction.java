@@ -33,7 +33,7 @@ public class AddSubTaskAction extends ActionSupport implements ModelDriven<AddSu
 			return INPUT;
 		}
 		Task task = (Task) session.get("task");
-		service.addSubTask(task.getTitle(), task.getDate(), task);
+		service.addSubTask(subTask.getTitle(), subTask.getDate(), task);
 		return SUCCESS;
 	}
 

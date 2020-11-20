@@ -38,7 +38,7 @@ public class EditSubTaskAction extends ActionSupport implements ModelDriven<Edit
 		return subTask;
 	}
 
-	public EditSubTaskVm getTask() {
+	public EditSubTaskVm getSubTask() {
 		return subTask;
 	}
 
