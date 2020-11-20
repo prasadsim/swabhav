@@ -1,0 +1,12 @@
+<button (click)="loadStudent()">load Student</button>
+<div>
+    {{Student.name}} <br>
+    {{Student.rollno}} <br>
+    {{Student.cgpa}} <br>
+</div>
+<button (click)="loadStudents()">load Students</button>
+<div *ngFor="let s of studentsList">
+    {{s.name}}  <br>
+    {{s.rollno}} <br>
+    {{s.cgpa}} <br> <br>
+</div>
