@@ -9,7 +9,8 @@
 <title>EditUser</title>
 </head>
 <body>
-	<h1 style="margin-top:40px">Edit User</h1>
+	<a href="doLogout" class="btn btn-primary" style="float: right;">logout</a>
+	<h1 style="margin-top: 40px">Edit User</h1>
 	<s:form action="doEdit" method="post">
 		<p style="color: red">
 			<s:property value="msg" />

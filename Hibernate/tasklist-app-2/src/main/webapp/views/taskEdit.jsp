@@ -9,6 +9,7 @@
 <title>Edit Task</title>
 </head>
 <body>
+	<a href="doLogout" class="btn btn-primary" style="float: right;">logout</a>
 	<h1>Edit Task</h1>
 	<p style="color: red">
 		<s:property value="msg" />

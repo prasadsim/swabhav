@@ -24,6 +24,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserVm>, S
 		return SUCCESS;
 	}
 
+	public String doLogout() {
+		session.remove("loginId");
+		session.remove("adminId");
+		return SUCCESS;
+	}
+
 	public String doLogin() {
 		if (user.getUser() == "") {
 			msg = "Enter Username";

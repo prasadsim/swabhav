@@ -20,6 +20,7 @@
 </head>
 <body>
 	<div class="container">
+		<a href="doLogout" class="btn btn-primary" style="float: right;">logout</a>
 		<h1 style="margin-top: 40px">Add User</h1>
 		<div class="alert alert-danger">
 			<s:property value="msg" />

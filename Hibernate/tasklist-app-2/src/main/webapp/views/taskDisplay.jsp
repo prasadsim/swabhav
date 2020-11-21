@@ -21,6 +21,7 @@
 </head>
 <body>
 	<div class="container">
+		<a href="doLogout" class="btn btn-primary" style="float: right;">logout</a>
 		<h1>Task</h1>
 		<a href="addTask" class="btn btn-link" style="margin-left: 5%">add</a>
 		<table class="table table-hover" id="myTable">
