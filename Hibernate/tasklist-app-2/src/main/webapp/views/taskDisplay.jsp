@@ -23,11 +23,10 @@
 	<div class="container">
 		<h1>Task</h1>
 		<a href="addTask" class="btn btn-link" style="margin-left: 5%">add</a>
-		<table class="table table-hover" style="width: 100%" height="auto"
-			id="myTable">
+		<table class="table table-hover" id="myTable">
 			<thead>
 				<tr>
-					<th>CHECKED</th>
+					<th>DONE</th>
 					<th>ID</th>
 					<th>TITLE</th>
 					<th>DATE</th>

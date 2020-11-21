@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.techlab.entity.User;
 import com.techlab.service.UserService;
 import com.techlab.viewmodel.AddUserVm;
 
@@ -48,9 +49,19 @@ public class AddUserAction extends ActionSupport implements ModelDriven<AddUserV
 			msg = "Enter password";
 			return INPUT;
 		}
-		if(!user.getPassword().equals(confirmPassword)) {
-			msg="Enter confirm password correctly";
+		if (!user.getPassword().equals(confirmPassword)) {
+			msg = "Enter confirm password correctly";
 			return INPUT;
+		}
+		for (User u : service.getUsers()) {
+			if (u.getEmail().equals(user.getEmail())) {
+				msg = "This Email Id is already present!!!";
+				return INPUT;
+			}
+			if (u.getUsername().equals(user.getUsername())) {
+				msg = "This Username is already present!!!";
+				return INPUT;
+			}
 		}
 		service.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(),
 				user.getPassword());

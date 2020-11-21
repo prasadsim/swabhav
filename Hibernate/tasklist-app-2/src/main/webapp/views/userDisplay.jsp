@@ -22,6 +22,7 @@
 <body>
 <body>
 	<div class="container">
+		<a href="doLogout" class="btn btn-primary" style="">logout</a>
 		<h1>User Details</h1>
 		<a href="add" class="btn btn-link" style="margin-left: 5%">add</a>
 		<table class="table table-hover" style="width: 60%" height="auto"
