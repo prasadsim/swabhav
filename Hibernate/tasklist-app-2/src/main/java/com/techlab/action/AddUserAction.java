@@ -13,6 +13,15 @@ public class AddUserAction extends ActionSupport implements ModelDriven<AddUserV
 	private UserService service;
 	private AddUserVm user;
 	private String msg;
+	private String confirmPassword;
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
 	public String execute() {
 		return SUCCESS;
@@ -37,6 +46,10 @@ public class AddUserAction extends ActionSupport implements ModelDriven<AddUserV
 		}
 		if (user.getPassword() == "") {
 			msg = "Enter password";
+			return INPUT;
+		}
+		if(!user.getPassword().equals(confirmPassword)) {
+			msg="Enter confirm password correctly";
 			return INPUT;
 		}
 		service.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(),

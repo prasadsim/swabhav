@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Edit</title>
+<title>EditUser</title>
 </head>
 <body>
-	<h1>Edit</h1>
+	<h1 style="margin-top:40px">Edit User</h1>
 	<s:form action="doEdit" method="post">
 		<p style="color: red">
 			<s:property value="msg" />

@@ -15,7 +15,7 @@ public class EditUserAction extends ActionSupport implements ModelDriven<EditUse
 	private String msg;
 
 	public String execute() {
-		User u = service.getUser(user.getId());
+		User u = service.getUserById(user.getId());
 		user.setFirstname(u.getFirstName());
 		user.setLastname(u.getLastName());
 		user.setEmail(u.getEmail());

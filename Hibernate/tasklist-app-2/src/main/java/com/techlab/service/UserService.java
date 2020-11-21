@@ -21,7 +21,7 @@ public class UserService {
 		repository.addUser(firstName, lastName, email, username, password);
 	}
 
-	public User getUser(int id) {
+	public User getUserById(int id) {
 		return repository.getUserById(id);
 	}
 

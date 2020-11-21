@@ -37,7 +37,7 @@ public class UserInterceptor implements Interceptor {
 		ValueStack stack = invocation.getStack();
 		String id = stack.findString("id");
 		if (id != null) {
-			User user = userService.getUser(Integer.parseInt(id));
+			User user = userService.getUserById(Integer.parseInt(id));
 			if (user != null)
 				session.put("user", user);
 			Task task = taskService.getTask((Integer.parseInt(id)));
