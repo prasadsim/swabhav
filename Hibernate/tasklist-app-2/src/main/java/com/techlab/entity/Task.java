@@ -37,7 +37,7 @@ public class Task {
 		this.user = user;
 	}
 
-	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<SubTask> subTask = new HashSet<SubTask>();
 
 	public User getUser() {

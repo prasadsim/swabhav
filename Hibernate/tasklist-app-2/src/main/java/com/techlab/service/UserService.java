@@ -29,8 +29,9 @@ public class UserService {
 		repository.deleteUser(id);
 	}
 
-	public void editUser(int id, String firstName, String lastName, String email, String username, String password) {
-		repository.editUser(id, firstName, lastName, email, username, password);
+	public void editUser(int id, String firstName, String lastName, String email, String username, String password,
+			boolean blocked) {
+		repository.editUser(id, firstName, lastName, email, username, password, blocked);
 	}
 
 }

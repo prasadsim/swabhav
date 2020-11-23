@@ -25,6 +25,9 @@
 			value="%{user.username}"></s:textfield>
 		<s:textfield name="password" label="Enter password"
 			value="%{user.password}"></s:textfield>
+
+		<s:checkbox name="blocked" fieldValue="%{blocked}" label="doBlock?"></s:checkbox>
+
 		<s:submit value="submit"></s:submit>
 	</s:form>
 </body>

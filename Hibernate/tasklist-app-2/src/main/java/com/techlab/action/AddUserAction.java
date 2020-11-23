@@ -1,5 +1,7 @@
 package com.techlab.action;
 
+import org.apache.struts2.ServletActionContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -7,6 +9,8 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.techlab.entity.User;
 import com.techlab.service.UserService;
 import com.techlab.viewmodel.AddUserVm;
+
+import cn.apiclub.captcha.Captcha;
 
 public class AddUserAction extends ActionSupport implements ModelDriven<AddUserVm> {
 
@@ -63,6 +67,7 @@ public class AddUserAction extends ActionSupport implements ModelDriven<AddUserV
 				return INPUT;
 			}
 		}
+
 		service.addUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(),
 				user.getPassword());
 		return SUCCESS;

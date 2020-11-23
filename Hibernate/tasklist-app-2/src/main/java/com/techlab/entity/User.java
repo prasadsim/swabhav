@@ -21,6 +21,7 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
+	private boolean blocked;
 
 	public User() {
 
@@ -35,7 +36,7 @@ public class User {
 
 	}
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Task> tasks = new HashSet<Task>();
 
 	public Set<Task> getTasks() {
@@ -92,6 +93,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean getBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
 
 }

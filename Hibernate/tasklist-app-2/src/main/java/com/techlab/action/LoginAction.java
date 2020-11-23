@@ -42,6 +42,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserVm>, S
 		System.out.println("username:" + user.getUser() + " password:" + user.getPass());
 		for (User u : service.getUsers()) {
 			if (u.getUsername().equals(user.getUser()) && u.getPassword().equals(user.getPass())) {
+				if (u.getBlocked()) {
+					msg = "Currently Blocked!";
+					return INPUT;
+				}
 				if (admin) {
 					session.put("adminId", u.getId());
 				}

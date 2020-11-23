@@ -29,12 +29,15 @@
 			id="myTable">
 			<thead>
 				<tr>
+
+					<th>Blocked</th>
 					<th>Id</th>
 					<th>Firstname</th>
 					<th>Lastname</th>
 					<th>Email</th>
 					<th>Username</th>
 					<th>Password</th>
+					<th>Task Count</th>
 					<th>Task</th>
 					<th>Edit</th>
 					<th>Delete</th>
@@ -43,12 +46,15 @@
 			<tbody>
 				<s:iterator value="users">
 					<tr>
+						<s:checkbox name="blocked" fieldValue="%{blocked}"></s:checkbox>
 						<td><s:property value="id" /></td>
 						<td><s:property value="firstName" /></td>
 						<td><s:property value="lastName" /></td>
 						<td><s:property value="email" /></td>
 						<td><s:property value="username" /></td>
 						<td><s:property value="password" /></td>
+						<td><s:property value="%{tasks.size}" /></td>
+
 						<td><s:form action="task">
 								<s:hidden name="id" value="%{id}" />
 								<s:submit class="btn btn-success" value="tasks"></s:submit>
@@ -63,6 +69,7 @@
 							</s:form></td>
 					</tr>
 				</s:iterator>
+
 			</tbody>
 		</table>
 	</div>

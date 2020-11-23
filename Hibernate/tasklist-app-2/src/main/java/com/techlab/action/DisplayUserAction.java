@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.Action;
 import com.techlab.entity.User;
+import com.techlab.service.TaskService;
 import com.techlab.service.UserService;
 
 public class DisplayUserAction implements Action, SessionAware {
 	private List<User> users;
+
 	@Autowired
 	private UserService service;
+
 	private SessionMap<String, Object> session;
 
 	@Override
@@ -27,12 +30,9 @@ public class DisplayUserAction implements Action, SessionAware {
 				return "success";
 			}
 			int loginId = (int) session.get("loginId");
-			System.out.println("login=" + loginId);
 			User u = service.getUserById(loginId);
-			System.out.println("userid=" + u.getId());
 			usersTemp.add(u);
 			users = usersTemp;
-			System.out.println(users.size());
 			return "success";
 		}
 		users = service.getUsers();

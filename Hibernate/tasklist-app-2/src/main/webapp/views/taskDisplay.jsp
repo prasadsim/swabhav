@@ -31,6 +31,7 @@
 					<th>ID</th>
 					<th>TITLE</th>
 					<th>DATE</th>
+					<th>SUBTASK COUNT</th>
 					<th>SUBTASK</th>
 					<th>EDIT</th>
 					<th>DELETE</th>
@@ -43,6 +44,7 @@
 						<td><s:property value="id" /></td>
 						<td><s:property value="title" /></td>
 						<td><s:date name="date" format="YYYY/MM/DD" /></td>
+						<td><s:property value="%{subTask.size}" /></td>
 						<td><s:form action="subTask">
 								<s:hidden name="id" value="%{id}" />
 								<s:submit class="btn btn-success" value="SubTasks"></s:submit>

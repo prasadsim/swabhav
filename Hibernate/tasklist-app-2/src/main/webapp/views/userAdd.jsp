@@ -25,7 +25,7 @@
 		<div class="alert alert-danger">
 			<s:property value="msg" />
 		</div>
-		<form action="doRegister">
+		<form action="doAdd">
 			<div class="form-group">
 				<label for="text">Enter Firstname</label> <input type="text"
 					class="form-control" id="email" placeholder="Enter Firstname"
@@ -56,7 +56,7 @@
 					class="form-control" id="pwd" placeholder="Enter confirm password"
 					name="confirmPassword">
 			</div>
-			<button type="submit" class="btn btn-primary">Register</button>
+			<button type="submit" class="btn btn-primary">Add</button>
 		</form>
 
 	</div>

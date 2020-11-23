@@ -7,12 +7,14 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.techlab.service.TaskService;
 import com.techlab.service.UserService;
 
 public class DeleteUserAction extends ActionSupport implements SessionAware {
 
 	@Autowired
 	private UserService service;
+
 	private SessionMap<String, Object> session;
 
 	private int id;

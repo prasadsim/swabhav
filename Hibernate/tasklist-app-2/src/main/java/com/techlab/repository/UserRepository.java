@@ -41,13 +41,15 @@ public class UserRepository {
 		fact.getCurrentSession().delete(user);
 	}
 
-	public void editUser(int id, String firstName, String lastName, String email, String username, String password) {
+	public void editUser(int id, String firstName, String lastName, String email, String username, String password,
+			boolean blocked) {
 		User user = getUserById(id);
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setEmail(email);
 		user.setUsername(username);
 		user.setPassword(password);
+		user.setBlocked(blocked);
 		fact.getCurrentSession().update(user);
 	}
 }
